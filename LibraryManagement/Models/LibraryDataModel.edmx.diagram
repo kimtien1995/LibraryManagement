@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e8da7a659a143febfc8bc47b831562a" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="LibraryModel.ChiTietDonMuonSach" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.ChuDe" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.DanhGia" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.DauSach" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.DonMuonSach" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.LoaiNguoiDung" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.LuocSuMuaSach" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.LuocSuNapTien" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.NguoiDung" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.NhanXet" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.NhaXuatBan" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.PhanHoi" Width="1.5" PointX="5.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.TacGia" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.ThamSo" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.ThongBaoEmail" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.TrangThai" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.FK_ChiTietDonMuonSach_DauSach" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_ChiTietDonMuonSach_DonMuonSach" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DauSach_ChuDe" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DanhGia_DauSach" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DanhGia_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DauSach_NhaXuatBan" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DauSach_TacGia" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_LuocSuNapTien_DauSach" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_NhanXet_DauSach" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DonMuonSach_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_DonMuonSach_TrangThai" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_NguoiDung_LoaiNguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_LuocSuMuaSach_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_LuocSuNapTien_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_NhanXet_NguoiDung" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK_PhanHoi_NguoiDung" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
