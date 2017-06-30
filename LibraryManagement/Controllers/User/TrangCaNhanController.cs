@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using LibraryManagement.Models;
-
 
 namespace LibraryManagement.Controllers.User
 {
-    public class TrangChuController : Controller
+    public class TrangCaNhanController : Controller
     {
-        // GET: TrangChu
+        // GET: TrangCaNhan
         public ActionResult Xem()
         {
-            
-
-                return View("~/Views/User/Trangchu/Xemtrangchu.cshtml");
+            return View("~/Views/User/Trangcanhan/Xemtrangcanhan.cshtml");
         }
     }
 }

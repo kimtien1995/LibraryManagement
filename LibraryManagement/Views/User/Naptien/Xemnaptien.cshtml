@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Nạp tiền";
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+}
+
+
+@section Style
+{
+    <style type="text/css" id="enject">
+        #btdoc {
+            text-align: center;
+        }
+
+        #side {
+            height: 200px;
+        }
+
+        #title {
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
+}
+
+<div>
+    <ul class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+        <li class="active"> Nạp tiền</li>
+    </ul>
+
+    <hr class="soft" />
+    <h3>  Nạp Tiền </h3>
+    <table class="table table-bordered">
+        <tr><th>Nhập thông tin thẻ cào </th></tr>
+        <tr>
+            <td>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">Nhà mạng </label>
+                        <div class="controls">
+                            <select>
+                                <option value="">Chọn mạng</option>
+                                <option value="mobi">Mobiphone</option>
+                                <option value="vt">Viettel</option>
+                                <option value="vina">Vinaphone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputCountry">Số Serial </label>
+                        <div class="controls">
+                            <input type="text" id="inputCountry" placeholder="Serial">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPost">Mã thẻ cào</label>
+                        <div class="controls">
+                            <input type="text" id="inputPost" placeholder="Mã thẻ cào">
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <a href="login.html" class="btn btn-large pull-right">Nạp tiền <i class="icon-arrow-right"></i></a>
+</div>

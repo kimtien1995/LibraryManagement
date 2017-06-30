@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+}
+
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+        <li class="active">Tìm kiếm nâng cao</li>
+    </ul>
+    <h3>Tìm kiếm</h3>
+    <div class="well">
+        <form class="form-horizontal">
+            <h4>Nhập từ khóa</h4>
+            <div class="control-group">
+                <label class="control-label">Tìm theo</label>
+                <div class="controls">
+                    <select name="days">
+                        <option value="">-</option>
+                        <option value="1">Chủ đề</option>
+                        <option value="2">Tác giả</option>
+                        <option value="3">Tên sách</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputFname1">Từ khóa: </label>
+                <div class="controls">
+                    <input type="text" id="inputFname1" placeholder="Nhập từ khóa">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input type="hidden" name="email_create" value="1">
+                    <input type="hidden" name="is_new_customer" value="1">
+                    <input class="btn btn-large btn-success" type="submit" value="Tìm kiếm" />
+                </div>
+            </div>
+    </div>
+
+
+    </form>
+</div>

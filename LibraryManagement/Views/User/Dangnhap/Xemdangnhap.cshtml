@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+}
+
+
+
+@section Style
+{
+    <style type="text/css" id="enject">
+    .well {
+        margin: 0 auto;
+    }
+
+    #title {
+        text-align: center;
+        color: #FFFFFF;
+    }
+    </style>
+
+}
+
+<div>
+    <ul class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+        <li class="active">Đăng Nhập</li>
+    </ul>
+    <h3>Đăng nhập</h3>
+    <hr class="soft" />
+
+    <div class="row">
+        <div class="span4">
+            <div class="well">
+                <form>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail1">Tên người dùng</label>
+                        <div class="controls">
+                            <input class="span3" type="text" id="inputEmail1" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword1">Mật khẩu</label>
+                        <div class="controls">
+                            <input type="password" class="span3" id="inputPassword1" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Đăng nhập</button> <!--<a href="forgetpass.html">Forget password?</a>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
