@@ -1,6 +1,9 @@
-﻿@{
+﻿@using LibraryManagement.Models
+
+@{
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
     ViewBag.Title = "Chi tiết sách";
+    DauSach chitiet = ViewBag.chitietsach;
 }
 
 @section Style
@@ -23,21 +26,19 @@
 }
 
 <div>
-    <ul class="breadcrumb">
-        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+   <!--<ul class="breadcrumb">
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
         <li class="active">Chi tiết sách</li>
-    </ul>
+    </ul>-->
     <div class="row">
         <div id="gallery" class="span3">
-            <a href="bootstrap/img/Book/book00011.jpg" title="Fujifilm FinePix S2950 Digital Camera">
-                <img src="bootstrap/img/Book/book00011.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
-            </a>
+                <img src="~/Content/BookImg/@chitiet.bia" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
             <div id="differentview" class="moreOptopm carousel slide">
             </div>
         </div>
         <div class="span6">
-            <h3>The Timekeeper's Moon </h3>
-            <h4>Joni Sensel</h4>
+            <h3>@chitiet.tensach </h3>
+            <h4>@chitiet.TacGia.tentacgia</h4>
             <hr class="soft" />
             <table width="460" border="0">
                 <tbody>
@@ -51,11 +52,11 @@
 
            
             <hr class="soft" />
-            <h4>Còn 2 cuốn trong kho</h4>
+            <h4>Còn @chitiet.soluong cuốn trong kho</h4>
             <hr class="soft clr" />
             <h4>Tóm tắt</h4>
             <p>
-                Đây là dữ liệu tạm đầu sách nào cũng giống nhau. Năm hết Tết đến, Đón Khỉ tiễn Dê. Chúc ông chúc bà, chúc cha chúc mẹ , chúc cô chúc cậu, chúc chú chúc dì, chúc anh chúc chị, chúc luôn các em, chúc cả các cháu, dồi dào sức khoẻ - Có nhiều niềm vui - Tiền xu nặng túi - Tiền giấy đầy bao - Đi ăn được khao - Về nhà người rước - Tiền vô như nước - Tình vào đầy tim - Chăn ấm nệm êm - Sung sướng ban đêm - Hạnh phúc ban ngày - Luôn luôn gặp may - Suốt năm con Khỉ. :D
+                @chitiet.tomtat
             </p>
             <br class="clr" />
             <a href="#" name="detail"></a>
@@ -69,12 +70,12 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr class="techSpecRow"><th colspan="2">Thông tin chi tiết</th></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Mã sách </td><td class="techSpecTD2">XS501</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Tên sách</td><td class="techSpecTD2">The Timekeeper's Moon</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Tác giả</td><td class="techSpecTD2"> Joni Sensel</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Nhà xuất bản:</td><td class="techSpecTD2">Thời đại</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày đăng</td><td class="techSpecTD2">14/02/2016</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Thể loại</td><td class="techSpecTD2">Văn học</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Mã sách </td><td class="techSpecTD2">@chitiet.madausach</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Tên sách</td><td class="techSpecTD2">@chitiet.tensach</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Tác giả</td><td class="techSpecTD2"> @chitiet.TacGia.tentacgia</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Nhà xuất bản:</td><td class="techSpecTD2">@chitiet.NhaXuatBan.tennhaxuatban</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày đăng</td><td class="techSpecTD2">@chitiet.ngaydang</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Thể loại</td><td class="techSpecTD2">@chitiet.ChuDe.tenchude</td></tr>
                         </tbody>
                     </table>
                 </div>

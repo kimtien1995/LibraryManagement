@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietDonMuonSach">
           <Key>
             <PropertyRef Name="machitietdonmuonsach" />
@@ -373,6 +373,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_timkiemnguoidungdangnhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tendangnhap" Type="nvarchar" Mode="In" />
+          <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="LibraryModelStoreContainer">
           <EntitySet Name="ChiTietDonMuonSach" EntityType="Self.ChiTietDonMuonSach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChuDe" EntityType="Self.ChuDe" Schema="dbo" store:Type="Tables" />
@@ -456,8 +460,7 @@
             <End Role="PhanHoi" EntitySet="PhanHoi" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -943,7 +946,28 @@
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="PhanHoi" EntitySet="PhanHois" />
           </AssociationSet>
+          <FunctionImport Name="sp_timkiemnguoidungdangnhap" ReturnType="Collection(LibraryModel.sp_timkiemnguoidungdangnhap_Result)">
+            <Parameter Name="tendangnhap" Mode="In" Type="String" />
+            <Parameter Name="matkhau" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="sp_timkiemnguoidungdangnhap_Result">
+          <Property Type="String" Name="manguoidung" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tendangnhap" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="matkhau" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="hovaten" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="diachi" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="sodienthoai" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="gioitinh" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="ngaysinh" Nullable="true" />
+          <Property Type="String" Name="motangan" Nullable="true" />
+          <Property Type="String" Name="anhdaidien" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="maloainguoidung" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="khoanguoidung" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="makichhoat" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="sotientaikhoan" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1143,6 +1167,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_timkiemnguoidungdangnhap" FunctionName="LibraryModel.Store.sp_timkiemnguoidungdangnhap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibraryModel.sp_timkiemnguoidungdangnhap_Result">
+                <ScalarProperty Name="manguoidung" ColumnName="manguoidung" />
+                <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="ngaysinh" ColumnName="ngaysinh" />
+                <ScalarProperty Name="motangan" ColumnName="motangan" />
+                <ScalarProperty Name="anhdaidien" ColumnName="anhdaidien" />
+                <ScalarProperty Name="maloainguoidung" ColumnName="maloainguoidung" />
+                <ScalarProperty Name="khoanguoidung" ColumnName="khoanguoidung" />
+                <ScalarProperty Name="makichhoat" ColumnName="makichhoat" />
+                <ScalarProperty Name="sotientaikhoan" ColumnName="sotientaikhoan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,6 +12,8 @@ namespace LibraryManagement.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LIBRARYDATAMODEL : DbContext
     {
@@ -42,5 +44,18 @@ namespace LibraryManagement.Models
         public virtual DbSet<ThamSo> ThamSoes { get; set; }
         public virtual DbSet<ThongBaoEmail> ThongBaoEmails { get; set; }
         public virtual DbSet<TrangThai> TrangThais { get; set; }
+    
+        public virtual ObjectResult<sp_timkiemnguoidungdangnhap_Result> sp_timkiemnguoidungdangnhap(string tendangnhap, string matkhau)
+        {
+            var tendangnhapParameter = tendangnhap != null ?
+                new ObjectParameter("tendangnhap", tendangnhap) :
+                new ObjectParameter("tendangnhap", typeof(string));
+    
+            var matkhauParameter = matkhau != null ?
+                new ObjectParameter("matkhau", matkhau) :
+                new ObjectParameter("matkhau", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_timkiemnguoidungdangnhap_Result>("sp_timkiemnguoidungdangnhap", tendangnhapParameter, matkhauParameter);
+        }
     }
 }

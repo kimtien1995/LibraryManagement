@@ -22,7 +22,7 @@
 
 <div>
     <ul class="breadcrumb">
-        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
         <li class="active">Đăng Nhập</li>
     </ul>
     <h3>Đăng nhập</h3>
@@ -32,16 +32,28 @@
         <div class="span4">
             <div class="well">
                 <form>
-                    <div class="control-group">
-                        <label class="control-label" for="inputEmail1">Tên người dùng</label>
+                @if (ViewBag.ThongBao != null)
+                {
+                    <div class="control-group" action="/DangNhap/Thuchiendangnhap">
+                        <label class="control-label" for="inputEmail1">@ViewBag.ThongBao</label>
+                    </div>
+                }
+                    <div class="control-group" action="/DangNhap/Thuchiendangnhap">
+                        <label class="control-label" for="inputEmail1">Tên đăng nhập</label>
                         <div class="controls">
-                            <input class="span3" type="text" id="inputEmail1" placeholder="Email">
+                            <input class="span3" name="tendangnhap" type="text" id="inputEmail1" placeholder="Email">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputPassword1">Mật khẩu</label>
                         <div class="controls">
-                            <input type="password" class="span3" id="inputPassword1" placeholder="Password">
+                            <input type="password" name="matkhau" class="span3" id="inputPassword1" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword1">Ghi nhớ</label>
+                        <div class="controls">
+                            <input type="checkbox" value="true" name="check_ghinho" />
                         </div>
                     </div>
                     <div class="control-group">

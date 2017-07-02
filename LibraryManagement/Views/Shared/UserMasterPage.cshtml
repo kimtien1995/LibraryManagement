@@ -25,6 +25,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/Template/User/themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="~/Content/Template/User/themes/images/ico/apple-touch-icon-57-precomposed.png">
     @RenderSection("Style", false)
+    @RenderSection("JavaScript", false)
 
 </head>
 <body>
@@ -46,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <div class="navbar-inner">
-                    <a class="brand" href="~/TrangChu/Xem"></a>
+                    <a class="brand" href="TrangChu/Xem"></a>
                     <div id="title">
                         <h1>Online Library Center</h1>
                         @RenderSection("Headerimg", false)
@@ -68,32 +69,43 @@
                     <ul id="topMenu" class="nav pull-right">
                         <li class=""><a href="~/TrangChu/Xem">Trang chủ</a></li>
                         <li class=""><a href="~/KhoSach/Xem">Kho sách</a></li>
-                        <li class=""><a href="~/DangKy/Xem">Đăng ký</a></li>
-                        <li class="">
-                            <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>
-                            <div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h3>Đăng nhập nhanh</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-horizontal loginFrm">
-                                        <div class="control-group">
-                                            <label>Tên đăng nhập </label>
-                                            <input type="text" id="tendangnhap" placeholder="Tên đăng nhập">
-                                        </div>
-                                        <div class="control-group">
-                                            <label>Mật khẩu</label>
-                                            <input type="password" id="matkhau" placeholder="Mật khẩu">
-                                        </div>
-                                        <div class="control-group">
-                                        </div>
-                                    </form>
-                                    &nbsp;<button type="submit" class="btn btn-success">Đăng nhập</button>
-                                    &nbsp;<button class="btn" data-dismiss="modal" aria-hidden="true">Đóng</button>
-                                </div>
-                            </div>
-                        </li>
+                        @if (Session["quyen"].ToString() == "guest")
+                        {
+                            @:<li class=""><a href="DangKy/Xem">Đăng ký</a></li>
+                        }
+                        @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
+                        {
+                        @:<li><a href="~/TrangChuAdmin/Xem"><i class="icon-chevron-right"></i>Quản lý hệ thống</a></li>
+                        }
+                        @if (Session["quyen"].ToString() == "guest")
+                        {
+                            @:<li class="">
+                                 @:<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>
+                                @:<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false">
+                                    @:<div class="modal-header">
+                                        @:<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        @:<h3>Đăng nhập nhanh</h3>
+                                    @:</div>
+                                    @:<div class="modal-body">
+                                        @:<form class="form-horizontal loginFrm" action="/DangNhap/Thuchiendangnhap">
+                                            @:<div class="control-group">
+                                                @:<label>Tên đăng nhập </label>
+                                                @:<input type="text" name="tendangnhap" id="tendangnhap" placeholder="Tên đăng nhập">
+                                            @:</div>
+                                            @:<div class="control-group">
+                                                @:<label>Mật khẩu</label>
+                                                @:<input type="password" name="matkhau" id="matkhau" placeholder="Mật khẩu">
+                                            @:</div>
+                                            @:<div class="control-group">
+                                                @:<button type="submit" class="btn btn-success">Đăng nhập</button>
+                                                @:<button class="btn" data-dismiss="modal" aria-hidden="true">Đóng</button>
+                                            @:</div>
+                                        @:</form>
+                                    @:</div>
+                                @:</div>
+                            @:</li>
+                        }
+                        
                     </ul>
                 </div>
             </div>
@@ -126,14 +138,21 @@
                         <li class="subMenu">
                             <a>Sách xem nhiều</a>
                         </li>
-                        <!--<li class="subMenu open"><a>Thông tin tài khoản </a>
-                            <ul>
-                            <li><a class="active" href="~/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
-                            <li><a href="~/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
-                            <li><a href="~/NapTien/Xem"><i class="icon-chevron-right"></i>Nạp tiền</a></li>
-                            <li><a href="~/DangXuat/Dangxuat"><i class="icon-chevron-right"></i>Đăng xuất</a></li>
-                            </ul>
-                        </li> -->
+                        @if (Session["quyen"].ToString() != "guest")
+                        {
+                            @:<li class="subMenu open">
+                                @:<a>Thông tin tài khoản </a>
+                                @:<ul>
+                                    @:<li><a class="active" href="~/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
+                                    @:<li><a href="~/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
+                                    if (Session["quyen"].ToString() == "user")
+                                    {
+                                        @:<li><a href="~/NapTien/Xem"><i class="icon-chevron-right"></i>Nạp tiền</a></li>
+                                    }
+                                    @:<li><a href="~/DangNhap/Thuchiendangxuat">Đăng xuất</a></li>
+                                @:</ul>
+                            @:</li>
+                        }
                     </ul>
                     <br />
                     <div class="thumbnail">
@@ -170,13 +189,21 @@
     <div id="footerSection">
         <div class="container">
             <div class="row">
-                <div class="span3">
-                    <h5>Tài khoản</h5>
-                    <a href="~/TrangCaNhan/Xem">Trang cá nhân</a>
-                    <a href="~/NapTien/Xem">Nạp tiền</a>
-                    <a href="~/GioSach/Xem">Giỏ sách</a>
-                    <a href="~/DangXuat/Dangxuat">Đăng xuất</a>
-                </div>
+            @if (Session["quyen"].ToString() != "guest")
+            {
+                @:<div class="span3">
+                    @:<h5>Tài khoản</h5>
+                    @:<a href="~/TrangCaNhan/Xem">Trang cá nhân</a>
+                    if (Session["quyen"].ToString() == "user")
+                    {
+                        @:<a href="~/NapTien/Xem">Nạp tiền</a>
+                    }
+                    
+                    @:<a href="~/GioSach/Xem">Giỏ sách</a>
+                    @:<a href="~/DangNhap/Thuchiendangxuat">Đăng xuất</a>
+                @:</div>
+            }
+                
                 <!-- <div class="span3">
                     <h5>OUR OFFERS</h5>
                     <a href="#">NEW PRODUCTS</a>
@@ -204,7 +231,7 @@
     <script src="~/Content/Template/User/themes/js/jquery.lightbox-0.5.js"></script>
 
     <!-- Themes switcher section ============================================================================================= -->
-    <div id="secectionBox">
+    <!--<div id="secectionBox">
         <link rel="stylesheet" href="~/Content/Template/User/themes/switch/themeswitch.css" type="text/css" media="screen" />
         <script src="~/Content/Template/User/themes/switch/theamswitcher.js" type="text/javascript" charset="utf-8"></script>
         <div id="themeContainer">
@@ -256,7 +283,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
     <span id="themesBtn"></span>
 </body>
 </html>

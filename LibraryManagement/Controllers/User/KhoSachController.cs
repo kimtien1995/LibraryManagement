@@ -12,11 +12,50 @@ namespace LibraryManagement.Controllers.User
         // GET: KhoSach
         public ActionResult Xem(/*string xapxep, string trang*/)
         {
-            //LIBRARYDATAMODEL context = new LIBRARYDATAMODEL();
-            //int soluong = context.Database.SqlQuery<int>("SELECT COUNT(*) FROM DauSach").Single();
-            //int sosachtrongmottrang = 12;
+            
+            //int soluong;
+            //int sosachtrongmottrang = 20;
             //int tranghientai = 1;
-            //string cotxapxep = "ngaydang";
+            //string cotxapxep = "NgayDang";
+
+            //LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+            //soluong = db.DauSaches.Count();
+
+            
+
+            //if (trang != null && trang != "")
+            //{
+            //    tranghientai = int.Parse(trang);
+            //}
+
+            //if (xapxep != null)
+            //{
+            //    cotxapxep = xapxep;
+            //}
+
+            //int sotrang = (int)Math.Ceiling((double)soluong / (double)sosachtrongmottrang);
+
+            //if (tranghientai <= 0)
+            //{
+            //    tranghientai = 1;
+            //}
+            //if (tranghientai > sotrang)
+            //{
+            //    tranghientai = sotrang;
+            //}
+
+            //List<DauSach> saches = new List<DauSach>();
+            //if (sotrang > 0)
+            //{
+            //    saches = db.DauSaches.ToList();
+            //}
+
+            //ViewBag.dausachs = saches;
+            //ViewBag.sotrang = sotrang;
+            //ViewBag.soluongsach = soluong;
+            //ViewBag.tranghientai = tranghientai;
+            //ViewBag.cotxapxep = cotxapxep;
+
             return View("~/Views/User/Khosach/Xemkhosach.cshtml");
         }
     }

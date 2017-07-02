@@ -1,8 +1,11 @@
-﻿@{ 
+﻿@using LibraryManagement.Models
+
+@{ 
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
-}
-
+    List<NguoiDung> managers = ViewBag.managers;
+    NguoiDung ketqua = ViewBag.ketqua;
+} 
 
 <div class="content">
     <div class="container-fluid">
@@ -24,42 +27,19 @@
                             <td></td>
                             </tr>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nguyễn Văn A</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0001.jpg"></td>
-                                    <td>vana123</td>
-                                    <td>vana123@gmail.com</td>
-                                    <td>SV</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Trần Thị B</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0002.jpg"></td>
-                                    <td>thib456</td>
-                                    <td>thib456@gmail.com</td>
-                                    <td>GV</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Lê Văn C</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0003.jpg"></td>
-                                    <td>vanc789</td>
-                                    <td>vanc789@gmail.com</td>
-                                    <td>NDT</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Chu Thị D</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0004.jpg"></td>
-                                    <td>thid159</td>
-                                    <td>thid159@gmail.com</td>
-                                    <td>SV</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
+                                @for (int i = 0; i < 4; i++)
+                                {
+                                    <tr>
+                                        <td>@managers[i].maloainguoidung</td>
+                                        <td>@managers[i].hovaten</td>
+                                        <td><img id="imgtbl" src="~/Content/BookImg/@managers[i].anhdaidien"></td>
+                                        <td>@managers[i].tendangnhap</td>
+                                        <td>@managers[i].email</td>
+                                        <td>@managers[i].LoaiNguoiDung.tenloainguoidung</td>
+                                        <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
+                                    </tr>
+                                }
+                                
                             </tbody>
                         </table>
 

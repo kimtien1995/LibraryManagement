@@ -1,4 +1,6 @@
-﻿@{
+﻿@using LibraryManagement.Models
+
+@{
     ViewBag.Title = "Trang cá nhân";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
 }
@@ -25,21 +27,20 @@
 
 <div>
     <ul class="breadcrumb">
-        <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
         <li><a href="products.html">Thông tin tài khoản</a> <span class="divider">/</span></li>
         <li class="active">Trang cá nhân</li>
     </ul>
     <div class="row">
         <div id="gallery" class="span3">
-            <a href="bootstrap/img/avataruser/user0001.jpg" title="Fujifilm FinePix S2950 Digital Camera">
-                <img src="bootstrap/img/avataruser/user0001.jpg" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
-            </a>
+                <img src="~/Content/UserImg/@Session["anhdaidien"]" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+          
             <div id="differentview" class="moreOptopm carousel slide">
             </div>
         </div>
         <div class="span6">
-            <h3>Nguyễn Văn A </h3>
-            <h4>nguyenvana1995</h4>
+            <h3>@Session["hovaten"]</h3>
+            <h4>@Session["tendangnhap"]</h4>
 
             <form class="form-horizontal qtyFrm">
             </form>
@@ -50,15 +51,16 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr class="techSpecRow"><th colspan="2">Thông tin chi tiết</th></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Mã người dùng </td><td class="techSpecTD2">ND001</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Họ và tên</td><td class="techSpecTD2">Trần Văn A</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Địa chỉ</td><td class="techSpecTD2"> 621 Phạm Văn Chí, Q6</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">abcxyz@abc.com</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">14/02/1995</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">01287668822</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">Nam</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">Mô tả ngắn bản thân</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">50.000VNĐ</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Mã người dùng </td><td class="techSpecTD2">@Session["manguoidung"]</tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Họ và tên</td><td class="techSpecTD2">@Session["hovaten"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Địa chỉ</td><td class="techSpecTD2">@Session["diachi"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">@Session["email"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">@Session["ngaysinh"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">@Session["sodienthoai"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@Session["gioitinh"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">@Session["motangan"]</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">@Session["sotientaikhoan"]</td></tr>
+                            
                         </tbody>
                     </table>
 

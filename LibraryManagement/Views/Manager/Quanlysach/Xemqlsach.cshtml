@@ -1,6 +1,9 @@
-﻿@{
+﻿@using LibraryManagement.Models
+
+@{
     ViewBag.Title = "Quản lý sách";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    List<DauSach> sachs = ViewBag.sachs;
 }
 
 <div class="content">
@@ -13,52 +16,30 @@
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
-                            <tr>
-                                <td>Mã</td>
-                                <td>Tên Manager</td>
-                                <td>Ảnh</td>
-                                <td>Tên đăng nhập</td>
-                                <td>Email</td>
-                                <td>Loại Manager</td>
-                                <td></td>
-                            </tr>
+                            <thead>
+                                <th>Mã sách</th>
+                                <th>Tên</th>
+                                <th>Bìa</th>
+                                <th>Tác giả</th>
+                                <th>Ngày đăng</th>
+                                <th>Thể loại</th>
+                                <th></th>
+
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Yêu và mơ</td>
-                                    <td><img id="imgtbl" src="assets/img/Book/book00001.jpg"></td>
-                                    <td>Nguyễn Khăc viện</td>
-                                    <td>22/11/1995</td>
-                                    <td>Văn học</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Những tháng ngày đẹp nhất</td>
-                                    <td><img id="imgtbl" src="assets/img/Book/book00003.jpg"></td>
-                                    <td>Nhiều tác giả</td>
-                                    <td>22/11/1995</td>
-                                    <td>Văn học</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Yêu và mơ</td>
-                                    <td><img id="imgtbl" src="assets/img/Book/book00001.jpg"></td>
-                                    <td>Nguyễn Khăc viện</td>
-                                    <td>22/11/1995</td>
-                                    <td>Văn học</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Những tháng ngày đẹp nhất</td>
-                                    <td><img id="imgtbl" src="assets/img/Book/book00003.jpg"></td>
-                                    <td>Nhiều tác giả</td>
-                                    <td>22/11/1995</td>
-                                    <td>Văn học</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
+                                @for (int i = 0; i < 20; i++)
+                                {
+                                    <tr>
+                                        <td>@sachs[i].madausach</td>
+                                        <td>@sachs[i].tensach</td>
+                                        <td><img id="imgtbl" src="~/Content/BookImg/@sachs[i].bia"></td>
+                                        <td>@sachs[i].TacGia.tentacgia</td>
+                                        <td>@sachs[i].ngaydang</td>
+                                        <td>@sachs[i].ChuDe.tenchude</td>
+                                        <th><a href="#">Xóa</a><b>/</b><a href="#">Sửa</a></th>
+                                    </tr>
+                                }
+                                
                             </tbody>
                         </table>
 

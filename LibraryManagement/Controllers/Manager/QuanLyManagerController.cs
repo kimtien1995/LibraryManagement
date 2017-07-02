@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LibraryManagement.Models;
 
 namespace LibraryManagement.Controllers.Manager
 {
@@ -11,6 +12,14 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLyManager
         public ActionResult Xem()
         {
+
+            List<NguoiDung> manager = new List<NguoiDung>();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                manager = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "3").ToList();
+            }
+
+            ViewBag.managers = manager;
             return View("~/Views/Manager/Quanlymanager/Xemqlmanager.cshtml");
         }
     }

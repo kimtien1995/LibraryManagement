@@ -1,6 +1,9 @@
-﻿@{
+﻿@using LibraryManagement.Models
+
+@{
     ViewBag.Title = "Quản lý người dùng";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    List<NguoiDung> nguoidungs = ViewBag.nguoidungs;
 }
 
 
@@ -15,51 +18,27 @@
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
                             <thead>
-                            <th>Mã ND</th>
-                            <th>Tên</th>
-                            <th>Ảnh</th>
-                            <th>Tên đăng nhập</th>
-                            <th>Email</th>
-                            <th>Loại ND</th>
-                            <th></th>
+                                <th>Mã ND</th>
+                                <th>Tên</th>
+                                <th>Ảnh</th>
+                                <th>Tên đăng nhập</th>
+                                <th>Email</th>
+                                <th>Loại ND</th>
+                                <th></th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Nguyễn Văn A</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0001.jpg"></td>
-                                    <td>vana123</td>
-                                    <td>vana123@gmail.com</td>
-                                    <td>User</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Trần Thị B</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0002.jpg"></td>
-                                    <td>thib456</td>
-                                    <td>thib456@gmail.com</td>
-                                    <td>User</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Lê Văn C</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0003.jpg"></td>
-                                    <td>vanc789</td>
-                                    <td>vanc789@gmail.com</td>
-                                    <td>Member</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Chu Thị D</td>
-                                    <td><img id="imgtbl" src="assets/img/avataruser/user0004.jpg"></td>
-                                    <td>thid159</td>
-                                    <td>thid159@gmail.com</td>
-                                    <td>Member</td>
-                                    <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
-                                </tr>
+                                @for (int i = 0; i < 20; i++)
+                                {
+                                    <tr>
+                                        <td>@nguoidungs[i].manguoidung</td>
+                                        <td>@nguoidungs[i].hovaten</td>
+                                        <td><img id="imgtbl" src="~/Content/UserImg/@nguoidungs[i].anhdaidien"></td>
+                                        <td>@nguoidungs[i].tendangnhap</td>
+                                        <td>@nguoidungs[i].email</td>
+                                        <td>@nguoidungs[i].LoaiNguoiDung.tenloainguoidung</td>
+                                        <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
 
