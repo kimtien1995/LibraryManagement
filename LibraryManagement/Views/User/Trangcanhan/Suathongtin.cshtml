@@ -1,75 +1,35 @@
 ﻿@{
-    ViewBag.Title = "Đăng ký";
+    ViewBag.Title = "Sửa thông tin cá nhân"
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
 }
 
 @section Style
 {
     <style type="text/css" id="enject">
-    #login {
-        width: 280px;
-    }
+        #login {
+            width: 280px;
+        }
 
-    #title {
-        text-align: center;
-        color: #FFFFFF;
-    }
+        #title {
+            text-align: center;
+            color: #FFFFFF;
+        }
     </style>
 }
 
-@section JavaScript
-{
-    <script>
-
-        function kiemtra() {
-            var thematkhau = document.getElementById("matkhau");
-            var matkhau = thematkhau.value;
-            var thenhaplaimk = document.getElementById("nhaplaimatkhau");
-            var nhaplaimk = thenhaplaimk.value;
-
-            if (nhaplaimk == matkhau) {
-                return true;
-            }
-            else {
-                alert("Mật khẩu nhập lại không trùng khớp");
-                return false;
-            }
-        }
-    </script>
-
-
-}
 <div>
-    <ul class="breadcrumb">
+    @*<ul class="breadcrumb">
         <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
         <li class="active">Đăng ký</li>
-    </ul>
-    <h3> Đăng ký</h3>
+    </ul>*@
+    <h3> Sửa thông tin cá nhân</h3>
     <div class="well">
-        <form class="form-horizontal" action="/DangKy/Thuchiendangky" method="post" enctype="multipart/form-data">
-            <p><sup>*</sup>Trường bắt buộc nhập</p>
+        <form class="form-horizontal" action="/TrangCaNhan/Thuchiensuathongtin?manguoidung=@Session["manguoidung"]" method="post" enctype="multipart/form-data">
+            
             <div class="control-group">
-                <label class="control-label" for="inputFname1">Họ và tên <sup>*</sup>:</label>
+                <label class="control-label" for="inputFname1">Họ và tên:</label>
                 <div class="controls">
                     <input type="text" id="inputFname1" name="hovaten" placeholder="Họ và tên">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputLnam">Tên đăng nhập <sup>*</sup>:</label>
-                <div class="controls">
-                    <input type="text" id="inputLnam" name="tendangnhap" placeholder="Tên đăng nhập">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputPassword1">Mật khẩu <sup>*</sup>:</label>
-                <div class="controls">
-                    <input type="password" id="inputPassword1" name="matkhau" placeholder="Password">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputPassword1">Nhập lại mật khẩu <sup>*</sup>:</label>
-                <div class="controls">
-                    <input type="password" id="inputPassword1" name="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
                 </div>
             </div>
             <div class="control-group">
@@ -105,26 +65,25 @@
             <div class="control-group">
                 <label class="control-label" for="aditionalInfo">Giới tính: </label>
                 <div class="controls">
-                    @*<input type="text" id="inputFname1" name="gioitinh" placeholder="Giới tính"></input>*@
                     <input type="radio" id="gioitinh1" name="gioitinh" value="B" /> Nam
                     <input type="radio" id="gioitinh2" name="gioitinh" value="G" /> Nữ
                 </div>
             </div>
             <!--<div class="control-group">
-            <label class="control-label" for="inputFname1">Giới tính: </label>
-            <div class="controls">
-                <table width="200" border="0">
-                    <tbody>
-                        <tr>
-                            <td><label style="text-align:center">Nam</label></td>
-                            <td><input type="checkbox" name="nam" value="nam" checked="checked"></td>
-                            <td><label style="text-align:center">Nữ </label></td>
-                            <td><input type="checkbox" name="nu" value="nu"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>-->
+                <label class="control-label" for="inputFname1">Giới tính: </label>
+                <div class="controls">
+                    <table width="200" border="0">
+                        <tbody>
+                            <tr>
+                                <td><label style="text-align:center">Nam</label></td>
+                                <td><input type="checkbox" name="nam" value="nam" checked="checked"></td>
+                                <td><label style="text-align:center">Nữ </label></td>
+                                <td><input type="checkbox" name="nu" value="nu"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ảnh đại diện</label>
                 <div class="controls">
@@ -134,11 +93,11 @@
             <div class="control-group">
                 <div class="controls">
                     <!--<input type="hidden" name="email_create" value="1">
-                <input type="hidden" name="is_new_customer" value="1">-->
-                    <input class="btn btn-large btn-success" type="submit" value="Đăng ký">
+                    <input type="hidden" name="is_new_customer" value="1">-->
+                    <input class="btn btn-large btn-success" type="submit" value="Sửa">
                 </div>
             </div>
         </form>
     </div>
-    
+
 </div>

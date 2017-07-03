@@ -1,6 +1,9 @@
-﻿@{
+﻿@using LibraryManagement.Models;
+
+@{
     ViewBag.Title = "Đọc online";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    DauSach sach = ViewBag.sach;
 }
 
 
@@ -28,10 +31,10 @@
         <li class="active"> Nạp tiền</li>
     </ul>-->
 
-    <h3>  Bảy loại hình thông minh - Thomas Amstrong </h3>
+    <h3>  @sach.tensach - @sach.TacGia.tentacgia </h3>
 
     <table class="table table-bordered">
-        <embed src="7.pdf" width="850" height="700" type='application/pdf'>
+        <embed src="~/Content/BookPdf/@sach.filesach" width="850" height="700" type='application/pdf'>
     </table>
 
 

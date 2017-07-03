@@ -31,14 +31,18 @@
 <body>
     <div id="header">
         <div class="container">
-            <!-- <div id="welcomeLine" class="row">
-                <div class="span6">Welcome!<strong> Nguyễn Văn A</strong></div>
-                <div class="span6">
-                <div class="pull-right">
-                    <a href="product_summary.html"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
+            @if (Session["quyen"].ToString() != "guest")
+            {
+                <div id="welcomeLine" class="row">
+                    <div class="span6">Xin chào!<strong> @Session["hovaten"]</strong></div>
+                    <div class="span6">
+                        <div class="pull-right">
+                            <a href="/DangNhap/Thuchiendangxuat"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>-->
+            }
+            
             <!-- Navbar ================================================== -->
             <div id="logoArea" class="navbar">
                 <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
@@ -56,26 +60,27 @@
                     <a class="brand" href="index.html"><!--<img src="themes/images/logo.png" alt="Bootsshop"/>--></a>
                     <form class="form-inline navbar-search" method="post" action="products.html">
                         <input id="srchFld" class="srchTxt" type="text" />
-                        <!-- <select class="srchTxt">
+                        <!--<select class="srchTxt">
                             <option>All</option>
                             <option>CLOTHES </option>
                             <option>FOOD AND BEVERAGES </option>
                             <option>HEALTH & BEAUTY </option>
                             <option>SPORTS & LEISURE </option>
                             <option>BOOKS & ENTERTAINMENTS </option>
-                        </select> -->
+                        </select>-->
                         <button type="submit" id="submitButton" class="btn btn-primary">Search</button>
                     </form>
                     <ul id="topMenu" class="nav pull-right">
-                        <li class=""><a href="~/TrangChu/Xem">Trang chủ</a></li>
-                        <li class=""><a href="~/KhoSach/Xem">Kho sách</a></li>
+                        <li class=""><a href="/TrangChu/Xem">Trang chủ</a></li>
+                        <li class=""><a href="/KhoSach/Xem">Kho sách</a></li>
+                        <li class=""><a href="/TimKiem/Xemtimkiemnangcao">Tìm kiếm nâng cao</a></li>
                         @if (Session["quyen"].ToString() == "guest")
                         {
                             @:<li class=""><a href="DangKy/Xem">Đăng ký</a></li>
                         }
                         @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
                         {
-                        @:<li><a href="~/TrangChuAdmin/Xem"><i class="icon-chevron-right"></i>Quản lý hệ thống</a></li>
+                        @:<li><a href="/TrangChuAdmin/Xem"><i class="icon-chevron-right"></i>Quản lý hệ thống</a></li>
                         }
                         @if (Session["quyen"].ToString() == "guest")
                         {
@@ -87,7 +92,7 @@
                                         @:<h3>Đăng nhập nhanh</h3>
                                     @:</div>
                                     @:<div class="modal-body">
-                                        @:<form class="form-horizontal loginFrm" action="/DangNhap/Thuchiendangnhap">
+                                        @:<form class="form-horizontal loginFrm" action="/DangNhap/Thuchiendangnhap" method="get">
                                             @:<div class="control-group">
                                                 @:<label>Tên đăng nhập </label>
                                                 @:<input type="text" name="tendangnhap" id="tendangnhap" placeholder="Tên đăng nhập">
@@ -95,6 +100,12 @@
                                             @:<div class="control-group">
                                                 @:<label>Mật khẩu</label>
                                                 @:<input type="password" name="matkhau" id="matkhau" placeholder="Mật khẩu">
+                                            @:</div>
+                                            @:<div class="control-group">
+                                                @:<label class="control-label" for="inputPassword1">Ghi nhớ</label>
+                                                @:<div class="controls">
+                                                    @:<input type="checkbox" value="true" name="check_ghinho" />
+                                                @:</div>
                                             @:</div>
                                             @:<div class="control-group">
                                                 @:<button type="submit" class="btn btn-success">Đăng nhập</button>
@@ -143,13 +154,13 @@
                             @:<li class="subMenu open">
                                 @:<a>Thông tin tài khoản </a>
                                 @:<ul>
-                                    @:<li><a class="active" href="~/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
-                                    @:<li><a href="~/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
+                                    @:<li><a class="active" href="/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
+                                    @:<li><a href="/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
                                     if (Session["quyen"].ToString() == "user")
                                     {
-                                        @:<li><a href="~/NapTien/Xem"><i class="icon-chevron-right"></i>Nạp tiền</a></li>
+                                        @:<li><a href="/NapTien/Xem"><i class="icon-chevron-right"></i>Nạp tiền</a></li>
                                     }
-                                    @:<li><a href="~/DangNhap/Thuchiendangxuat">Đăng xuất</a></li>
+                                    @:<li><a href="/DangNhap/Thuchiendangxuat">Đăng xuất</a></li>
                                 @:</ul>
                             @:</li>
                         }

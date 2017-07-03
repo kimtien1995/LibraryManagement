@@ -33,38 +33,36 @@ namespace LibraryManagement
         protected void Session_Start()
         {
             Session.Add("quyen", "guest");
-            //if (Request.Cookies["tendangnhap"] != null && Request.Cookies["matkhau"] != null)
-            //{
-            //    string tendangnhap = Request.Cookies["tendangnhap"].Value;
-            //    string matkhau = Request.Cookies["matkhau"].Value;
-            //    bool oghinho;
+            if (Request.Cookies["tendangnhap"] != null && Request.Cookies["matkhau"] != null)
+            {
+                string tendangnhap = Request.Cookies["tendangnhap"].Value;
+                string matkhau = Request.Cookies["matkhau"].Value;
 
-            //    LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
-            //    NguoiDung user = new NguoiDung();
-            //    var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
+                LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+                NguoiDung user = new NguoiDung();
+                var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
 
-            //    if (ketqua == 0)
-            //    {
-            //        Session["HovaTen"] = "";
-            //        Session["quyen"] = "guest";
-            //        Session["anhdaidien"] = "";
-            //    }
-            //    else
-            //    {
-            //        user = db.NguoiDungs.Include("Loainguoidung").FirstOrDefault(s => s.tendangnhap == tendangnhap);
-            //        Session["manguoidung"] = user.manguoidung;
-            //        Session["tendangnhap"] = user.tendangnhap;
-            //        Session["quyen"] = user.LoaiNguoiDung.phanquyen;
-            //        Session["anhdaidien"] = user.anhdaidien;
-            //        Session["diachi"] = user.diachi;
-            //        Session["hovaten"] = user.hovaten;
-            //        Session["sodienthoai"] = user.sodienthoai;
-            //        Session["sotientaikhoan"] = user.sotientaikhoan;
-            //        Session["motangan"] = user.motangan;
-            //        Session["email"] = user.email;
-            //        Session["gioitinh"] = user.gioitinh;
-            //    }
-            //}
+                if (ketqua == 0)
+                {
+                    
+                    Session["quyen"] = "guest";
+                }
+                else
+                {
+                    user = db.NguoiDungs.Include("Loainguoidung").FirstOrDefault(s => s.tendangnhap == tendangnhap);
+                    Session["manguoidung"] = user.manguoidung;
+                    Session["tendangnhap"] = user.tendangnhap;
+                    Session["quyen"] = user.LoaiNguoiDung.phanquyen.ToString();
+                    Session["anhdaidien"] = user.anhdaidien;
+                    Session["diachi"] = user.diachi;
+                    Session["hovaten"] = user.hovaten;
+                    Session["sodienthoai"] = user.sodienthoai;
+                    Session["sotientaikhoan"] = user.sotientaikhoan;
+                    Session["motangan"] = user.motangan;
+                    Session["email"] = user.email;
+                    Session["gioitinh"] = user.gioitinh;
+                }
+            }
         }
         protected void Session_Ends()
         {

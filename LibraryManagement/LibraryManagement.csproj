@@ -796,6 +796,8 @@
     <Content Include="Content\BookPdf\book00099.pdf" />
     <Content Include="Content\BookPdf\book00100.pdf" />
     <Content Include="Views\User\Dangky\Dangkythanhcong.cshtml" />
+    <Content Include="Views\User\Doconline\Dockhongthanhcong.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Suathongtin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

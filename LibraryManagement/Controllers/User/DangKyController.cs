@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LibraryManagement.Models;
+using System.Data.Entity.Validation;
 
 namespace LibraryManagement.Controllers.User
 {
@@ -19,42 +20,63 @@ namespace LibraryManagement.Controllers.User
                 
             return View("~/Views/User/Dangky/Xemdangky.cshtml");
         }
-        public ActionResult Thuchiendangky(string hovaten)
+        public ActionResult Thuchiendangky()
         {
             if (Session["quyen"].ToString() != "guest")
             {
                 return Redirect("~/Trangchu/Xem");
             }
-            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
-            var nguoidung = new NguoiDung();
-            nguoidung.manguoidung = Guid.NewGuid().ToString();
-            nguoidung.hovaten = Request.Form["hovaten"].ToString();
-            nguoidung.tendangnhap = Request.Form["tendangnhap"].ToString();
-            nguoidung.matkhau = Request.Form["matkhau"].ToString();
-            nguoidung.email = Request.Form["email"].ToString();
-            nguoidung.diachi = Request.Form["diachi"].ToString();
-            nguoidung.ngaysinh = Convert.ToDateTime(Request.Form["ngaysinh"]).Date;
-            nguoidung.sodienthoai = Request.Form["sodienthoai"].ToString();
-            nguoidung.motangan = Request.Form["motangan"].ToString();
-            nguoidung.gioitinh = Request.Form["gioitinh"].ToString();
-            nguoidung.sotientaikhoan = 5000;
-            nguoidung.maloainguoidung = "1";
-            nguoidung.khoanguoidung = "U";
-            nguoidung.makichhoat = "";
-            if (Request.Files["anhdaidien"].ContentLength > 0 && Request.Files["anhdaidien"].FileName != "")
+            try
             {
-                string path = System.AppDomain.CurrentDomain.BaseDirectory + "Content/UserImg/";
-                string tenanh = Request.Files["anhdaidien"].FileName;
-                Request.Files["anhdaidien"].SaveAs(path + tenanh);
-                nguoidung.anhdaidien = tenanh;
+                LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+                var nguoidung = new NguoiDung();
+                nguoidung.manguoidung = Guid.NewGuid().ToString();
+                nguoidung.hovaten = Request.Form["hovaten"].ToString();
+                nguoidung.tendangnhap = Request.Form["tendangnhap"].ToString();
+                nguoidung.matkhau = Request.Form["matkhau"].ToString();
+                nguoidung.email = Request.Form["email"].ToString();
+                nguoidung.diachi = Request.Form["diachi"].ToString();
+
+                try
+                {
+                    nguoidung.ngaysinh = Convert.ToDateTime(Request.Form["ngaysinh"]).Date;
+                }
+                catch (Exception e)
+                {
+                    nguoidung.ngaysinh = null;
+                }
+
+                nguoidung.sodienthoai = Request.Form["sodienthoai"].ToString();
+                nguoidung.motangan = Request.Form["motangan"].ToString();
+                nguoidung.gioitinh = Request.Form["gioitinh"].ToString();
+                nguoidung.sotientaikhoan = 5000;
+                nguoidung.maloainguoidung = "1";
+                nguoidung.khoanguoidung = "U";
+                nguoidung.makichhoat = "";
+                if (Request.Files["anhdaidien"].ContentLength > 0 && Request.Files["anhdaidien"].FileName != "")
+                {
+                    string path = System.AppDomain.CurrentDomain.BaseDirectory + "Content/UserImg/";
+                    string tenanh = Request.Files["anhdaidien"].FileName;
+                    Request.Files["anhdaidien"].SaveAs(path + tenanh);
+                    nguoidung.anhdaidien = tenanh;
+                }
+                else
+                {
+                    nguoidung.anhdaidien = "NoImg.jpg";
+                }
+
+
+                db.NguoiDungs.Add(nguoidung);
+                db.SaveChanges();
             }
-            else
+            catch (Exception ex)
             {
-                nguoidung.anhdaidien = "NoImg.jpg";
+                //Neu bi loi  trong dang ky thi chuen den cho dang ky lai
+                return Redirect("/DangKy/Xem");
+
             }
-            db.NguoiDungs.Add(nguoidung);
-            db.SaveChanges();
-            return View("~/Views/Dangky/Dangkythanhcong.cshtml");
+            //Neu dang ky ok thi hien thanh cong
+            return View("~/Views/User/Dangky/Dangkythanhcong.cshtml");
             
         }
     }

@@ -9,7 +9,17 @@ namespace LibraryManagement.Controllers.User
     public class TimKiemController : Controller
     {
         // GET: TimKiem
-        public ActionResult Xem()
+        public ActionResult Timkiemcoban()
+        {
+            return View("~/Views/User/Timkiem/Xemtimkiem.cshtml");
+        }
+
+        public ActionResult Xemtimkiemnangcao()
+        {
+            return View("~/Views/User/Timkiem/Xemtimkiem.cshtml");
+        }
+
+        public ActionResult Timkiemnangcao()
         {
             return View("~/Views/User/Timkiem/Xemtimkiem.cshtml");
         }

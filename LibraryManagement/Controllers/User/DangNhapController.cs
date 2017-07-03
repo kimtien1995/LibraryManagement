@@ -13,19 +13,19 @@ namespace LibraryManagement.Controllers.User
         // GET: DangNhap
         public ActionResult Thuchiendangnhap(string tendangnhap, string matkhau, string check_ghinho)
         {
-            //if (Session["quyen"].ToString() != "guest")
-            //{
-            //    return Redirect("/Trangchu/Xem");
-            //}
-            //bool oghinho;
-            //if (check_ghinho == "true")
-            //{
-            //    oghinho = true;
-            //}
-            //else
-            //{
-            //    oghinho = false;
-            //}
+            if (Session["quyen"].ToString() != "guest")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
+            bool oghinho;
+            if (check_ghinho == "true")
+            {
+                oghinho = true;
+            }
+            else
+            {
+                oghinho = false;
+            }
             LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
             NguoiDung user = new NguoiDung();
             var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
@@ -44,14 +44,16 @@ namespace LibraryManagement.Controllers.User
                 Session["motangan"] = user.motangan;
                 Session["email"] = user.email;
                 Session["gioitinh"] = user.gioitinh;
-                //if (oghinho == true)
-                //{
-                //    Response.Cookies["tendangnhap"].Value = user.tendangnhap;
-                //    Response.Cookies["tendangnhap"].Expires = DateTime.Now.AddMonths(1);
 
-                //    Response.Cookies["matkhau"].Value = user.matkhau;
-                //    Response.Cookies["matkhau"].Expires = DateTime.Now.AddMonths(1);
-                //}
+                if (oghinho == true)
+                {
+                    Response.Cookies["tendangnhap"].Value = user.tendangnhap;
+                    Response.Cookies["tendangnhap"].Expires = DateTime.Now.AddMonths(1);
+
+                    Response.Cookies["matkhau"].Value = user.matkhau;
+                    Response.Cookies["matkhau"].Expires = DateTime.Now.AddMonths(1);
+                }
+
                 return RedirectToAction("Xem", "TrangCaNhan");
             }
             ViewBag.ThongBao = "Người dùng không tồn tại, vui lòng thử lại!";
@@ -61,11 +63,11 @@ namespace LibraryManagement.Controllers.User
         public ActionResult Thuchiendangxuat()
         {
             Session["quyen"] = "guest";
-            //if (Request.Cookies["tendangnhap"] != null && Request.Cookies["matkhau"] != null)
-            //{
-            //    Response.Cookies["Tendangnhap"].Expires = DateTime.Now.AddDays(-1);
-            //    Response.Cookies["Matkhau"].Expires = DateTime.Now.AddDays(-1);
-            //}
+            if (Request.Cookies["tendangnhap"] != null && Request.Cookies["matkhau"] != null)
+            {
+                Response.Cookies["tendangnhap"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["matkhau"].Expires = DateTime.Now.AddDays(-1);
+            }
             return Redirect("/TrangChu/Xem");
         }
     }

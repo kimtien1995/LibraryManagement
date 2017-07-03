@@ -40,15 +40,19 @@
             <h3>@chitiet.tensach </h3>
             <h4>@chitiet.TacGia.tentacgia</h4>
             <hr class="soft" />
-            <table width="460" border="0">
-                <tbody>
-                    <tr>
-                        <td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label></td>
-                        <td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label></td>
-                        <td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label></td>
-                    </tr>
-                </tbody>
-            </table>
+            @if (Session["quyen"].ToString() != "guest")
+            {
+            @:<table width="460" border="0">
+                @:<tbody>
+                    @:<tr>
+                        
+                        @:<td><a href="/DocOnline/Doconline?masach=@chitiet.madausach&sotientk=@Session["sotientaikhoan"]&manguoidung=@Session["manguoidung"]"><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label></a></td>
+                        @:<td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label></td>
+                        @:<td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label></td>
+                    @:</tr>
+                @:</tbody>
+            @:</table>
+            }
 
            
             <hr class="soft" />
