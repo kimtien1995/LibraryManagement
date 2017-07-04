@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Sửa thông tin cá nhân"
+    ViewBag.TitleUser = "Sửa thông tin cá nhân";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
 }
 
@@ -24,49 +24,57 @@
     </ul>*@
     <h3> Sửa thông tin cá nhân</h3>
     <div class="well">
-        <form class="form-horizontal" action="/TrangCaNhan/Thuchiensuathongtin?manguoidung=@Session["manguoidung"]" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/TrangCaNhan/Thuchiensuathongtin" method="post" enctype="multipart/form-data">
             
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Họ và tên:</label>
                 <div class="controls">
-                    <input type="text" id="inputFname1" name="hovaten" placeholder="Họ và tên">
+                    <input type="text" id="inputFname1" name="hovaten" value="@Session["hovaten"]" placeholder="Họ và tên">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Email: <sup>*</sup>:</label>
                 <div class="controls">
-                    <input type="text" id="inputFname1" name="email" placeholder="Email">
+                    <input type="text" id="inputFname1" name="email" value="@Session["email"]" placeholder="Email">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Địa chỉ: <sup>*</sup>:</label>
                 <div class="controls">
-                    <input type="text" id="inputFname1" name="diachi" placeholder="Địa chỉ">
+                    <input type="text" id="inputFname1" name="diachi" value="@Session["diachi"]" placeholder="Địa chỉ">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ngày sinh: </label>
                 <div class="controls">
-                    <input type="date" id="inputFname1" name="ngaysinh" placeholder="Ngày sinh">
+                    <input type="date" id="inputFname1" name="ngaysinh" value="@Session["ngaysinh"]" placeholder="Ngày sinh">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Số điện thoại: </label>
                 <div class="controls">
-                    <input type="text" id="inputFname1" name="sodienthoai" placeholder="Số điện thoại">
+                    <input type="text" id="inputFname1" name="sodienthoai" value="@Session["sodienthoai"]" placeholder="Số điện thoại">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="aditionalInfo">Mô tả ngắn: </label>
                 <div class="controls">
-                    <textarea name="motangan" id="aditionalInfo" cols="26" rows="3" placeholder="Mô tả ngắn"></textarea>
+                    <textarea name="motangan" id="aditionalInfo" cols="26" rows="3" placeholder="Mô tả ngắn">@Session["motangan"]</textarea>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="aditionalInfo">Giới tính: </label>
                 <div class="controls">
-                    <input type="radio" id="gioitinh1" name="gioitinh" value="B" /> Nam
-                    <input type="radio" id="gioitinh2" name="gioitinh" value="G" /> Nữ
+                    <input type="radio" id="gioitinh1" name="gioitinh" value="B"
+                           @if (Session["gioitinh"].ToString() == "B")
+                           {
+                               @:checked ="checked"
+                           }/> Nam
+                    <input type="radio" id="gioitinh2" name="gioitinh" value="G" 
+                           @if (Session["gioitinh"].ToString() == "G")
+                           {
+                               @:checked ="checked"
+                           }/> Nữ
                 </div>
             </div>
             <!--<div class="control-group">
@@ -87,7 +95,7 @@
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ảnh đại diện</label>
                 <div class="controls">
-                    <input type="file" name="anhdaidien">
+                    <input type="file" name="anhdaidien" value="@Session["anhdaidien"]">
                 </div>
             </div>
             <div class="control-group">

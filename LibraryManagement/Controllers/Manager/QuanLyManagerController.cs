@@ -16,7 +16,7 @@ namespace LibraryManagement.Controllers.Manager
             List<NguoiDung> manager = new List<NguoiDung>();
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
-                manager = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "3").ToList();
+                manager = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "5").ToList();
             }
 
             ViewBag.managers = manager;

@@ -15,7 +15,7 @@ namespace LibraryManagement.Controllers.User
         {
             if(Session["quyen"].ToString() != "guest")
             {
-                return Redirect("~/Trangchu/Xem");
+                return Redirect("/Trangchu/Xem");
             }
                 
             return View("~/Views/User/Dangky/Xemdangky.cshtml");

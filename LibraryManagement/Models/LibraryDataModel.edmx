@@ -373,6 +373,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_phantrangkhosach" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sosachtrongmottrang" Type="int" Mode="In" />
+          <Parameter Name="tranghientai" Type="int" Mode="In" />
+          <Parameter Name="luachonxapxep" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_timkiemnguoidungdangnhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tendangnhap" Type="nvarchar" Mode="In" />
           <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
@@ -950,6 +955,11 @@
             <Parameter Name="tendangnhap" Mode="In" Type="String" />
             <Parameter Name="matkhau" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_phantrangkhosach" ReturnType="Collection(LibraryModel.sp_phantrangkhosach_Result)">
+            <Parameter Name="sosachtrongmottrang" Mode="In" Type="Int32" />
+            <Parameter Name="tranghientai" Mode="In" Type="Int32" />
+            <Parameter Name="luachonxapxep" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_timkiemnguoidungdangnhap_Result">
           <Property Type="String" Name="manguoidung" Nullable="false" MaxLength="50" />
@@ -967,6 +977,14 @@
           <Property Type="String" Name="khoanguoidung" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="makichhoat" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="sotientaikhoan" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_phantrangkhosach_Result">
+          <Property Type="String" Name="tensach" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tentacgia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="bia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="luotxem" Nullable="false" />
+          <Property Type="String" Name="madausach" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="matacgia" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1185,6 +1203,18 @@
                 <ScalarProperty Name="khoanguoidung" ColumnName="khoanguoidung" />
                 <ScalarProperty Name="makichhoat" ColumnName="makichhoat" />
                 <ScalarProperty Name="sotientaikhoan" ColumnName="sotientaikhoan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_phantrangkhosach" FunctionName="LibraryModel.Store.sp_phantrangkhosach">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibraryModel.sp_phantrangkhosach_Result">
+                <ScalarProperty Name="tensach" ColumnName="tensach" />
+                <ScalarProperty Name="tentacgia" ColumnName="tentacgia" />
+                <ScalarProperty Name="bia" ColumnName="bia" />
+                <ScalarProperty Name="luotxem" ColumnName="luotxem" />
+                <ScalarProperty Name="madausach" ColumnName="madausach" />
+                <ScalarProperty Name="matacgia" ColumnName="matacgia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

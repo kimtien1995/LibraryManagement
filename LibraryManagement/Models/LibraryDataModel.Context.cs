@@ -57,5 +57,22 @@ namespace LibraryManagement.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_timkiemnguoidungdangnhap_Result>("sp_timkiemnguoidungdangnhap", tendangnhapParameter, matkhauParameter);
         }
+    
+        public virtual ObjectResult<sp_phantrangkhosach_Result> sp_phantrangkhosach(Nullable<int> sosachtrongmottrang, Nullable<int> tranghientai, string luachonxapxep)
+        {
+            var sosachtrongmottrangParameter = sosachtrongmottrang.HasValue ?
+                new ObjectParameter("sosachtrongmottrang", sosachtrongmottrang) :
+                new ObjectParameter("sosachtrongmottrang", typeof(int));
+    
+            var tranghientaiParameter = tranghientai.HasValue ?
+                new ObjectParameter("tranghientai", tranghientai) :
+                new ObjectParameter("tranghientai", typeof(int));
+    
+            var luachonxapxepParameter = luachonxapxep != null ?
+                new ObjectParameter("luachonxapxep", luachonxapxep) :
+                new ObjectParameter("luachonxapxep", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_phantrangkhosach_Result>("sp_phantrangkhosach", sosachtrongmottrangParameter, tranghientaiParameter, luachonxapxepParameter);
+        }
     }
 }

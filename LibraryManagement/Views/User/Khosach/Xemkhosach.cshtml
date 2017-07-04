@@ -1,6 +1,26 @@
-﻿@{
-    ViewBag.Title = "Kho sách";
+﻿@using LibraryManagement.Models;
+
+@{
+    ViewBag.TitleUser = "Kho sách";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    int soluongsach = ViewBag.soluongsach;
+    int sotrang = ViewBag.sotrang;
+    List<sp_phantrangkhosach_Result> dausachs = ViewBag.dausachs;
+    int tranghientai = ViewBag.tranghientai;
+    string cotxapxep = ViewBag.cotxapxep;
+}
+
+@section JavaScript
+{
+    <script>
+     function DuyetTheoThuTu()
+     {
+         var thelistsort = document.getElementById("listsort");
+         var giatriduocchon = thelistsort.value;
+         var url = "/KhoSach/Xem?xapxep=" + giatriduocchon;
+         window.location = url;
+     }
+    </script>
 }
 
 
@@ -61,135 +81,111 @@
     </ul>
     <!-- SÁCH MỚI -->
     <div>
-        <div id="bookscount"> <h4>Số Lượng Sách:</h4></div>
+        <div id="bookscount"> <h4>Số Lượng Sách:@soluongsach</h4></div>
         <div id="booksort">
             <b>Xắp Xếp Theo:</b>
             <select id="listsort" name="sorttype" onchange="DuyetTheoThuTu()">
-                <option value="tensach">Tên Sách</option>
-                <option value="matacgia">Tác Giả</option>
-                <option value="manhaxuatban">Nhà Xuất Bản</option>
-                <option value="ngaydang">Ngày Đăng</option>
-                <option value="machude">Chủ Đề</option>
+                <option value="tensach"  @if (cotxapxep == "tensach")
+                                    { 
+                                        @:selected 
+                                    }>Tên Sách</option>
+                <option value="matacgia" @if (cotxapxep == "matacgia")
+                                    { 
+                                        @:selected 
+                                    }>Tác Giả</option>
+                <option value="manhaxuatban" @if (cotxapxep == "manhaxuatban")
+                                    { 
+                                        @:selected 
+                                    }>Nhà Xuất Bản</option>
+                <option value="ngaydang" @if (cotxapxep == "ngaydang")
+                                    { 
+                                        @:selected 
+                                    }>Ngày Đăng</option>
             </select>
         </div>
         <br id="nhom6" />
     </div>
     <ul class="thumbnails">
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" width="300px" height="550px" src="bootstrap/img/Book/book00001.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Yêu và mơ</h5>
-                    <p>
-                        Nguyễn Khắc Viện
-                    </p>
+        @for (int i = 0; i < 15; i++)
+        {
+            <li class="span3">
+                <div class="thumbnail">
+                    <a href="/ChiTietSach/Xem?masach=@dausachs[i].madausach"><img id="sachmoi" width="300px" height="550px" src="~/Content/BookImg/@dausachs[i].bia" alt="" /></a>
+                    <div class="caption">
+                        <a href="/ChiTietSach/Xem?masach=@dausachs[i].madausach">
+                            <h5 class="captionsm">@dausachs[i].tensach</h5>
+                        </a>
+                        <p>
+                            @dausachs[i].tentacgia
+                        </p>
 
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
+                        <h4 style="text-align:center"><a class="btn" href="/ChiTietSach/Xem?maxemchitiet=@dausachs[i].madausach"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00002.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Anh chồng Stockholm</h5>
-                    <p>
-                        Banghok
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00008.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Những tháng ngày đẹp nhất</h5>
-                    <p>
-                        Đoàn Sinh Hưởng
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00009.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Tôi là Bêtô</h5>
-                    <p>
-                        Nguyễn Nhật Ánh
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00010.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Văn mới 2012-2013</h5>
-                    <p>
-                        Nhiều tác giả
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00011.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">The Timekeeper's Moon</h5>
-                    <p>
-                        Joni Sensel
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a><!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00012.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Truyện cổ tích Việt Nam</h5>
-                    <p>
-                        Nhiều tác giả
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a><!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00013.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Tôi bị "Bố" bắt cóc</h5>
-                    <p>
-                        Mitsuyo Kakuta
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a><!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
-        <li class="span3">
-            <div class="thumbnail">
-                <a href="product_details.html"><img id="sachmoi" src="bootstrap/img/Book/book00015.jpg" alt="" /></a>
-                <div class="caption">
-                    <h5 class="captionsm">Tình yêu còn mãi</h5>
-                    <p>
-                        Huyên Mặc
-                    </p>
-                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a><!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
-                </div>
-            </div>
-        </li>
+            </li>
+        }
     </ul>
     <div id="pageindex">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4 ...</a>
-        <a href="#">8</a>
+        @if (tranghientai > 1)
+            {
+            <a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=1">1</a>
+        }
+
+        @if (tranghientai - 1 > 5)
+        {
+            @:&nbsp;.&nbsp;.&nbsp;.&nbsp;
+            }
+
+        @if (tranghientai - 1 > 4)
+        {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai - 4)">@(tranghientai - 4)</a>
+        }
+
+        @if (tranghientai - 1 > 3)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai - 3)">@(tranghientai - 3)</a>
+        }
+
+        @if (tranghientai - 1 > 2)
+        {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai - 2)">@(tranghientai - 2)</a>
+        }
+
+        @if (tranghientai - 1 > 1)
+        {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai - 1)">@(tranghientai - 1)</a>
+        }
+
+        @tranghientai&nbsp;.&nbsp;.&nbsp;.&nbsp;.
+
+        @if (sotrang - tranghientai > 1)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai + 1)">@(tranghientai + 1)</a>
+        }
+
+        @if (sotrang - tranghientai > 2)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai + 2)">@(tranghientai + 2)</a>
+        }
+
+        @if (sotrang - tranghientai > 3)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai + 3)">@(tranghientai + 3)</a>
+        }
+
+        @if (sotrang - tranghientai > 4)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@(tranghientai + 4)">@(tranghientai + 4)</a>
+        }
+
+        @if (sotrang - tranghientai > 5)
+            {
+            @:.&nbsp;.&nbsp;.&nbsp;.&nbsp;
+            }
+
+        @if (tranghientai < sotrang)
+            {
+            @:<a href="/KhoSach/Xem?xapxep=@cotxapxep&trang=@sotrang">@sotrang</a>
+        }
     </div>
 </div>

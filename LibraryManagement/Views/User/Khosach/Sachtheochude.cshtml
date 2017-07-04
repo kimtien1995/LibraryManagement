@@ -1,0 +1,95 @@
+﻿@using LibraryManagement.Models;
+
+@{
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    ViewBag.TitleUser = "Sách theo chủ đề";
+    List<DauSach> sachchude = ViewBag.sachchude;
+    var soluong = ViewBag.slsachchude;
+    ChuDe tenchude = ViewBag.tenchude;
+}
+
+@section Style
+{
+    <style type="text/css" id="enject">
+        #sachmoi {
+            height: 300px;
+        }
+
+        #side {
+            height: 200px;
+        }
+
+        .captionnb {
+            height: 60px;
+        }
+
+        .captionsm {
+            height: 45px;
+        }
+
+        #bookssort .listsort {
+            width: 100px;
+        }
+
+        #pageindex {
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+        }
+
+            #pageindex a {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+                #pageindex a:hover {
+                    color: Blue;
+                    cursor: pointer;
+                }
+
+        #login {
+            width: 280px;
+        }
+
+        #title {
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
+}
+
+<div>
+    <ul class="breadcrumb">
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
+        <li class="active">Sách @tenchude.tenchude</li>
+    </ul>
+    <!-- SÁCH MỚI -->
+    <div>
+        <div>
+        <h3>Sách @tenchude.tenchude</h3>
+        </div>
+        <div id="bookscount"> <h4>Số Lượng Sách: @soluong</h4></div>
+        <br id="nhom6" />
+    </div>
+    <ul class="thumbnails">
+        @for (int i = 0; i < soluong; i++)
+        {
+            <li class="span3">
+                <div class="thumbnail">
+                    <a href="/ChiTietSach/Xem?masach=@sachchude[i].madausach"><img id="sachmoi" width="300px" height="550px" src="~/Content/BookImg/@sachchude[i].bia" alt="" /></a>
+                    <div class="caption">
+                        <a href="/ChiTietSach/Xem?masach=@sachchude[i].madausach">
+                            <h5 class="captionsm">@sachchude[i].tensach</h5>
+                        </a>
+                        <p>
+                            @sachchude[i].TacGia.tentacgia
+                        </p>
+
+                        <h4 style="text-align:center"><a class="btn" href="/ChiTietSach/Xem?maxemchitiet=@sachchude[i].madausach"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+

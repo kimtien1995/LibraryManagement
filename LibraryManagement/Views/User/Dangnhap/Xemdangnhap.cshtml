@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Đăng nhập";
+    ViewBag.TitleUser = "Đăng nhập";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
 }
 
@@ -35,7 +35,7 @@
                 @if (ViewBag.ThongBao != null)
                 {
                     <div class="control-group" action="/DangNhap/Thuchiendangnhap">
-                        <label class="control-label" for="inputEmail1">@ViewBag.ThongBao</label>
+                        <label style="color:red">@ViewBag.ThongBao</label>
                     </div>
                 }
                     <div class="control-group" action="/DangNhap/Thuchiendangnhap">

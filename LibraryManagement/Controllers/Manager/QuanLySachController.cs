@@ -15,7 +15,6 @@ namespace LibraryManagement.Controllers.Manager
             {
                 sachs = db.DauSaches.Include("TacGia").Include("NhaXuatBan").Include("ChuDe").ToList();
             }
-
             ViewBag.sachs = sachs;
             return View("~/Views/Manager/Quanlysach/Xemqlsach.cshtml");
         }

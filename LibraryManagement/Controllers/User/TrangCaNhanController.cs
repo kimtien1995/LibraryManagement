@@ -11,9 +11,15 @@ namespace LibraryManagement.Controllers.User
     {
         // GET: TrangCaNhan
         NguoiDung nguoidung = new NguoiDung();
-        public ActionResult Xem()
+        public ActionResult Xem(string manguoidung)
         {
-                return View("~/Views/User/Trangcanhan/Xemtrangcanhan.cshtml");
+            NguoiDung chitietnd = new NguoiDung();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                chitietnd = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
+            }
+            ViewBag.chitietnd = chitietnd;
+            return View("~/Views/User/Trangcanhan/Xemtrangcanhan.cshtml");
         }
 
         public ActionResult Xemsuathongtin()
@@ -21,12 +27,12 @@ namespace LibraryManagement.Controllers.User
             return View("~/Views/User/Trangcanhan/Suathongtin.cshtml");
         }
 
-        public ActionResult Thuchiensuathongtin(string manguoidung)
+        public ActionResult Thuchiensuathongtin()
         {
             try
             {
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
-                var nguoidung = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
+                var nguoidung = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == Session["manguoidung"].ToString());
                 nguoidung.hovaten = Request.Form["hovaten"].ToString();
                 nguoidung.email = Request.Form["email"].ToString();
                 nguoidung.diachi = Request.Form["diachi"].ToString();
@@ -61,7 +67,37 @@ namespace LibraryManagement.Controllers.User
                 return Redirect("/TrangCaNhan/Xemsuathongtin");
 
             }
-            
+        }
+
+        public ActionResult Xemkiemtramatkhau()
+        {
+            return View("~/Views/User/Trangcanhan/Suamatkhau/Matkhaucu.cshtml");
+        }
+
+        public ActionResult Kiemtramatkhau(string manguoidung)
+        {
+            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+            var mk = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
+            if(mk.matkhau == Request.Form["matkhaucu"].ToString())
+            {
+                return View("~/Views/User/Trangcanhan/Suamatkhau/Matkhaumoi.cshtml");
+            }
+            ViewBag.thongbaomk = " * Mật khẩu không đúng, vui lòng nhập lại";
+            return View("~/Views/User/Trangcanhan/Suamatkhau/Matkhaucu.cshtml");
+        }
+
+        public ActionResult Suamatkhau(string manguoidung)
+        {
+            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+            var mk = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
+            if(mk.matkhau != Request.Form["matkhaumoi"].ToString())
+            {
+                mk.matkhau = Request.Form["matkhaumoi"].ToString();
+                db.SaveChanges();
+                return Redirect("/TrangChu/Xem");
+            }
+            ViewBag.tbtrunglap = "* Mật khẩu mới trùng với mật khẩu cũ, vui lòng nhập lại";
+            return View("~/Views/User/Trangcanhan/Suamatkhau/Matkhaumoi.cshtml");
         }
     }
 }

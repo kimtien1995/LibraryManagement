@@ -26,35 +26,37 @@ namespace LibraryManagement.Controllers.User
             {
                 oghinho = false;
             }
-            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
-            NguoiDung user = new NguoiDung();
-            var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
-            if(ketqua != 0)
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
-                
-                user = db.NguoiDungs.Include("Loainguoidung").SingleOrDefault(s => s.tendangnhap == tendangnhap && s.matkhau == matkhau);
-                Session["manguoidung"] = user.manguoidung;
-                Session["tendangnhap"] = user.tendangnhap;
-                Session["quyen"] = user.LoaiNguoiDung.phanquyen.ToString();
-                Session["anhdaidien"] = user.anhdaidien;
-                Session["diachi"] = user.diachi;
-                Session["hovaten"] = user.hovaten;
-                Session["sodienthoai"] = user.sodienthoai;
-                Session["sotientaikhoan"] = user.sotientaikhoan;
-                Session["motangan"] = user.motangan;
-                Session["email"] = user.email;
-                Session["gioitinh"] = user.gioitinh;
-
-                if (oghinho == true)
+                NguoiDung user = new NguoiDung();
+                var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
+                if (ketqua != 0)
                 {
-                    Response.Cookies["tendangnhap"].Value = user.tendangnhap;
-                    Response.Cookies["tendangnhap"].Expires = DateTime.Now.AddMonths(1);
+                    user = db.NguoiDungs.Include("Loainguoidung").SingleOrDefault(s => s.tendangnhap == tendangnhap && s.matkhau == matkhau);
+                    Session["manguoidung"] = user.manguoidung;
+                    Session["tendangnhap"] = user.tendangnhap;
+                    Session["matkhau"] = user.matkhau;
+                    Session["quyen"] = user.LoaiNguoiDung.phanquyen.ToString();
+                    Session["anhdaidien"] = user.anhdaidien;
+                    Session["ngaysinh"] = user.ngaysinh;
+                    Session["diachi"] = user.diachi;
+                    Session["hovaten"] = user.hovaten;
+                    Session["sodienthoai"] = user.sodienthoai;
+                    Session["sotientaikhoan"] = user.sotientaikhoan;
+                    Session["motangan"] = user.motangan;
+                    Session["email"] = user.email;
+                    Session["gioitinh"] = user.gioitinh;
 
-                    Response.Cookies["matkhau"].Value = user.matkhau;
-                    Response.Cookies["matkhau"].Expires = DateTime.Now.AddMonths(1);
+                    if (oghinho == true)
+                    {
+                        Response.Cookies["tendangnhap"].Value = user.tendangnhap;
+                        Response.Cookies["tendangnhap"].Expires = DateTime.Now.AddMonths(1);
+
+                        Response.Cookies["matkhau"].Value = user.matkhau;
+                        Response.Cookies["matkhau"].Expires = DateTime.Now.AddMonths(1);
+                    }
+                    return RedirectToAction("Xem", "TrangChu");
                 }
-
-                return RedirectToAction("Xem", "TrangCaNhan");
             }
             ViewBag.ThongBao = "Người dùng không tồn tại, vui lòng thử lại!";
             return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");

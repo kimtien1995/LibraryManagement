@@ -541,6 +541,9 @@
     <Compile Include="Models\PhanHoi.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_phantrangkhosach_Result.cs">
+      <DependentUpon>LibraryDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_timkiemnguoidungdangnhap_Result.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
@@ -798,6 +801,10 @@
     <Content Include="Views\User\Dangky\Dangkythanhcong.cshtml" />
     <Content Include="Views\User\Doconline\Dockhongthanhcong.cshtml" />
     <Content Include="Views\User\Trangcanhan\Suathongtin.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Suamatkhau\Matkhaucu.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Suamatkhau\Matkhaumoi.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Suamatkhau\Dangkythanhcong.cshtml" />
+    <Content Include="Views\User\Khosach\Sachtheochude.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

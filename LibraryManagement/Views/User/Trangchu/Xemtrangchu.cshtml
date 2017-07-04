@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
-    ViewBag.Title = "Trang chủ";
+    ViewBag.TitleUser = "Library Online Center";
 }
 
 
@@ -63,33 +63,26 @@
 
                     @for (int i = 0; i < 4; i++)
                     {
-
-                    <div class="item @((i==0?"active":""))">
+                    <div class="item">
                         <ul class="thumbnails">
-
                             @for (int j = 0; j < 4; j++)
                             {
-
-                                
                             <li class="span3">
                                 <div class="thumbnail">
                                     <i class="tag"></i>
-                                    <a href="~/ChiTietSach/Xem?maxemchitiet=@sachnb[(i * 4) + j].madausach"><img id="sachnoibat" src="~/Content/BookImg/@sachnb[(i*4)+j].bia" alt=""></a>
+                                    <a href="~/ChiTietSach/Xem?masach=@sachnb[(i * 4) + j].madausach"><img id="sachnoibat" src="~/Content/BookImg/@sachnb[(i*4)+j].bia" alt=""></a>
                                     <div class="caption">
-                                        <a href="~/ChiTietSach/Xem?maxemchitiet=@sachnb[(i * 4) + j].madausach">
+                                        <a href="~/ChiTietSach/Xem?masach=@sachnb[(i * 4) + j].madausach">
                                             <h5 class="captionnb">@sachnb[(i * 4) + j].tensach</h5>
                                         </a>
                                             <p>@sachnb[(i * 4) + j].TacGia.tentacgia</p>
-                                            <h4><a class="btn" href="product_details.html">Xem</a> <!--<span class="pull-right">$5.000</span> --></h4>
-</div>
+                                            <h4><a class="btn" href="~/ChiTietSach/Xem?masach=@sachnb[(i * 4) + j].madausach">Xem</a> <!--<span class="pull-right">$5.000</span> --></h4>
+                                    </div>
                                 </div>
                             </li>
-
                             }
-
                         </ul>
                     </div>
-
                     }
                    
                 </div>
@@ -106,15 +99,15 @@
         {
             <li class="span3">
                 <div class="thumbnail">
-                    <a href="~/ChiTietSach/Xem?maxemchitiet=@sachm[i].madausach"><img id="sachmoi" width="300" height="550" src="~/Content/BookImg/@sachm[i].bia" alt="" /></a>
+                    <a href="/ChiTietSach/Xem?masach=@sachm[i].madausach"><img id="sachmoi" width="300" height="550" src="~/Content/BookImg/@sachm[i].bia" alt="" /></a>
                     <div class="caption">
-                        <a href="~/ChiTietSach/Xem?maxemchitiet=@sachm[i].madausach">
+                        <a href="/ChiTietSach/Xem?masach=@sachm[i].madausach">
                             <h5 class="captionsm">@sachm[i].tensach</h5>
                         </a>
                             <p>
                                 @sachm[i].TacGia.tentacgia
                             </p>
-                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
+                            <h4 style="text-align:center"><a class="btn" href="/ChiTietSach/Xem?maxemchitiet=@sachm[i].madausach"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
 </div>
                 </div>
             </li>

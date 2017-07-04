@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    ViewBag.TitleUser = "Sửa mật khẩu";
+}
+
+@section JavaScript
+{
+    <script>
+
+
+    </script>
+}
+
+<div>
+    <ul class="breadcrumb">
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
+        <li>Thông tin tài khoản<span class="divider">/</span></li>
+        <li class="active">Đổi mật khẩu</li>
+    </ul>
+    <h3>Đổi mật khẩu</h3>
+    <hr class="soft" />
+
+    <div class="row">
+        <div class="span4">
+            <div class="well">
+                <form action="/TrangCaNhan/Suamatkhau?manguoidung=@Session["manguoidung"]" method="post">
+                    @if (ViewBag.tbtrunglap != null)
+                    {
+                        <div class="control-group" >
+                            <label style="color:red">@ViewBag.tbtrunglap</label>
+                        </div>
+                    }
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail1">Mật khẩu mới</label>
+                        <div class="controls">
+                            <input class="span3" name="matkhaumoi" type="password" id="inputEmail1" placeholder="Nhập mật khẩu mới">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Đổi mật khẩu</button> <!--<a href="forgetpass.html">Forget password?</a>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

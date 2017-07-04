@@ -1,7 +1,6 @@
 ﻿
-
 @{
-    ViewBag.Title = "Trang cá nhân";
+    ViewBag.TitleUser = "Trang cá nhân";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
 }
 
@@ -28,7 +27,7 @@
 <div>
     <ul class="breadcrumb">
         <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
-        <li><a href="products.html">Thông tin tài khoản</a> <span class="divider">/</span></li>
+        <li>Thông tin tài khoản<span class="divider">/</span></li>
         <li class="active">Trang cá nhân</li>
     </ul>
     <div class="row">
@@ -331,9 +330,9 @@
                     <br class="clr">
                 </div>
             </div>
-            <a class="btn btn-small pull-right" href="#detail">Đổi mật khẩu</a>
+            <a class="btn btn-small pull-right" href="/TrangCaNhan/Xemkiemtramatkhau">Đổi mật khẩu</a>
 
-            <a class="btn btn-small pull-right" href="/TrangCaNhan/Xemsuathongtin">Sửa thông tin cá nhân</a>
+            <a class="btn btn-small pull-right" href="~/Views/User/Trangcanhan/Suathongtin.cshtml">Sửa thông tin cá nhân</a>
             <br class="clr" />
             <a href="#" name="detail"></a>
             <hr class="soft" />

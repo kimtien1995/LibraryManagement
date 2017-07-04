@@ -1,5 +1,8 @@
-﻿@{
+﻿@using LibraryManagement.Models;
+
+@{
     Layout = null;
+    NguoiDung chitietnd = ViewBag.chitietnd;
 }
 
 <!DOCTYPE html>
@@ -7,8 +10,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Online Library Center</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.TitleUser</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <link id="callCss" rel="stylesheet" href="~/Content/Template/User/themes/bootshop/bootstrap.min.css" media="screen" />
@@ -34,10 +37,10 @@
             @if (Session["quyen"].ToString() != "guest")
             {
                 <div id="welcomeLine" class="row">
-                    <div class="span6">Xin chào!<strong> @Session["hovaten"]</strong></div>
+                    <div class="span6">Xin chào!<strong>@Session["hovaten"]</strong></div>
                     <div class="span6">
                         <div class="pull-right">
-                            <a href="/DangNhap/Thuchiendangxuat"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
+                            <a href="~/DangNhap/Thuchiendangxuat"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +54,7 @@
                     <span class="icon-bar"></span>
                 </a>
                 <div class="navbar-inner">
-                    <a class="brand" href="TrangChu/Xem"></a>
+                    <a class="brand" href="/TrangChu/Xem"></a>
                     <div id="title">
                         <h1>Online Library Center</h1>
                         @RenderSection("Headerimg", false)
@@ -76,7 +79,7 @@
                         <li class=""><a href="/TimKiem/Xemtimkiemnangcao">Tìm kiếm nâng cao</a></li>
                         @if (Session["quyen"].ToString() == "guest")
                         {
-                            @:<li class=""><a href="DangKy/Xem">Đăng ký</a></li>
+                            @:<li class=""><a href="/DangKy/Xem">Đăng ký</a></li>
                         }
                         @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
                         {
@@ -134,13 +137,16 @@
                         <li class="subMenu open">
                             <a> Chủ đề </a>
                             <ul>
-                                <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Sách giáo khoa</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Sách văn học</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Sách tin học</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Sách ngoại ngữ</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Sách kinh tế</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Sách khoa học</a></li>
-                                <li><a href="products.html"><i class="icon-chevron-right"></i>Truyện tranh</a></li>
+                                <li><a class="active" href="~/KhoSach/Xemdanhsachtheochude?machude=1"><i class="icon-chevron-right"></i>Sách giáo khoa</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=2"><i class="icon-chevron-right"></i>Sách văn học</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=3"><i class="icon-chevron-right"></i>Sách tin học</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=4"><i class="icon-chevron-right"></i>Sách ngoại ngữ</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=6"><i class="icon-chevron-right"></i>Sách kinh tế</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=5"><i class="icon-chevron-right"></i>Sách khoa học</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=10"><i class="icon-chevron-right"></i>Truyện tranh</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=7"><i class="icon-chevron-right"></i>Thời trang</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=8"><i class="icon-chevron-right"></i>Văn hóa</a></li>
+                                <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=9"><i class="icon-chevron-right"></i>Truyện tranh</a></li>
                             </ul>
                         </li>
                         <li class="subMenu">
@@ -154,7 +160,7 @@
                             @:<li class="subMenu open">
                                 @:<a>Thông tin tài khoản </a>
                                 @:<ul>
-                                    @:<li><a class="active" href="/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
+                                    @:<li><a class="active" href="/TrangCaNhan/Xem?manguoidung=@Session["manguoidung"]"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
                                     @:<li><a href="/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
                                     if (Session["quyen"].ToString() == "user")
                                     {
@@ -204,14 +210,14 @@
             {
                 @:<div class="span3">
                     @:<h5>Tài khoản</h5>
-                    @:<a href="~/TrangCaNhan/Xem">Trang cá nhân</a>
+                    @:<a href="/TrangCaNhan/Xem">Trang cá nhân</a>
                     if (Session["quyen"].ToString() == "user")
                     {
-                        @:<a href="~/NapTien/Xem">Nạp tiền</a>
+                        @:<a href="/NapTien/Xem">Nạp tiền</a>
                     }
                     
-                    @:<a href="~/GioSach/Xem">Giỏ sách</a>
-                    @:<a href="~/DangNhap/Thuchiendangxuat">Đăng xuất</a>
+                    @:<a href="/GioSach/Xem">Giỏ sách</a>
+                    @:<a href="/DangNhap/Thuchiendangxuat">Đăng xuất</a>
                 @:</div>
             }
                 
