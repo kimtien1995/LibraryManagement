@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.TitleAdmin = "Thêm sách";
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    var masachxoa = ViewBag.masachxoa;
+}
+<div>
+    <h2>Bạn có muốn xóa cuốn sách này khỏi hệ thống?</h2>
+    <table>
+        <tr>
+            <td>
+                <a href="~/QuanLySach/Thuchienxoasach?masachxoa=@masachxoa"><button>Có</button></a>
+            </td>
+            <td>
+                <a href="~/Views/Manager/Quanlysach/Xemqlsach.cshtml"><button>Quay lại</button></a>
+            </td>
+        </tr>
+    </table>
+</div>

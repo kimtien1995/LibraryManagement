@@ -1,7 +1,7 @@
 ﻿@using LibraryManagement.Models
 
 @{
-    ViewBag.Title = "Quản lý người dùng";
+    ViewBag.TitleAdmin = "Quản lý người dùng";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     List<NguoiDung> nguoidungs = ViewBag.nguoidungs;
     int soluong = ViewBag.soluongnd;
@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Danh sách Người dùng</h4>
+                        <h4 class="title">Danh sách Người dùng có @soluong người dùng</h4>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -28,7 +28,7 @@
                                 <th></th>
                             </thead>
                             <tbody>
-                                @for (int i = 0; i < 20; i++)
+                                @for (int i = 0; i < soluong; i++)
                                 {
                                     <tr>
                                         <td>@nguoidungs[i].manguoidung</td>
@@ -37,10 +37,11 @@
                                         <td>@nguoidungs[i].tendangnhap</td>
                                         <td>@nguoidungs[i].email</td>
                                         <td>@nguoidungs[i].LoaiNguoiDung.tenloainguoidung</td>
-                                        <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
+                                        <th><a href="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@nguoidungs[i].manguoidung">Xóa</a><b>/</b><a href="">Sửa</a></th>
                                     </tr>
                                 }
                             </tbody>
+
                         </table>
 
                     </div>

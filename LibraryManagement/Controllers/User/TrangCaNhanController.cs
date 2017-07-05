@@ -27,12 +27,12 @@ namespace LibraryManagement.Controllers.User
             return View("~/Views/User/Trangcanhan/Suathongtin.cshtml");
         }
 
-        public ActionResult Thuchiensuathongtin()
+        public ActionResult Thuchiensuathongtin(string manguoidung)
         {
             try
             {
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
-                var nguoidung = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == Session["manguoidung"].ToString());
+                var nguoidung = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
                 nguoidung.hovaten = Request.Form["hovaten"].ToString();
                 nguoidung.email = Request.Form["email"].ToString();
                 nguoidung.diachi = Request.Form["diachi"].ToString();

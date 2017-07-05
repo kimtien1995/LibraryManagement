@@ -45,17 +45,22 @@
             <table width="460" border="0">
                 <tbody>
                    <tr>
-                        
                         <td><a href="/DocOnline/Doconline?masach=@chitiet.madausach&sotientk=@if(Session["quyen"].ToString() == "user")
-                        {
-                            @Session["sotientaikhoan"]
-                        }else
-                        {
-                            @:0
-                        }
-                        &manguoidung=@Session["manguoidung"]"><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label></a></td>
-                        <td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label></td>
-                        <td><label class="control-label"><button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label></td>
+                            {
+                                @Session["sotientaikhoan"]
+                            }else
+                            {
+                                @:0
+                            }
+                        &manguoidung=@Session["manguoidung"]"><label class="control-label">
+                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label>
+                            </a></td>
+                        <td><a href="#"><label class="control-label">
+                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label>
+                            </a></td>
+                        <td><a href="#"><label class="control-label">
+                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label>
+                            </a></td>
                     </tr>
                 </tbody>
             </table>

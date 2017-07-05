@@ -1,9 +1,10 @@
 ﻿@using LibraryManagement.Models
 
 @{
-    ViewBag.Title = "Quản lý sách";
+    ViewBag.TitleAdmin = "Quản lý sách";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     List<DauSach> sachs = ViewBag.sachs;
+    int soluong = ViewBag.soluongsach;
 }
 
 <div class="content">
@@ -12,7 +13,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Danh sách sách</h4>
+                        <h4 class="title">Danh sách sách Có @soluong cuốn sách</h4>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
@@ -27,7 +28,7 @@
 
                             </thead>
                             <tbody>
-                                @for (int i = 0; i < 20; i++)
+                                @for (int i = 0; i < soluong; i++)
                                 {
                                     <tr>
                                         <td>@sachs[i].madausach</td>
@@ -36,7 +37,7 @@
                                         <td>@sachs[i].TacGia.tentacgia</td>
                                         <td>@sachs[i].ngaydang</td>
                                         <td>@sachs[i].ChuDe.tenchude</td>
-                                        <th><a href="#">Xóa</a><b>/</b><a href="#">Sửa</a></th>
+                                        <th><a href="~/QuanLySach/Xacnhanxoasach?masachxoa=@sachs[i].madausach">Xóa</a><b>/</b><a href="#">Sửa</a></th>
                                     </tr>
                                 }
                                 
@@ -52,7 +53,7 @@
                     <a href="#">4 ...</a>
                     <a href="#">8</a>
                 </div>
-                <div><button type="submit" class="btn btn-info btn-fill pull-right">Thêm sách</button></div>
+                <div><a href="~/QuanLySach/Formthemsach"><button type="submit" class="btn btn-info btn-fill pull-right">Thêm sách</button></a></div>
             </div>
 
         </div>

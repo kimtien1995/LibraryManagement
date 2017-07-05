@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Trangchumanager";
+    ViewBag.TitleAdmin = "Quản lý hệ thống - Home";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
 }
 
@@ -14,35 +14,41 @@
                             <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                                 <div class="font-icon-detail">
                                     <i class="pe-7s-map"></i>
-                                    <input type="text" value="Quản lý sách" onclick="QuanLySach/Xem">
+                                    <a href="~/QuanLySach/Xem">
+                                        <input type="text" value="Quản lý sách">
+                                    </a>
                                 </div>
                             </div>
                             <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                                 <div class="font-icon-detail">
                                     <i class="pe-7s-users"></i>
-                                    <input type="text" value="Quản lý người dùng" onclick="QuanLyUser/Xem">
+                                    <a href="~/QuanLyUser/Xem">
+                                        <input type="text" value="Quản lý người dùng">
+                                    </a>
+</div>
+                            </div>
+                            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                                <div class="font-icon-detail">
+                                    <i class="pe-7s-id"></i>
+                                    <a href="~/QuanLyManager/Xem">
+                                        <input type="text" value="Quản lý manager">
+                                    </a>
                                 </div>
                             </div>
                             <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                                 <div class="font-icon-detail">
                                     <i class="pe-7s-id"></i>
-                                    <input type="text" value="Quản lý manager" onclick="QuanLyManager/Xem">
+                                    <a href="~/QuanLyNapTien/Xem">
+                                        <input type="text" value="Quản lý nạp tiền">
+                                    </a>
                                 </div>
-
                             </div>
-                            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-                                <div class="font-icon-detail">
-                                    <i class="pe-7s-id"></i>
-                                    <input type="text" value="Quản lý nạp tiền" onclick="QuanLyNapTien/Xem">
-                                </div>
-
-                            </div>
-                            <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+                            @*<div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
                                 <div class="font-icon-detail">
                                     <i class="pe-7s-map-2"></i>
                                     <input type="text" value="Bản đồ">
                                 </div>
-                            </div>
+                            </div>*@
 
                         </div>
 

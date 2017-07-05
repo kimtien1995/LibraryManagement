@@ -52,8 +52,11 @@ namespace LibraryManagement
                     user = db.NguoiDungs.Include("Loainguoidung").FirstOrDefault(s => s.tendangnhap == tendangnhap);
                     Session["manguoidung"] = user.manguoidung;
                     Session["tendangnhap"] = user.tendangnhap;
+                    Session["matkhau"] = user.matkhau;
                     Session["quyen"] = user.LoaiNguoiDung.phanquyen.ToString();
+                    Session["loainguoidung"] = user.LoaiNguoiDung.tenloainguoidung;
                     Session["anhdaidien"] = user.anhdaidien;
+                    Session["ngaysinh"] = user.ngaysinh;
                     Session["diachi"] = user.diachi;
                     Session["hovaten"] = user.hovaten;
                     Session["sodienthoai"] = user.sodienthoai;

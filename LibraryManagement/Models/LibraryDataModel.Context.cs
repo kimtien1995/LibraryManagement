@@ -35,7 +35,19 @@ namespace LibraryManagement.Models
         public virtual DbSet<LoaiNguoiDung> LoaiNguoiDungs { get; set; }
         public virtual DbSet<LuocSuMuaSach> LuocSuMuaSaches { get; set; }
         public virtual DbSet<LuocSuNapTien> LuocSuNapTiens { get; set; }
+
+        internal void DeleteObject(DauSach nguoidung)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
+
+        internal void DeleteObject(IQueryable<NguoiDung> user)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual DbSet<NhanXet> NhanXets { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<PhanHoi> PhanHois { get; set; }

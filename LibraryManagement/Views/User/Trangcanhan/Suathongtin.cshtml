@@ -24,7 +24,7 @@
     </ul>*@
     <h3> Sửa thông tin cá nhân</h3>
     <div class="well">
-        <form class="form-horizontal" action="/TrangCaNhan/Thuchiensuathongtin" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/TrangCaNhan/Thuchiensuathongtin?manguoidung=@Session["manguoidung"]" method="post" enctype="multipart/form-data">
             
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Họ và tên:</label>

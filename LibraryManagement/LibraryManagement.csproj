@@ -805,6 +805,10 @@
     <Content Include="Views\User\Trangcanhan\Suamatkhau\Matkhaumoi.cshtml" />
     <Content Include="Views\User\Trangcanhan\Suamatkhau\Dangkythanhcong.cshtml" />
     <Content Include="Views\User\Khosach\Sachtheochude.cshtml" />
+    <Content Include="Views\Manager\Quanlysach\Formthemsach.cshtml" />
+    <Content Include="Views\Manager\Quanlysach\Xacnhanxoasach.cshtml" />
+    <Content Include="Views\Manager\Quanlyuser\Formthemuser.cshtml" />
+    <Content Include="Views\Manager\Quanlyuser\Xacnhanxoauser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

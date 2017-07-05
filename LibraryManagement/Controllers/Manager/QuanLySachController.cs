@@ -11,12 +11,42 @@ namespace LibraryManagement.Controllers.Manager
         public ActionResult Xem()
         {
             List<DauSach> sachs = new List<DauSach>();
+            int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
                 sachs = db.DauSaches.Include("TacGia").Include("NhaXuatBan").Include("ChuDe").ToList();
+                soluong = db.DauSaches.Count();
             }
+            ViewBag.soluongsach = soluong;
             ViewBag.sachs = sachs;
             return View("~/Views/Manager/Quanlysach/Xemqlsach.cshtml");
+        }
+
+        public ActionResult Formthemsach()
+        {
+            return View("~/Views/Manager/Quanlysach/Formthemsach.cshtml");
+        }
+
+        public ActionResult Thuchienthemsach()
+        {
+            return View("~/Views/Manager/Quanlysach/Xemqlsach.cshtml");
+        }
+
+        public ActionResult Xacnhanxoasach(string masachxoa)
+        {
+            ViewBag.masachxoa = masachxoa;
+            return View("~/Views/Manager/Quanlysach/Xacnhanxoasach.cshtml");
+        }
+
+        public ActionResult Thuchienxoasach(string masachxoa)
+        {
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                var sach = db.DauSaches.FirstOrDefault(s => s.madausach == masachxoa);
+                db.DauSaches.Remove(sach);
+                db.SaveChanges();
+            }
+            return Redirect("~/QuanLySach/Xem");
         }
     }
 }

@@ -16,12 +16,39 @@ namespace LibraryManagement.Controllers.Manager
             int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
-                nguoidungs = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "1" && s.maloainguoidung == "2").ToList();
-                soluong = db.NguoiDungs.Count();
+                nguoidungs = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "1" || s.maloainguoidung == "2").ToList();
+                soluong = db.NguoiDungs.Count(s => s.maloainguoidung == "1" || s.maloainguoidung == "2");
             }
             ViewBag.soluongnd = soluong;
             ViewBag.nguoidungs = nguoidungs;
             return View("~/Views/Manager/Quanlyuser/Xemqluser.cshtml");
+        }
+
+        public ActionResult Formthemnguoidung()
+        {
+            return View("~/Views/Manager/Quanlyuser/Formthemuser.cshtml");
+        }
+
+        public ActionResult Thuchienthemnguoidung()
+        {
+            return View("~/Views/Manager/Quanlyuser/Xemqluser.cshtml");
+        }
+
+        public ActionResult Xacnhanxoanguoidung(string maxoauser)
+        {
+            ViewBag.maxoauser = maxoauser;
+            return View("~/Views/Manager/Quanlyuser/Xacnhanxoauser.cshtml");
+        }
+
+        public ActionResult Thuchienxoanguoidung(string maxoauser)
+        {
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                var user = db.NguoiDungs.First(s => s.manguoidung == maxoauser);
+                db.NguoiDungs.Remove(user);
+                db.SaveChanges();
+            }
+            return Redirect("~/QuanLyUser/Xem");
         }
     }
 }
