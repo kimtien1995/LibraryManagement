@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using LibraryManagement.Models;
 using System.Data;
+using LibraryManagement.Models.DTO;
 
 namespace LibraryManagement.Controllers.User
 {
     public class DangNhapController : Controller
     {
         // GET: DangNhap
+        public ActionResult Xem()
+        {
+            return View("~/Views/User/Dangky/Xemdangnhap.cshtml");
+        }
         public ActionResult Thuchiendangnhap(string tendangnhap, string matkhau, string check_ghinho)
         {
             if (Session["quyen"].ToString() != "guest")
@@ -58,6 +63,11 @@ namespace LibraryManagement.Controllers.User
                     }
                     return RedirectToAction("Xem", "TrangChu");
                 }
+            }
+            if(Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
+            {
+                List<Items> giohang = new List<Items>();
+                Session["giohang"] = giohang; 
             }
             ViewBag.ThongBao = "Người dùng không tồn tại, vui lòng thử lại!";
             return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");

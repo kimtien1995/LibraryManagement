@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using LibraryManagement.Models;
+using LibraryManagement.Models.DTO;
 
 namespace LibraryManagement
 {
@@ -64,6 +65,11 @@ namespace LibraryManagement
                     Session["motangan"] = user.motangan;
                     Session["email"] = user.email;
                     Session["gioitinh"] = user.gioitinh;
+                }
+                if (Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
+                {
+                    List<Items> giohang = new List<Items>();
+                    Session["giohang"] = giohang;
                 }
             }
         }

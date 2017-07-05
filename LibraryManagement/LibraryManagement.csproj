@@ -503,6 +503,7 @@
     <Compile Include="Models\DonMuonSach.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\Items.cs" />
     <Compile Include="Models\DTO\NguoidungvaLoainguoidung.cs" />
     <Compile Include="Models\DTO\SachVaTacGia.cs" />
     <Compile Include="Models\LibraryDataModel.Context.cs">

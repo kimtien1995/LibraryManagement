@@ -85,7 +85,18 @@
                             @sachchude[i].TacGia.tentacgia
                         </p>
 
-                        <h4 style="text-align:center"><a class="btn" href="/ChiTietSach/Xem?maxemchitiet=@sachchude[i].madausach"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Thêm vào <i class="icon-shopping-cart"></i></a> <!--<a class="btn btn-primary" href="#">$5.000</a>--></h4>
+                        <h4 style="text-align:center">
+                            <a class="btn" href="/ChiTietSach/Xem?maxemchitiet=@sachchude[i].madausach"> 
+                                <i class="icon-zoom-in"></i>
+                            </a> 
+                            @if (Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "user")
+                            {
+                                <a class="btn" href="#">
+                                    Thêm vào
+                                    <i class="icon-shopping-cart"></i>
+                                </a>
+                            }
+                        </h4>
                     </div>
                 </div>
             </li>
