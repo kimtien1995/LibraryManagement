@@ -1,6 +1,9 @@
-﻿@{
+﻿@using LibraryManagement.Models;
+
+@{
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
-    ViewBag.TitleAdmin = "Thêm sách";
+    ViewBag.TitleAdmin = "Sửa sách";
+    DauSach sachs = ViewBag.qlsachsuasach;
 }
 
 <div class="content">
@@ -9,7 +12,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Thêm sách</h4>
+                        <h4 class="title">Sửa thông tin sách</h4>
                     </div>
                     <div class="content">
                         <form action="" method="post" enctype="multipart/form-data">
@@ -17,19 +20,19 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Tên sách</label>
-                                        <input type="text" name="tensach" class="form-control" placeholder="Tên sách" value="">
+                                        <input type="text" name="tensach" class="form-control" placeholder="Tên sách" value="@sachs.tensach">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Tác giả</label>
-                                        <input type="text" name="tacgia" class="form-control" placeholder="Tác giả" value="">
+                                        <input type="text" name="tacgia" class="form-control" placeholder="Tác giả" value="@sachs.TacGia.tentacgia">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Chủ đề</label>
-                                        <input type="text" class="form-control" placeholder="Chủ đề" value="">
+                                        <input type="text" class="form-control" placeholder="Chủ đề" value="@sachs.ChuDe.tenchude">
                                     </div>
                                 </div>
                             </div>
@@ -38,13 +41,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nhà xuất bản</label>
-                                        <input type="text" class="form-control" placeholder="Nhà xuất bản" value="Mike">
+                                        <input type="text" class="form-control" placeholder="Nhà xuất bản" value="@sachs.NhaXuatBan.tennhaxuatban">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Số lượng</label>
-                                        <input type="text" class="form-control" placeholder="Số lượng" value="Andrew">
+                                        <input type="text" class="form-control" placeholder="Số lượng" value="@sachs.soluong">
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +56,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Ngày đăng</label>
-                                        <input type="datetime" class="form-control" placeholder="Ngày đăng" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                        <input type="datetime" class="form-control" value="@sachs.ngaydang">
                                     </div>
                                 </div>
                             </div>
@@ -62,19 +65,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Giá bán</label>
-                                        <input type="text" class="form-control" placeholder="Giá bán" value="">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Chủ đề</label>
-                                        <input type="text" class="form-control" placeholder="Chủ đề" value="">
+                                        <input type="text" class="form-control" placeholder="Giá bán" value="@sachs.giaban">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Mô tả ngắn</label>
-                                        <textarea rows="5" class="form-control" placeholder="Nhập mô tả (Tóm tắt)" value="Mike"></textarea>
+                                        <textarea rows="5" class="form-control" placeholder="Nhập mô tả (Tóm tắt)">@sachs.tomtat</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -82,13 +79,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Ảnh bìa</label>
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" value=" @sachs.bia">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>File sách</label>
-                                        <input type="file" class="form-control">
+                                        <input type="file" class="form-control" value="@sachs.filesach">
                                     </div>
                                 </div>
                             </div>
@@ -99,6 +96,8 @@
                     </div>
                 </div>
             </div>
+            
+
         </div>
     </div>
 </div>

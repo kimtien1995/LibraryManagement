@@ -1,8 +1,17 @@
 ﻿@using LibraryManagement.Models;
+@using LibraryManagement.Models.DTO;
 
 @{
     Layout = null;
     NguoiDung chitietnd = ViewBag.chitietnd;
+    int soluongcuonsachtronggiosach = 0;
+    if(Session["giohang"]!=null)
+    {
+        foreach(Items item in (List<Items>)Session["giohang"])
+        {
+            soluongcuonsachtronggiosach = soluongcuonsachtronggiosach + item.Soluong;
+        }
+    }
 }
 
 <!DOCTYPE html>
@@ -132,7 +141,7 @@
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">0 cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
+                    <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <li class="subMenu open">
                             <a> Chủ đề </a>

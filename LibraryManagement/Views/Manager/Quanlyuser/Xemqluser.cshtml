@@ -37,7 +37,11 @@
                                         <td>@nguoidungs[i].tendangnhap</td>
                                         <td>@nguoidungs[i].email</td>
                                         <td>@nguoidungs[i].LoaiNguoiDung.tenloainguoidung</td>
-                                        <th><a href="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@nguoidungs[i].manguoidung">Xóa</a><b>/</b><a href="">Sửa</a></th>
+                                        <th>
+                                            <a href="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@nguoidungs[i].manguoidung">Xóa</a>
+                                                <b>/</b>
+                                            <a href="~/QuanLyUser/Formsuaquyen?manguoidung=@nguoidungs[i].manguoidung">Sửa</a>
+                                        </th>
                                     </tr>
                                 }
                             </tbody>

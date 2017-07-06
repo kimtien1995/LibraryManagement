@@ -48,5 +48,35 @@ namespace LibraryManagement.Controllers.Manager
             }
             return Redirect("~/QuanLySach/Xem");
         }
+
+        public ActionResult Formsuasach(string masach)
+        {
+
+            DauSach thongtinsach = new DauSach();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                thongtinsach = db.DauSaches.Include("Tacgia").
+                    Include("Nhaxuatban").
+                    Include("Chude").
+                    FirstOrDefault(s => s.madausach == masach);
+            }
+            ViewBag.qlsachsuasach = thongtinsach;
+            return View("~/Views/Manager/Quanlysach/Formsuasach.cshtml");
+        }
+
+        public ActionResult Thuchiensuasach(string masach)
+        {
+
+            DauSach thongtinsach = new DauSach();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                thongtinsach = db.DauSaches.Include("Tacgia").
+                    Include("Nhaxuatban").
+                    Include("Chude").
+                    FirstOrDefault(s => s.madausach == masach);
+            }
+            ViewBag.qlsachsuasach = thongtinsach;
+            return View("~/Views/Manager/Quanlysach/Formsuasach.cshtml");
+        }
     }
 }

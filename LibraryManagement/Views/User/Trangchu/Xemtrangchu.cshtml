@@ -82,7 +82,7 @@
                                                 </a>
                                                 @if (Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "user")
                                                 {
-                                                    <a class="btn" href="#">
+                                                    <a class="btn" href="~/GioSach/Themsachvaogio?masach=@sachnb[(i * 4) + j].madausach&urlnext=@Request.RawUrl">
                                                         Thêm vào
                                                         <i class="icon-shopping-cart"></i>
                                                     </a>

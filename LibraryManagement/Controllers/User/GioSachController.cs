@@ -16,11 +16,11 @@ namespace LibraryManagement.Controllers.User
             return View("~/Views/User/Giosach/Xemgiosach.cshtml");
         }
 
-        public ActionResult Themsachvaogio(string masach)
+        public ActionResult Themsachvaogio(string masach, string urlnext)
         {
             if(Session["quyen"].ToString() == "guest")
             {
-                return View("~/Views/User/Dangky/Xemdangnhap.cshtml");
+                return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
             }
             if(Session["quyen"].ToString() != "guest")
             {
@@ -52,7 +52,7 @@ namespace LibraryManagement.Controllers.User
                 }
                 ViewBag.sachgiosach = chitietsach;
             }
-            return View("~/Views/User/Giosach/Xemgiosach.cshtml");
+            return Redirect(urlnext);
         }
     }
 }

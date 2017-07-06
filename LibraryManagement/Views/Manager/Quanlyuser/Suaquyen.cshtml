@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    var manguoidung = ViewBag.masuaquyen;
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Sửa quyền người dùng</h4>
+                    </div>
+                    <div class="content">
+                        <form action="~/QuanLyUser/Thuchiensuaquyen?manguoidung=@manguoidung" method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Loại người dùng</label>
+                                        <div>
+                                            <input type="radio" id="user" name="loainguoidung" value="1" /> Người dùng thường
+                                        </div>
+                                        <div>
+                                            <input type="radio" id="member" name="loainguoidung" value="2" /> Thành viên
+                                        </div>
+                                        @if (Session["quyen"].ToString() == "admin")
+                                        {
+                                        @:<div>
+                                            @:<input type="radio" id="manager" name="loainguoidung" value="5" /> Quản lý nội dung
+                                        @:</div>
+                                        @:<div>
+                                            @:<input type="radio" id="admin" name="loainguoidung" value="6" /> Quản trị hệ thống
+                                        @:</div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Thêm người dùng</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

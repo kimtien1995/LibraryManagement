@@ -36,7 +36,10 @@
                                         <td>@managers[i].tendangnhap</td>
                                         <td>@managers[i].email</td>
                                         <td>@managers[i].LoaiNguoiDung.tenloainguoidung</td>
-                                        <th><a href="">Xóa</a><b>/</b><a href="">Sửa</a></th>
+                                        <th>
+                                        <a href="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@managers[i].manguoidung">Xóa</a>
+                                        <b>/</b>
+                                        <a href="~/QuanLyUser/Formsuaquyen?manguoidung=@managers[i].manguoidung">Sửa</a></th>
                                     </tr>
                                 }
                                 

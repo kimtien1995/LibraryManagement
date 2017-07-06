@@ -50,5 +50,22 @@ namespace LibraryManagement.Controllers.Manager
             }
             return Redirect("~/QuanLyUser/Xem");
         }
+
+        public ActionResult Formsuaquyen(string manguoidung)
+        {
+            ViewBag.masuaquyen = manguoidung;
+            return View("~/Views/Manager/Quanlyuser/Suaquyen.cshtml");
+        }
+
+        public ActionResult Thuchiensuaquyen(string manguoidung)
+        {
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                var nguoidung = db.NguoiDungs.First(s => s.manguoidung == manguoidung);
+                nguoidung.maloainguoidung = Request.Form["loainguoidung"].ToString();
+                db.SaveChanges();
+            }
+            return Redirect("~/QuanLyUser/Xem");
+        }
     }
 }

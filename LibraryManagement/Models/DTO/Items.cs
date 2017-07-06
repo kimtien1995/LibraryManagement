@@ -62,7 +62,6 @@ namespace LibraryManagement.Models.DTO
                 madausach = value;
             }
         }
-
         public string Tacgia
         {
             get
@@ -82,6 +81,7 @@ namespace LibraryManagement.Models.DTO
             bia = "";
             soluong = 0;
             madausach = "";
+            tacgia = "";
         }
     }
 }
