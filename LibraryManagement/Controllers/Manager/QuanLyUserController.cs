@@ -23,6 +23,16 @@ namespace LibraryManagement.Controllers.Manager
             ViewBag.nguoidungs = nguoidungs;
             return View("~/Views/Manager/Quanlyuser/Xemqluser.cshtml");
         }
+        public ActionResult Xemchitietuser(string manguoidung)
+        {
+            NguoiDung chitietnd = new NguoiDung();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                chitietnd = db.NguoiDungs.Include("LoaiNguoiDung").FirstOrDefault(s => s.manguoidung == manguoidung);
+            }
+            ViewBag.chitietnd = chitietnd;
+            return View("~/Views/Manager/Quanlyuser/Chitietuser.cshtml");
+        }
 
         public ActionResult Formthemnguoidung()
         {

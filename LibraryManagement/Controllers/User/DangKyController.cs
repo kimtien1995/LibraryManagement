@@ -22,10 +22,10 @@ namespace LibraryManagement.Controllers.User
         }
         public ActionResult Thuchiendangky()
         {
-            if (Session["quyen"].ToString() != "guest")
-            {
-                return Redirect("~/Trangchu/Xem");
-            }
+            //if (Session["quyen"].ToString() != "guest")
+            //{
+            //    return Redirect("~/Trangchu/Xem");
+            //}
             try
             {
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();

@@ -1,0 +1,70 @@
+﻿@using LibraryManagement.Models;
+
+@{
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    NguoiDung chitietnd = ViewBag.chitietnd;
+}
+
+<div>
+    <ul class="breadcrumb">
+        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
+        <li>Thông tin tài khoản<span class="divider">/</span></li>
+        <li class="active">Thông tin cá nhân của @chitietnd.hovaten</li>
+    </ul>
+    <div class="row">
+        <div id="gallery" class="span3">
+            <img src="~/Content/UserImg/@chitietnd.anhdaidien" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+
+            <div id="differentview" class="moreOptopm carousel slide">
+            </div>
+        </div>
+        <div class="span6">
+            <h3>@chitietnd.hovaten</h3>
+            <h4>Tên đăng nhập: @chitietnd.tendangnhap</h4>
+
+            <form class="form-horizontal qtyFrm"></form>
+            <hr class="soft clr" />
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                    <h4>Thông Người dùng</h4>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr class="techSpecRow"><th colspan="2">Thông tin chi tiết</th></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Mã người dùng </td><td class="techSpecTD2">@chitietnd.manguoidung</tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Họ và tên</td><td class="techSpecTD2">@chitietnd.hovaten</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Địa chỉ</td><td class="techSpecTD2">@chitietnd.diachi</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">@chitietnd.email</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">@chitietnd.ngaysinh</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">@chitietnd.sodienthoai</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@chitietnd.gioitinh</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">@chitietnd.motangan</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">@chitietnd.sotientaikhoan</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Loại người dùng</td><td class="techSpecTD2">@chitietnd.LoaiNguoiDung.tenloainguoidung</td></tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <form action="~/QuanLyNapTien/Xem?manguoidung=@chitietnd.manguoidung">
+                <button type="submit" class="btn btn-info btn-fill pull-right">Lược sử nạp tiền</button>
+            </form>
+            <form action="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@chitietnd.manguoidung">
+                <button type="submit" class="btn btn-info btn-fill pull-right">Xóa</button>
+            </form>
+            <form action="~/QuanLyUser/Formsuaquyen?manguoidung=@chitietnd.manguoidung">
+                <button type="submit" class="btn btn-info btn-fill pull-right">Sửa quyền</button>
+            </form>
+
+            <br class="clr" />
+            <a href="#" name="detail"></a>
+            <hr class="soft" />
+        </div>
+
+        <div class="span9">
+
+        </div>
+
+    </div>
+</div>

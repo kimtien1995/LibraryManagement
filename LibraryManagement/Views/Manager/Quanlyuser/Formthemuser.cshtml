@@ -85,10 +85,10 @@
                                         <label>Loại người dùng</label>
                                         <input type="radio" id="user" name="loainguoidung" value="1" /> User
                                         <input type="radio" id="member" name="loainguoidung" value="2" /> Member
-                                        <input type="radio" id="manager" name="loainguoidung" value="5" /> Manager
                                         @if (Session["quyen"].ToString() == "admin")
                                         {
-                                            @:<input type="radio" id="admin" name="loainguoidung" value="6" /> Admin
+                                        @:<input type="radio" id="manager" name="loainguoidung" value="5" /> Manager
+                                        @:<input type="radio" id="admin" name="loainguoidung" value="6" /> Admin
                                         }
                                     </div>
                                 </div>

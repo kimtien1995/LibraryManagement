@@ -31,7 +31,7 @@
                                 @for (int i = 0; i < soluong; i++)
                                 {
                                     <tr>
-                                        <td>@nguoidungs[i].manguoidung</td>
+                                        <td><a href="~/QuanLyUser/Xemchitietuser?manguoidung=@nguoidungs[i].manguoidung">@nguoidungs[i].manguoidung</a></td>
                                         <td>@nguoidungs[i].hovaten</td>
                                         <td><img id="imgtbl" src="~/Content/UserImg/@nguoidungs[i].anhdaidien"></td>
                                         <td>@nguoidungs[i].tendangnhap</td>
@@ -50,14 +50,16 @@
 
                     </div>
                 </div>
-                <div id="pageindex">
+                @*<div id="pageindex">
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#">4 ...</a>
                     <a href="#">8</a>
-                </div>
-                <div><button type="submit" class="btn btn-info btn-fill pull-right">Thêm người dùng</button></div>
+                </div>*@
+                <form action="~/QuanLyUser/Formthemnguoidung">
+                    <div><button type="submit" class="btn btn-info btn-fill pull-right">Thêm người dùng</button></div>
+                </form>
             </div>
 
         </div>

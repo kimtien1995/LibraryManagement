@@ -1,0 +1,43 @@
+﻿@using LibraryManagement.Models;
+
+@{
+    ViewBag.TitleAdmin = "Lược sử nạp tiền";
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    List<LuocSuNapTien> listnaptien = ViewBag.listnaptien;
+    int soluong = ViewBag.sllistnaptien;
+}
+
+<ul class="breadcrumb">
+    <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+    <li class="active">Giỏ hàng</li>
+</ul>
+<h3>  Lược sử nạp tiền của @Session["hovaten"]</h3>
+<hr class="soft" />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã lược sử</th>
+            <th>Tên người dùng</th>
+            <th>Ngày nạp</th>
+            <th>Số tiền đã nạp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < soluong; i++)
+        {
+            <tr>
+                <td>@listnaptien[i].maluocsunaptien</td>
+                <td>@listnaptien[i].NguoiDung.hovaten</td>
+                <td>@listnaptien[i].ngaynap</td>
+                <td>@listnaptien[i].tiennap</td>
+                <td>
+                    <a href="#">
+                        <button class="btn btn-danger" type="button">
+                        <i class="icon-remove icon-white"></i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

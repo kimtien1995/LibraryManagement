@@ -1,7 +1,9 @@
 ﻿
+
 @{
     ViewBag.TitleUser = "Trang cá nhân";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    
 }
 
 
@@ -23,325 +25,65 @@
     }
 </style>
 }
-
-<div>
-    <ul class="breadcrumb">
-        <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
-        <li>Thông tin tài khoản<span class="divider">/</span></li>
-        <li class="active">Trang cá nhân</li>
-    </ul>
-    <div class="row">
-        <div id="gallery" class="span3">
+    <div>
+        <ul class="breadcrumb">
+            <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
+            <li>Thông tin tài khoản<span class="divider">/</span></li>
+            <li class="active">Trang cá nhân</li>
+        </ul>
+        <div class="row">
+            <div id="gallery" class="span3">
                 <img src="~/Content/UserImg/@Session["anhdaidien"]" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
-          
-            <div id="differentview" class="moreOptopm carousel slide">
-            </div>
-        </div>
-        <div class="span6">
-            <h3>@Session["hovaten"]</h3>
-            <h4>@Session["tendangnhap"]</h4>
 
-            <form class="form-horizontal qtyFrm">
-            </form>
-            <hr class="soft clr" />
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active in" id="home">
-                    <h4>Thông Người dùng</h4>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr class="techSpecRow"><th colspan="2">Thông tin chi tiết</th></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Mã người dùng </td><td class="techSpecTD2">@Session["manguoidung"]</tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Họ và tên</td><td class="techSpecTD2">@Session["hovaten"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Địa chỉ</td><td class="techSpecTD2">@Session["diachi"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">@Session["email"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">@Session["ngaysinh"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">@Session["sodienthoai"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@Session["gioitinh"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">@Session["motangan"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">@Session["sotientaikhoan"]</td></tr>
-                            <tr class="techSpecRow"><td class="techSpecTD1">Loại người dùng</td><td class="techSpecTD2">@Session["loainguoidung"]</td></tr>
-                            
-                        </tbody>
-                    </table>
-
-                </div>
-                <div class="tab-pane fade" id="profile">
-                    <div id="myTab" class="pull-right">
-                        <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
-                        <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
-                    </div>
-                    <br class="clr" />
-                    <hr class="soft" />
-                    <div class="tab-content">
-                        <div class="tab-pane" id="listView">
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/4.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr class="soft" />
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/5.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr class="soft" />
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/6.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr class="soft" />
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/7.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <hr class="soft" />
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/8.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr class="soft" />
-                            <div class="row">
-                                <div class="span2">
-                                    <img src="themes/images/products/9.jpg" alt="" />
-                                </div>
-                                <div class="span4">
-                                    <h3>New | Available</h3>
-                                    <hr class="soft" />
-                                    <h5>Product Name </h5>
-                                    <p>
-                                        Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies -
-                                        that is why our goods are so popular..
-                                    </p>
-                                    <a class="btn btn-small pull-right" href="product_details.html">View Details</a>
-                                    <br class="clr" />
-                                </div>
-                                <div class="span3 alignR">
-                                    <form class="form-horizontal qtyFrm">
-                                        <h3> $222.00</h3>
-                                        <label class="checkbox">
-                                            <input type="checkbox">  Adds product to compair
-                                        </label><br />
-                                        <div class="btn-group">
-                                            <a href="product_details.html" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-                                            <a href="product_details.html" class="btn btn-large"><i class="icon-zoom-in"></i></a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr class="soft" />
-                        </div>
-                        <div class="tab-pane active" id="blockView">
-                            <ul class="thumbnails">
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/10.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/11.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/12.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/13.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/1.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="span3">
-                                    <div class="thumbnail">
-                                        <a href="product_details.html"><img src="themes/images/products/2.jpg" alt="" /></a>
-                                        <div class="caption">
-                                            <h5>Manicure &amp; Pedicure</h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text.
-                                            </p>
-                                            <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">&euro;222.00</a></h4>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <hr class="soft" />
-                        </div>
-                    </div>
-                    <br class="clr">
+                <div id="differentview" class="moreOptopm carousel slide">
                 </div>
             </div>
-            <a class="btn btn-small pull-right" href="/TrangCaNhan/Xemkiemtramatkhau">Đổi mật khẩu</a>
+            <div class="span6">
+                <h3>@Session["hovaten"]</h3>
+                <h4>@Session["tendangnhap"]</h4>
 
-            <a class="btn btn-small pull-right" href="~/Views/User/Trangcanhan/Suathongtin.cshtml">Sửa thông tin cá nhân</a>
-            <br class="clr" />
-            <a href="#" name="detail"></a>
-            <hr class="soft" />
+                <form class="form-horizontal qtyFrm"></form>
+                <hr class="soft clr" />
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="home">
+                        <h4>Thông Người dùng</h4>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr class="techSpecRow"><th colspan="2">Thông tin chi tiết</th></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Mã người dùng </td><td class="techSpecTD2">@Session["manguoidung"]</tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Họ và tên</td><td class="techSpecTD2">@Session["hovaten"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Địa chỉ</td><td class="techSpecTD2">@Session["diachi"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">@Session["email"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">@Session["ngaysinh"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">@Session["sodienthoai"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@Session["gioitinh"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">@Session["motangan"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">@Session["sotientaikhoan"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Loại người dùng</td><td class="techSpecTD2">@Session["loainguoidung"]</td></tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <form action="~/TrangCaNhan/Xemkiemtramatkhau">
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Đổi mật khẩu</button>
+                </form>
+                <br class="clr" />
+                <form action="~/TrangCaNhan/Formsuathongtin">
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Sửa thông tin cá nhân</button>
+                </form>
+                <br class="clr" />
+                <form action="~/QuanLyNapTien/Xem?manguoidung=@Session["manguoidung"]">
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Lược sử nạp tiền</button>
+                </form>
+                <br class="clr" />
+                <hr class="soft" />
+            </div>
+
+            <div class="span9">
+
+            </div>
+
         </div>
-
-        <div class="span9">
-
-        </div>
-
     </div>
-</div>

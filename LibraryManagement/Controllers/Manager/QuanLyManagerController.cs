@@ -14,11 +14,10 @@ namespace LibraryManagement.Controllers.Manager
         {
 
             List<NguoiDung> manager = new List<NguoiDung>();
-            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
-            {
-                manager = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "5").ToList();
-            }
-
+            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+            manager = db.NguoiDungs.Include("LoaiNguoiDung").Where(s => s.maloainguoidung == "5").ToList();
+            int soluong = db.NguoiDungs.Count(s => s.maloainguoidung == "5");
+            ViewBag.slmanager = soluong;
             ViewBag.managers = manager;
             return View("~/Views/Manager/Quanlymanager/Xemqlmanager.cshtml");
         }

@@ -4,7 +4,8 @@
     ViewBag.TitleAdmin = "Quản lý Manager";
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     List<NguoiDung> managers = ViewBag.managers;
-    NguoiDung ketqua = ViewBag.ketqua;
+    int soluong = ViewBag.slmanager;
+
 } 
 
 <div class="content">
@@ -27,10 +28,10 @@
                             <td></td>
                             </tr>
                             <tbody>
-                                @for (int i = 0; i < 4; i++)
+                                @for (int i = 0; i < soluong; i++)
                                 {
                                     <tr>
-                                        <td>@managers[i].maloainguoidung</td>
+                                        <td>@managers[i].manguoidung</td>
                                         <td>@managers[i].hovaten</td>
                                         <td><img id="imgtbl" src="~/Content/BookImg/@managers[i].anhdaidien"></td>
                                         <td>@managers[i].tendangnhap</td>

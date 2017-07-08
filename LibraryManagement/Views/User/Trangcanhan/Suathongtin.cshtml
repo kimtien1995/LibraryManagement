@@ -35,7 +35,7 @@
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Email: <sup>*</sup>:</label>
                 <div class="controls">
-                    <input type="text" id="inputFname1" name="email" value="@Session["email"]" placeholder="Email">
+                    <input type="email" id="inputFname1" name="email" value="@Session["email"]" placeholder="Email">
                 </div>
             </div>
             <div class="control-group">
@@ -65,16 +65,25 @@
             <div class="control-group">
                 <label class="control-label" for="aditionalInfo">Giới tính: </label>
                 <div class="controls">
-                    <input type="radio" id="gioitinh1" name="gioitinh" value="B"
-                           @if (Session["gioitinh"].ToString() == "B")
-                           {
-                               @:checked ="checked"
-                           }/> Nam
-                    <input type="radio" id="gioitinh2" name="gioitinh" value="G" 
-                           @if (Session["gioitinh"].ToString() == "G")
-                           {
-                               @:checked ="checked"
-                           }/> Nữ
+                    @if (Session["gioitinh"].ToString() != null)
+                    {
+                        <input type="radio" id="gioitinh1" name="gioitinh" value="B"
+                               @if (Session["gioitinh"].ToString() == "B")
+                               { 
+                                    @: checked="checked"
+                               } /> @:Nam
+                            <input type="radio" id="gioitinh2" name="gioitinh" value="G"
+                               @if (Session["gioitinh"].ToString() == "G")
+                               { 
+                                    @: checked="checked"
+                               } /> @:Nữ
+                    }
+                    @if (Session["gioitinh"].ToString() == null)
+                    {
+                        @:<input type="radio" id="gioitinh2" name="gioitinh" value="G" />Nữ
+                        @:<input type="radio" id="gioitinh1" name="gioitinh" value="B" />Nam
+                    }
+
                 </div>
             </div>
             <!--<div class="control-group">

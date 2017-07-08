@@ -64,11 +64,11 @@ namespace LibraryManagement.Controllers.User
                     return RedirectToAction("Xem", "TrangChu");
                 }
             }
-            if(Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
-            {
-                List<Items> giohang = new List<Items>();
-                Session["giohang"] = giohang; 
-            }
+            //if(Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
+            //{
+            //    List<Items> giohang = new List<Items>();
+            //    Session["giohang"] = giohang; 
+            //}
             ViewBag.ThongBao = "Người dùng không tồn tại, vui lòng thử lại!";
             return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
         }

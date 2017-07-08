@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Thêm người dùng</h4>
+                    </div>
+                    <div class="content">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Họ và tên</label>
+                                        <input type="text" name="hovaten" class="form-control" placeholder="Tên người dùng" value="">
+                                    </div>
+                                </div>
+                                  
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Mật khẩu</label>
+                                        <input type="password" name="matkhau" class="form-control" placeholder="Mật khẩu" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="text" name="email" class="form-control" placeholder="Email" value="Mike">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Địa chỉ</label>
+                                        <input type="text" name="diachi" class="form-control" placeholder="Địa chỉ" value="Andrew">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Ngày sinh</label>
+                                        <input type="datetime" name="ngaysinh" class="form-control" placeholder="Ngày sinh" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" name="sodienthoai" class="form-control" placeholder="Số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Giới tính</label>
+                                        <input type="radio" id="gioitinh1" name="gioitinh" value="B" /> Nam
+                                        <input type="radio" id="gioitinh2" name="gioitinh" value="G" /> Nữ
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Mô tả ngắn</label>
+                                        <textarea rows="5" class="form-control" placeholder="Nhập mô tả về bản thân" value="Mike"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Loại người dùng</label>
+                                        <input type="radio" id="user" name="loainguoidung" value="1" /> User
+                                        <input type="radio" id="member" name="loainguoidung" value="2" /> Member
+                                        @if (Session["quyen"].ToString() == "admin")
+                                        {
+                                            @:<input type="radio" id="manager" name="loainguoidung" value="5" /> Manager
+                                            @:<input type="radio" id="admin" name="loainguoidung" value="6" /> Admin
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Khóa người dùng</label>
+                                        <input type="text" name="khoanguoidung" class="form-control" placeholder="Khóa người dùng">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Mã kích hoạt</label>
+                                        <input type="text" name="makichhoat" class="form-control" placeholder="Mã kích hoạt">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Ảnh đại diện</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Thêm người dùng</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

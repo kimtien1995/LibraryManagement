@@ -244,6 +244,31 @@
     <Content Include="Content\BookImg\book00099.jpg" />
     <Content Include="Content\BookImg\book00100.jpg" />
     <Content Include="Content\BookImg\noimage.jpg" />
+    <Content Include="Content\Template\Gioithieusach\css\960.css" />
+    <Content Include="Content\Template\Gioithieusach\css\base.css" />
+    <Content Include="Content\Template\Gioithieusach\css\devices\1000.css" />
+    <Content Include="Content\Template\Gioithieusach\css\devices\479.css" />
+    <Content Include="Content\Template\Gioithieusach\css\devices\767.css" />
+    <Content Include="Content\Template\Gioithieusach\css\flexslider.css" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\fontello.css" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello0792.svg" />
+    <Content Include="Content\Template\Gioithieusach\css\images\animated-overlay.html" />
+    <Content Include="Content\Template\Gioithieusach\css\style.css" />
+    <Content Include="Content\Template\Gioithieusach\css\superfish.css" />
+    <Content Include="Content\Template\Gioithieusach\css\ui.css" />
+    <Content Include="Content\CKeditor\ckeditor.js" />
+    <Content Include="Content\Template\Gioithieusach\js\1.8.2.min.js" />
+    <Content Include="Content\Template\Gioithieusach\js\carouFredSel.js" />
+    <Content Include="Content\Template\Gioithieusach\js\customM.js" />
+    <Content Include="Content\Template\Gioithieusach\js\easing.min.js" />
+    <Content Include="Content\Template\Gioithieusach\js\flexslider-min.js" />
+    <Content Include="Content\Template\Gioithieusach\js\jflickrfeed.min.js" />
+    <Content Include="Content\Template\Gioithieusach\js\jquery.js" />
+    <Content Include="Content\Template\Gioithieusach\js\jtwt.min.js" />
+    <Content Include="Content\Template\Gioithieusach\js\mobilemenu.js" />
+    <Content Include="Content\Template\Gioithieusach\js\mypassion.js" />
+    <Content Include="Content\Template\Gioithieusach\js\superfish.js" />
+    <Content Include="Content\Template\Gioithieusach\js\ui.js" />
     <Content Include="Content\Template\Manager\assets\css\animate.min.css" />
     <Content Include="Content\Template\Manager\assets\css\bootstrap.min.css" />
     <Content Include="Content\Template\Manager\assets\css\demo.css" />
@@ -455,6 +480,7 @@
     <Content Include="Content\Template\User\themes\united\bootstrap.min.css" />
     <Content Include="Content\UserImg\Admin.png" />
     <Content Include="Content\UserImg\manager.png" />
+    <Content Include="Content\UserImg\noimage.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Models\LibraryDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -530,6 +556,9 @@
     <Compile Include="Models\LuocSuNapTien.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mobile\NLCardLib.cs" />
+    <Compile Include="Models\Mobile\RequestInfo.cs" />
+    <Compile Include="Models\Mobile\ResponseInfo.cs" />
     <Compile Include="Models\NguoiDung.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
@@ -691,7 +720,6 @@
     <Content Include="Content\Template\User\themes\less\utilities.less" />
     <Content Include="Content\Template\User\themes\less\variables.less" />
     <Content Include="Content\Template\User\themes\less\wells.less" />
-    <Content Include="Views\Manager\Quanlynaptien\Xemqlnaptien.cshtml" />
     <Content Include="Views\Manager\Quanlyuser\Xemqluser.cshtml" />
     <Content Include="Views\Manager\Quanlysach\Xemqlsach.cshtml" />
     <Content Include="Views\Manager\Quanlymanager\Xemqlmanager.cshtml" />
@@ -812,6 +840,18 @@
     <Content Include="Views\Manager\Quanlyuser\Xacnhanxoauser.cshtml" />
     <Content Include="Views\Manager\Quanlysach\Formsuasach.cshtml" />
     <Content Include="Views\Manager\Quanlyuser\Suaquyen.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Luocsunaptien.cshtml" />
+    <Content Include="Views\Manager\Quanlyuser\Chitietuser.cshtml" />
+    <Content Include="Views\User\Naptien\Thongbaonaptien.cshtml" />
+    <Content Include="Views\User\Gioithieusach\Giới thiệu sách.cshtml" />
+    <Content Include="Views\Manager\Giothieusach\Formvietbai.cshtml" />
+    <Content Include="Views\User\Gioithieusach\Baiviet.cshtml" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\Descr.WD3" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\Descr.WD3" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.eot%4010873057" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.svg%4010873057" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.ttf%4010873057" />
+    <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.woff%4010873057" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

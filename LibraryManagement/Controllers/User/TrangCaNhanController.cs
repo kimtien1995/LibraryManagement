@@ -11,18 +11,11 @@ namespace LibraryManagement.Controllers.User
     {
         // GET: TrangCaNhan
         NguoiDung nguoidung = new NguoiDung();
-        public ActionResult Xem(string manguoidung)
+        public ActionResult Xem()
         {
-            NguoiDung chitietnd = new NguoiDung();
-            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
-            {
-                chitietnd = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
-            }
-            ViewBag.chitietnd = chitietnd;
             return View("~/Views/User/Trangcanhan/Xemtrangcanhan.cshtml");
         }
-
-        public ActionResult Xemsuathongtin()
+        public ActionResult Formsuathongtin()
         {
             return View("~/Views/User/Trangcanhan/Suathongtin.cshtml");
         }

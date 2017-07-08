@@ -34,28 +34,27 @@
         <tr><th>Nhập thông tin thẻ cào </th></tr>
         <tr>
             <td>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="~/NapTien/Thuchiennaptien" method="post">
                     <div class="control-group">
-                        <label class="control-label" for="inputCountry">Nhà mạng </label>
+                        <label class="control-label" for="inputCountry">Chọn nhà mạng </label>
                         <div class="controls">
-                            <select>
-                                <option value="">Chọn mạng</option>
-                                <option value="mobi">Mobiphone</option>
-                                <option value="vt">Viettel</option>
-                                <option value="vina">Vinaphone</option>
+                            <select name="nhamang">
+                                <option value="VMS">Mobiphone</option>
+                                <option value="VIETTEL">Viettel</option>
+                                <option value="VNP">Vinaphone</option>
                             </select>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputCountry">Số Serial </label>
                         <div class="controls">
-                            <input type="text" id="inputCountry" placeholder="Serial">
+                            <input type="text" id="inputCountry" name="serial" placeholder="Serial">
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputPost">Mã thẻ cào</label>
+                        <label class="control-label" for="inputPost">Mã PIN</label>
                         <div class="controls">
-                            <input type="text" id="inputPost" placeholder="Mã thẻ cào">
+                            <input type="text" id="inputPost" name="mapin" placeholder="Mã PIN">
                         </div>
                     </div>
                 </form>
