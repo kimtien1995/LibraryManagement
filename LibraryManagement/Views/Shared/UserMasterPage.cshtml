@@ -141,7 +141,7 @@
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="/GioSach/Xem"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
+                    <div class="well well-small"><a id="myCart" href="/GioSach/Xem?urlnext=@Request.RawUrl"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <li class="subMenu open">
                             <a> Chủ đề </a>
@@ -170,7 +170,7 @@
                                 @:<a>Thông tin tài khoản </a>
                                 @:<ul>
                                     @:<li><a class="active" href="/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
-                                    @:<li><a href="/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
+                                    @:<li><a href="/GioSach/Xem?urlnext=@Request.RawUrl"><i class="icon-chevron-right"></i>Giỏ sách</a></li>
                                     if (Session["quyen"].ToString() == "user")
                                     {
                                         @:<li><a href="/NapTien/Formnaptien"><i class="icon-chevron-right"></i>Nạp tiền</a></li>

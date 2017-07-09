@@ -1,8 +1,11 @@
-﻿@{
+﻿@using LibraryManagement.Models.DTO;
+
+@{
     ViewBag.TitleUser = "Giỏ sách";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    List<Items> items = (List<Items>)Session["giohang"];
+    string urlnext = ViewBag.urlgiosach;
 }
-
 
 
 @section Style
@@ -66,26 +69,42 @@
     </ul>
     <h3>  Giỏ hàng của Nguyễn Văn A [ cuốn sách]</h3>
     <hr class="soft" />
+    <div style="color:red">
+        @ViewBag.tbvuotsl
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>Mã sách</th>
                 <th>Hình ảnh</th>
                 <th>Tên sách</th>
                 <th>Tác giả</th>
-                <th>Mã sách</th>
+                <th>Số lượng</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td> <img width="60" src="bootstrap/img/Book/book00001.jpg" alt="" /></td>
-                <td>Yêu và mơ</td>
-                <td>Nguyễn Khắc viện</td>
-                <td>S001</td>
-                <td><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button></td>
-            </tr>
-            
+            @for (int i = 0; i < items.Count; i++)
+            {
+                <tr>
+                    <td>@(i+1)</td>
+                    <td>
+                        <a href="/ChiTietSach/Xem?masach=@items[i].Madausach">
+                            <img width="60" src="~/Content/BookImg/@items[i].Bia">
+                        </a>
+                    </td>
+                    <td>
+                    <a href="/ChiTietSach/Xem?masach=@items[i].Madausach">@items[i].Tensach</a>
+                    </td>
+                    <td>@items[i].Tacgia</td>
+                    <td>@items[i].Soluong</td>
+                    <td>
+                    <a href="/GioSach/Xoasachtronggio?masach=@items[i].Madausach">Xóa</a>/
+                    <a href="/GioSach/Formthemsltronggio?masach=@items[i].Madausach">Thêm</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
-    <a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Tiếp tục xem sách </a>
-    <a href="login.html" class="btn btn-large pull-right">Mượn<i class="icon-arrow-right"></i></a>
+    <a href="@urlnext" class="btn btn-large"><i class="icon-arrow-left"></i> Tiếp tục xem sách </a>
+    <a href="/MuonSach/Thuchienmuonsach?manguoidung=@Session["manguoidung"]" class="btn btn-large pull-right">Mượn<i class="icon-arrow-right"></i></a>
