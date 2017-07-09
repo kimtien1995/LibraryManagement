@@ -14,7 +14,7 @@ namespace LibraryManagement.Controllers.User
         // GET: DangNhap
         public ActionResult Xem()
         {
-            return View("~/Views/User/Dangky/Xemdangnhap.cshtml");
+            return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
         }
         public ActionResult Thuchiendangnhap(string tendangnhap, string matkhau, string check_ghinho)
         {
@@ -51,7 +51,15 @@ namespace LibraryManagement.Controllers.User
                     Session["sotientaikhoan"] = user.sotientaikhoan;
                     Session["motangan"] = user.motangan;
                     Session["email"] = user.email;
-                    Session["gioitinh"] = user.gioitinh;
+                    if (user.gioitinh == "G")
+                    {
+                        Session["gioitinh"] = "Nữ";
+                    }
+                    else
+                    {
+                        Session["gioitinh"] = "Nam";
+                    }
+                    
 
                     if (oghinho == true)
                     {

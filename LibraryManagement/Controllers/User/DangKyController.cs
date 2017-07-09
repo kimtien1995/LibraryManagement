@@ -30,7 +30,7 @@ namespace LibraryManagement.Controllers.User
             {
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
                 var nguoidung = new NguoiDung();
-                nguoidung.manguoidung = Guid.NewGuid().ToString();
+                nguoidung.manguoidung = Request.Form["manguoidung"].ToString();
                 nguoidung.hovaten = Request.Form["hovaten"].ToString();
                 nguoidung.tendangnhap = Request.Form["tendangnhap"].ToString();
                 nguoidung.matkhau = Request.Form["matkhau"].ToString();

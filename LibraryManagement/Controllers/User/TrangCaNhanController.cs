@@ -52,6 +52,23 @@ namespace LibraryManagement.Controllers.User
                     nguoidung.anhdaidien = "NoImg.jpg";
                 }
                 db.SaveChanges();
+
+                Session["hovaten"] = nguoidung.hovaten;
+                Session["email"] = nguoidung.email;
+                Session["diachi"] = nguoidung.diachi;
+                Session["ngaysinh"] = nguoidung.ngaysinh;
+                Session["sodienthoai"] = nguoidung.sodienthoai;
+                Session["motangan"] = nguoidung.motangan;
+                Session["anhdaidien"] = nguoidung.anhdaidien;
+                if (nguoidung.gioitinh == "G")
+                {
+                    Session["gioitinh"] = "Nữ";
+                }
+                else
+                {
+                    Session["gioitinh"] = "Nam";
+                }
+
                 return Redirect("/TrangCaNhan/Xem");
             }
             catch (Exception ex)

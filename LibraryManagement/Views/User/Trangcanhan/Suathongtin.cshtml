@@ -47,7 +47,7 @@
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ngày sinh: </label>
                 <div class="controls">
-                    <input type="date" id="inputFname1" name="ngaysinh" value="@Session["ngaysinh"]" placeholder="Ngày sinh">
+                    <input type="date" id="inputFname1" name="ngaysinh" value="@Convert.ToDateTime(Session["ngaysinh"]).Date" placeholder="Ngày sinh">
                 </div>
             </div>
             <div class="control-group">
@@ -104,7 +104,7 @@
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ảnh đại diện</label>
                 <div class="controls">
-                    <input type="file" name="anhdaidien" value="@Session["anhdaidien"]">
+                    <input type="file" name="anhdaidien" value="@Session["anhdaidien"].ToString()">
                 </div>
             </div>
             <div class="control-group">

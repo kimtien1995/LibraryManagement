@@ -26,7 +26,7 @@ namespace LibraryManagement.Controllers.User
             }
             if (Session["quyen"].ToString() == "user")
             {
-                if (sachs.giaban <= sotientk)
+                if (sachs.giaban <= sotientk && sotientk > 0)
                 {
                     ViewBag.sach = sachs;
                     var thanhtoan = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
@@ -34,6 +34,7 @@ namespace LibraryManagement.Controllers.User
                     sachs.luotmua = sachs.luotmua + 1;
                     sachs.luotxem = sachs.luotxem + 1;
                     db.SaveChanges();
+                    Session["sotientaikhoan"] = thanhtoan.sotientaikhoan;
                     return View("~/Views/User/Doconline/Xemonline.cshtml");
                 }
                 else

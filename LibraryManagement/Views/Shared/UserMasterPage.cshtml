@@ -158,18 +158,18 @@
                                 <li><a href="~/KhoSach/Xemdanhsachtheochude?machude=9"><i class="icon-chevron-right"></i>Truyện tranh</a></li>
                             </ul>
                         </li>
-                        <li class="subMenu">
+                        @*<li class="subMenu">
                             <a> Sách mới </a>
                         </li>
                         <li class="subMenu">
                             <a>Sách xem nhiều</a>
-                        </li>
+                        </li>*@
                         @if (Session["quyen"].ToString() != "guest")
                         {
                             @:<li class="subMenu open">
                                 @:<a>Thông tin tài khoản </a>
                                 @:<ul>
-                                    @:<li><a class="active" href="/TrangCaNhan/Xem?manguoidung=@Session["manguoidung"]"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
+                                    @:<li><a class="active" href="/TrangCaNhan/Xem"><i class="icon-chevron-right"></i>Trang cá nhân</a></li>
                                     @:<li><a href="/GioSach/Xem"><i class="icon-chevron-right"></i>Giỏ hàng</a></li>
                                     if (Session["quyen"].ToString() == "user")
                                     {

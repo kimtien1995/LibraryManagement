@@ -10,14 +10,14 @@ namespace LibraryManagement.Controllers.Manager
     public class QuanLyNapTienController : Controller
     {
         // GET: QuanLyNapTien
-        public ActionResult Xem(string manguoidung)
+        public ActionResult Xem(string ma)
         {
             List<LuocSuNapTien> naptien = new List<LuocSuNapTien>();
             int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
-                naptien = db.LuocSuNapTiens.Include("NguoiDung").Where(s => s.manguoidung == manguoidung).ToList();
-                soluong = db.LuocSuNapTiens.Count(s => s.manguoidung == manguoidung);
+                naptien = db.LuocSuNapTiens.Include("NguoiDung").Where(s => s.manguoidung == ma).ToList();
+                soluong = db.LuocSuNapTiens.Count(s => s.manguoidung == ma);
             }
             ViewBag.sllistnaptien = soluong;
             ViewBag.listnaptien = naptien;

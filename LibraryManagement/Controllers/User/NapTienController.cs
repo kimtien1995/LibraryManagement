@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LibraryManagement.Models;
 
 namespace LibraryManagement.Controllers.User
 {
@@ -15,7 +16,7 @@ namespace LibraryManagement.Controllers.User
             return View("~/Views/User/Naptien/Xemnaptien.cshtml");
         }
 
-        public ActionResult Thuchiennaptien(Object sender, EventArgs e)
+        public ActionResult Thuchiennaptien(Object sender, EventArgs e, string manguoidung)
         {
             RequestInfo info = new RequestInfo();
             info.Merchant_id = "";
@@ -38,6 +39,19 @@ namespace LibraryManagement.Controllers.User
                 html += "<div>Số tiền nạp : <b>" + resutl.Card_amount + "</b> đ</div>";
                 html += "<div>Mã giao dịch : <b>" + resutl.TransactionID + "</b></div>";
                 html += "<div>Mã đơn hàng : <b>" + resutl.Refcode + "</b></div>";
+                using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+                {
+                    var naptien = db.NguoiDungs.FirstOrDefault(s => s.manguoidung == manguoidung);
+                    naptien.sotientaikhoan = naptien.sotientaikhoan + Convert.ToInt32(resutl.Card_amount);
+                    db.SaveChanges();
+                    var luocsu = new LuocSuNapTien();
+                    luocsu.maluocsunaptien = Guid.NewGuid().ToString();
+                    luocsu.manguoidung = naptien.manguoidung;
+                    luocsu.tiennap = Convert.ToInt32(resutl.Card_amount);
+                    luocsu.ngaynap = DateTime.Today;
+                    db.SaveChanges();
+                    Session["gioitinh"] = naptien.sotientaikhoan;
+                }
             }
             else
             {
