@@ -22,7 +22,7 @@ namespace LibraryManagement.Controllers.User
             {
                 return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
             }
-            if(Session["quyen"].ToString() != "guest")
+            if(Session["quyen"].ToString() == "member")
             {
                 DauSach chitietsach = new DauSach();
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
@@ -50,9 +50,17 @@ namespace LibraryManagement.Controllers.User
                         ((List<Items>)Session["giohang"]).Add(item);
                     }
                 }
+                //Them vao viewbag đe lam gi?, minh dau co goi view
                 ViewBag.sachgiosach = chitietsach;
+                return Redirect(urlnext);
             }
-            return Redirect(urlnext);
+            else
+            {
+                //Không phải là quyen member, không được thêm sách vào giỏ hàng.
+                ViewBag.urlnext = urlnext;
+                return View("~/Views/User/Giosach/thongbaoloi.cshtml");
+            }
+
         }
     }
 }

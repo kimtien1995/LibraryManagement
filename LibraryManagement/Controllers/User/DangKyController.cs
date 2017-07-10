@@ -28,12 +28,19 @@ namespace LibraryManagement.Controllers.User
             //}
             try
             {
+                ViewBag.thongtinloi = "";
                 LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
                 var nguoidung = new NguoiDung();
-                nguoidung.manguoidung = Request.Form["manguoidung"].ToString();
+                //Mã mã người dùng đăng ký đâu nhập vào, phải tự đông sinh ra tại đây
+                //nguoidung.manguoidung = Request.Form["manguoidung"].ToString();
+                nguoidung.manguoidung = Guid.NewGuid().ToString();
                 nguoidung.hovaten = Request.Form["hovaten"].ToString();
                 nguoidung.tendangnhap = Request.Form["tendangnhap"].ToString();
                 nguoidung.matkhau = Request.Form["matkhau"].ToString();
+                if(Request.Form["matkhau"].ToString()== Request.Form["nhaplaimatkhau"].ToString())
+                {
+                    ViewBag.thongtinloi = ViewBag.thongtinloi+ "Mật khẩu nhập lại phải giống mật khẩu nhập, ";
+                }
                 nguoidung.email = Request.Form["email"].ToString();
                 nguoidung.diachi = Request.Form["diachi"].ToString();
 
@@ -68,14 +75,17 @@ namespace LibraryManagement.Controllers.User
 
                 db.NguoiDungs.Add(nguoidung);
                 db.SaveChanges();
+                ViewBag.nguoidung = nguoidung;
             }
             catch (Exception ex)
             {
-                //Neu bi loi  trong dang ky thi chuen den cho dang ky lai
-                return Redirect("/DangKy/Xem");
+                //Neu bi loi thì thông báo bị lỗi và cho nhập lại. 
+                ViewBag.biloi = true;
+                return View("~/Views/User/Dangky/Xemdangky.cshtml");
 
             }
             //Neu dang ky ok thi hien thanh cong
+            
             return View("~/Views/User/Dangky/Dangkythanhcong.cshtml");
             
         }

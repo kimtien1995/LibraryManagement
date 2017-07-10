@@ -1,0 +1,23 @@
+﻿Mấy chức năng khác em đều làm rồi, chỉ còn lại 1 vài vấn đề như rày thoi em chưa giải quyết đc. Thầy giúp e nha.
+
++ Trang kho sách, trang san phẩm thứ 7 bị lỗi.
+(Vì đây là trang cuối vì thế chỉ có 8 cuốn sách, không đủ 15 cuốn để in ra,
+không nên dùng for bắt buộc đi từ i=0 => i=14. co thể dùng foreach, tuy nhiên ta
+có thể sửa lại nhanh for là i=0;i<sô cuon sach trong danh sach;i++)
+
+
+- Chức năng sửa người dùng: Add Value vào trong form Ảnh đại diện không được, phải chọn lại file
+(Đúng rồi, form upload chi cho người ta chọn file upload, sao lại có thể add vào.)
+
+
+- Khóa người dùng em chưa hiểu lắm nên chưa làm
+
+- Chức năng xem online: làm sao để cho ng dùng đã bị trừ tiền rồi thì lần sau xem không bị trừ tiền nữa.
+
+- Chức năng giỏ hàng bị lỗi: Cái này em cũng k bik tại sao, thầy xem nha.
+
+- Chức năng thêm & sửa sách: bị dính khóa ngoại của bảng khác nên bị lỗi, không thêm được.
+
+- Chức năng tìm kiếm, nạp tiền, download và mượn sách: chưa làm.
+
+Tất cả các chức năng còn lại ở trên em đều làm form html rồi nha thầy. Thanks thầy

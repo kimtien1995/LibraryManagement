@@ -46,7 +46,7 @@
             @if (Session["quyen"].ToString() != "guest")
             {
                 <div id="welcomeLine" class="row">
-                    <div class="span6">Xin chào!<strong>@Session["hovaten"]</strong></div>
+                    <div class="span6">Xin chào! <strong>@Session["hovaten"]</strong></div>
                     <div class="span6">
                         <div class="pull-right">
                             <a href="~/DangNhap/Thuchiendangxuat"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
@@ -84,11 +84,11 @@
                     </form>
                     <ul id="topMenu" class="nav pull-right">
                         <li class=""><a href="/TrangChu/Xem">Trang chủ</a></li>
-                        <li class=""><a href="/KhoSach/Xem">Kho sách</a></li>
-                        <li class=""><a href="/TimKiem/Xemtimkiemnangcao">Tìm kiếm nâng cao</a></li>
+                        <li class=""><a href="/KhoSach/Xem">Duyệt Kho sách</a></li>
+                        @*<li class=""><a href="/TimKiem/Xemtimkiemnangcao">Tìm kiếm nâng cao</a></li>*@
                         @if (Session["quyen"].ToString() == "guest")
                         {
-                            @:<li class=""><a href="/DangKy/Xem">Đăng ký</a></li>
+                            @:<li class=""><a href="/DangKy/Xem">Đăng ký thành viên</a></li>
                         }
                         @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
                         {
@@ -141,7 +141,7 @@
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="product_summary.html"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
+                    <div class="well well-small"><a id="myCart" href="/GioSach/Xem"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <li class="subMenu open">
                             <a> Chủ đề </a>
@@ -245,7 +245,7 @@
                     <a href="#"><img width="60" height="60" src="~/Content/Template/User/themes/images/youtube.png" title="youtube" alt="youtube" /></a>
                 </div>
             </div>
-            <p class="pull-right">&copy; Bootshop</p>
+            <p class="pull-right">&copy;@(DateTime.Now.Year.ToString() + " Powerby Trần Thị Kim Tiến & Trần Thị Thùy Trang.")</p>
         </div><!-- Container End -->
     </div>
     <!-- Placed at the end of the document so the pages load faster ============================================= -->

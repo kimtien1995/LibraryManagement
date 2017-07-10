@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
     ViewBag.TitleUser = "Đăng ký";
 }
-
 <h2>Đăng ký thành công</h2>
-<a href="~/DangNhap/Xem"><h3>Đăng nhập</h3></a>
+<p>Thông tin đăng ký của <b>@ViewBag.nguoidung.tendangnhap</b> vào hệ thống đã thành công, vui lòng đăng nhập ở đường dẫn bên dưới</p>
+
+<a href="~/DangNhap/Xem" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Đăng nhập</span></a>

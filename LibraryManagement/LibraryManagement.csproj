@@ -492,6 +492,7 @@
       <DependentUpon>LibraryDataModel.edmx</DependentUpon>
       <LastGenOutput>LibraryDataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="NTCong.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -852,6 +853,7 @@
     <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.svg%4010873057" />
     <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.ttf%4010873057" />
     <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.woff%4010873057" />
+    <Content Include="Views\User\Giosach\thongbaoloi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

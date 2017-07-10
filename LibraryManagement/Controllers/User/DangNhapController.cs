@@ -69,14 +69,16 @@ namespace LibraryManagement.Controllers.User
                         Response.Cookies["matkhau"].Value = user.matkhau;
                         Response.Cookies["matkhau"].Expires = DateTime.Now.AddMonths(1);
                     }
+                    if (Session["quyen"].ToString() == "member")
+                    {
+                        List<Items> giohang = new List<Items>();
+                        Session["giohang"] = giohang;
+                    }
                     return RedirectToAction("Xem", "TrangChu");
                 }
+
             }
-            //if(Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
-            //{
-            //    List<Items> giohang = new List<Items>();
-            //    Session["giohang"] = giohang; 
-            //}
+            
             ViewBag.ThongBao = "Người dùng không tồn tại, vui lòng thử lại!";
             return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
         }
