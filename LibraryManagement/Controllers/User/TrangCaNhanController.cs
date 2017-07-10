@@ -13,6 +13,10 @@ namespace LibraryManagement.Controllers.User
         NguoiDung nguoidung = new NguoiDung();
         public ActionResult Xem()
         {
+            if (Session["quyen"].ToString() == "guest")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
             return View("~/Views/User/Trangcanhan/Xemtrangcanhan.cshtml");
         }
         public ActionResult Formsuathongtin()
@@ -40,6 +44,7 @@ namespace LibraryManagement.Controllers.User
                 nguoidung.sodienthoai = Request.Form["sodienthoai"].ToString();
                 nguoidung.motangan = Request.Form["motangan"].ToString();
                 nguoidung.gioitinh = Request.Form["gioitinh"].ToString();
+
                 if (Request.Files["anhdaidien"].ContentLength > 0 && Request.Files["anhdaidien"].FileName != "")
                 {
                     string path = System.AppDomain.CurrentDomain.BaseDirectory + "Content/UserImg/";
@@ -49,8 +54,10 @@ namespace LibraryManagement.Controllers.User
                 }
                 else
                 {
-                    nguoidung.anhdaidien = "NoImg.jpg";
+                    //Nếu nap file thì cập nhật Avatar, nếu không thì để nguyen ảnh củ.
+                    //nguoidung.anhdaidien = "NoImg.jpg";
                 }
+
                 db.SaveChanges();
 
                 Session["hovaten"] = nguoidung.hovaten;
@@ -60,14 +67,16 @@ namespace LibraryManagement.Controllers.User
                 Session["sodienthoai"] = nguoidung.sodienthoai;
                 Session["motangan"] = nguoidung.motangan;
                 Session["anhdaidien"] = nguoidung.anhdaidien;
-                if (nguoidung.gioitinh == "G")
-                {
-                    Session["gioitinh"] = "Nữ";
-                }
-                else
-                {
-                    Session["gioitinh"] = "Nam";
-                }
+                Session["anhdaidien"] = nguoidung.anhdaidien;
+                // Nên để nguyên bản về sau sử dụng dễ hơn khi cap nhat, in ra ta hay chuyen về Nam hay Nữ
+                //if (nguoidung.gioitinh == "G")
+                //{
+                //    Session["gioitinh"] = "Nữ";
+                //}
+                //else
+                //{
+                //    Session["gioitinh"] = "Nam";
+                //}
 
                 return Redirect("/TrangCaNhan/Xem");
             }
@@ -108,6 +117,45 @@ namespace LibraryManagement.Controllers.User
             }
             ViewBag.tbtrunglap = "* Mật khẩu mới trùng với mật khẩu cũ, vui lòng nhập lại";
             return View("~/Views/User/Trangcanhan/Suamatkhau/Matkhaumoi.cshtml");
+        }
+        public ActionResult Luocsunaptien()
+        {
+
+            if (Session["quyen"].ToString() == "guest")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
+            string manguoidung = Session["manguoidung"].ToString();
+            List<LuocSuNapTien> naptien = new List<LuocSuNapTien>();
+            int soluong;
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                naptien = db.LuocSuNapTiens.Include("NguoiDung").Where(s => s.manguoidung == manguoidung).ToList();
+                soluong = db.LuocSuNapTiens.Count(s => s.manguoidung == manguoidung);
+            }
+            ViewBag.sllistnaptien = soluong;
+            ViewBag.listnaptien = naptien;
+            return View("~/Views/User/Trangcanhan/Luocsunaptien.cshtml");
+        }
+
+        public ActionResult Luocsumuasach()
+        {
+
+            if (Session["quyen"].ToString() == "guest")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
+            string manguoidung = Session["manguoidung"].ToString();
+            List<LuocSuMuaSach> listmua = new List<LuocSuMuaSach>();
+            int soluong;
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                listmua = db.LuocSuMuaSaches.Include("DauSach").Include("NguoiDung").Where(s => s.manguoidung == manguoidung).ToList();
+                soluong = db.LuocSuMuaSaches.Count(s => s.manguoidung == manguoidung);
+                ViewBag.soluong = soluong;
+                ViewBag.listmua = listmua;
+            }
+            return View("~/Views/User/Trangcanhan/Luocsumuasach.cshtml");
         }
     }
 }

@@ -23,7 +23,7 @@ namespace LibraryManagement.Controllers.User
 
 
         /*
-        Tham Khao NganLuong
+        Tham Khao NganLuong https://www.nganluong.vn
         -Tai Khoan:
             email: biashanlocgia@gmail.com
             pass: kimtien01042012 
@@ -51,6 +51,7 @@ namespace LibraryManagement.Controllers.User
             info.SerialCard = Request.Form["serial"].ToString();
 
             ResponseInfo resutl = NLCardLib.CardChage(info);
+            
             String html = "";
 
             if (resutl.Errorcode.Equals("00"))
@@ -69,6 +70,7 @@ namespace LibraryManagement.Controllers.User
                     luocsu.manguoidung = naptien.manguoidung;
                     luocsu.tiennap = Convert.ToInt32(resutl.Card_amount);
                     luocsu.ngaynap = DateTime.Now;
+                    db.LuocSuNapTiens.Add(luocsu);
                     db.SaveChanges();
                     Session["sotientaikhoan"] = naptien.sotientaikhoan;
                 }

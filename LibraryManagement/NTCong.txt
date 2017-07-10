@@ -1,23 +1,43 @@
 ﻿Mấy chức năng khác em đều làm rồi, chỉ còn lại 1 vài vấn đề như rày thoi em chưa giải quyết đc. Thầy giúp e nha.
 
 + Trang kho sách, trang san phẩm thứ 7 bị lỗi.
-(Vì đây là trang cuối vì thế chỉ có 8 cuốn sách, không đủ 15 cuốn để in ra,
+(Đã làm xong, Vì đây là trang cuối vì thế chỉ có 8 cuốn sách, không đủ 15 cuốn để in ra,
 không nên dùng for bắt buộc đi từ i=0 => i=14. co thể dùng foreach, tuy nhiên ta
 có thể sửa lại nhanh for là i=0;i<sô cuon sach trong danh sach;i++)
 
 
-- Chức năng sửa người dùng: Add Value vào trong form Ảnh đại diện không được, phải chọn lại file
-(Đúng rồi, form upload chi cho người ta chọn file upload, sao lại có thể add vào.)
++ Chức năng sửa người dùng: Add Value vào trong form Ảnh đại diện không được, phải chọn lại file
+(Đã làm xong, input upload chi cho người ta chọn file upload, sao lại có thể add vào.
+ta in ra ảnh hiện tại, cung cấp cho nhập ảnh mới, trong xử lý nếu có ảnh mới thì
+ta cập nhật, nếu không thì để nguyên)
 
 
-- Khóa người dùng em chưa hiểu lắm nên chưa làm
 
-- Chức năng xem online: làm sao để cho ng dùng đã bị trừ tiền rồi thì lần sau xem không bị trừ tiền nữa.
+
++ Chức năng xem online: làm sao để cho ng dùng đã bị trừ tiền rồi thì lần sau xem không bị trừ tiền nữa.
+(Đã làm xong, Nếu muốn làm xem online được quyền xem lại sách đã download thì chúng ta có thể lưu lược sử download sách
+tức là họ đã download => có trong bản, khi xem online, nếu kiểm tra trong bản lược sử mua, download của người
+dùng thì ta không trừ tiền nưa, nhưng để làm nhanh ta có thể thêm ràng buộc, chỉ cho người dùng thành viên 
+nội bộ xem online, còn thành viên đăng ký thi chỉ được download, không xem online.)
+
 
 - Chức năng giỏ hàng bị lỗi: Cái này em cũng k bik tại sao, thầy xem nha.
+(Đã sữa, đợi làm đăng ký mượn sách)
 
 - Chức năng thêm & sửa sách: bị dính khóa ngoại của bảng khác nên bị lỗi, không thêm được.
 
-- Chức năng tìm kiếm, nạp tiền, download và mượn sách: chưa làm.
+- Khóa người dùng em chưa hiểu lắm nên chưa làm
 
-Tất cả các chức năng còn lại ở trên em đều làm form html rồi nha thầy. Thanks thầy
+- Chức năng tìm kiếm,
+
++Luoc su mua sach
+(Đã xong)
+
++download
+(Đã xong)
+
+
++ Nạp tiền
+(Đã xong)
+
+
