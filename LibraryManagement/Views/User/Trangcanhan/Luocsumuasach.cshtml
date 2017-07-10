@@ -1,0 +1,41 @@
+﻿@using LibraryManagement.Models;
+
+@{
+    ViewBag.TitleUser = "Lược sử nạp tiền";
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    List<LuocSuMuaSach> listmua = ViewBag.listmua;
+    int soluong = ViewBag.soluong;
+}
+
+@section Style
+{
+    
+}
+
+<ul class="breadcrumb">
+    <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+    <li class="active">Giỏ hàng</li>
+</ul>
+<h3>  Lược sử nạp tiền của @Session["hovaten"]</h3>
+<hr class="soft" />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã lược sử</th>
+            <th>Tên sách</th>
+            <th>Giá mua</th>
+            <th>Ngày mua</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < soluong; i++)
+        {
+            <tr>
+                <td>@listmua[i].maluocsumuasach</td>
+                <td>@listmua[i].DauSach.tensach</td>
+                <td>@listmua[i].tientra</td>
+                <td>@listmua[i].ngaymua</td>
+            </tr>
+        }
+    </tbody>
+</table>

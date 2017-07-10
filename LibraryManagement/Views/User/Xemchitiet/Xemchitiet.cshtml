@@ -45,21 +45,14 @@
             <table width="460" border="0">
                 <tbody>
                    <tr>
-                        <td><a href="/DocOnline/Doconline?masach=@chitiet.madausach&sotientk=@if(Session["quyen"].ToString() == "user")
-                            {
-                                @Session["sotientaikhoan"]
-                            }else
-                            {
-                                @:0
-                            }
-                        &manguoidung=@Session["manguoidung"]"><label class="control-label">
-                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label>
+                        <td><a href="/DocOnline/Doconline?masach=@chitiet.madausach"><label class="control-label">
+                            <button id="btdoc" type="button" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label>
                             </a></td>
-                        <td><a href="#"><label class="control-label">
-                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label>
+                        <td><a href="/ChiTietSach/Download?masach=@chitiet.madausach"><label class="control-label">
+                            <button id="btdownload" type="button" class="btn btn-large btn-primary pull-right"> Download </button></label>
                             </a></td>
                         <td><a href="~/GioSach/Themsachvaogio?masach=@chitiet.madausach&urlnext=@Request.RawUrl"><label class="control-label">
-                            <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label>
+                            <button id="btthemvaogio" type="button" class="btn btn-large btn-primary pull-right"> Thêm vào giỏ </button></label>
                             </a></td>
                     </tr>
                 </tbody>
@@ -93,6 +86,7 @@
                             <tr class="techSpecRow"><td class="techSpecTD1">Ngày đăng</td><td class="techSpecTD2">@chitiet.ngaydang</td></tr>
                             <tr class="techSpecRow"><td class="techSpecTD1">Thể loại</td><td class="techSpecTD2">@chitiet.ChuDe.tenchude</td></tr>
                             <tr class="techSpecRow"><td class="techSpecTD1">Lượt xem</td><td class="techSpecTD2">@chitiet.luotxem</td></tr>
+                            <tr class="techSpecRow"><td class="techSpecTD1">Giá download</td><td class="techSpecTD2">@chitiet.giaban</td></tr>
                             <tr class="techSpecRow"><td class="techSpecTD1">Lượt download</td><td class="techSpecTD2">@chitiet.luotdownload</td></tr>
                             <tr class="techSpecRow"><td class="techSpecTD1">Lượt mua</td><td class="techSpecTD2">@chitiet.luotmua</td></tr>
                         </tbody>

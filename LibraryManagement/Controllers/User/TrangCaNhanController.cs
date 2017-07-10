@@ -137,5 +137,25 @@ namespace LibraryManagement.Controllers.User
             ViewBag.listnaptien = naptien;
             return View("~/Views/User/Trangcanhan/Luocsunaptien.cshtml");
         }
+
+        public ActionResult Luocsumuasach()
+        {
+
+            if (Session["quyen"].ToString() == "guest")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
+            string manguoidung = Session["manguoidung"].ToString();
+            List<LuocSuMuaSach> listmua = new List<LuocSuMuaSach>();
+            int soluong;
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                listmua = db.LuocSuMuaSaches.Include("DauSach").Include("NguoiDung").Where(s => s.manguoidung == manguoidung).ToList();
+                soluong = db.LuocSuMuaSaches.Count(s => s.manguoidung == manguoidung);
+                ViewBag.soluong = soluong;
+                ViewBag.listmua = listmua;
+            }
+            return View("~/Views/User/Trangcanhan/Luocsumuasach.cshtml");
+        }
     }
 }

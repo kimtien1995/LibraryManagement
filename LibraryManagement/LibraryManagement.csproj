@@ -858,6 +858,8 @@
     <Content Include="Views\User\Giosach\thongbaoloi.cshtml" />
     <Content Include="Views\User\Giosach\Themslsach.cshtml" />
     <Content Include="Views\User\Muonsach\Thanhcong.cshtml" />
+    <Content Include="Views\User\Xemchitiet\Downloadkhongthanhcong.cshtml" />
+    <Content Include="Views\User\Trangcanhan\Luocsumuasach.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
