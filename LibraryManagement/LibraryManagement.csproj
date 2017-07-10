@@ -860,6 +860,7 @@
     <Content Include="Views\User\Muonsach\Thanhcong.cshtml" />
     <Content Include="Views\User\Muonsach\Donmuonsach.cshtml" />
     <Content Include="Views\User\Muonsach\Chitietdonmuonsach.cshtml" />
+    <None Include="Properties\PublishProfiles\Tien.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
