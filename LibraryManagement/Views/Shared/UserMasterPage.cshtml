@@ -90,6 +90,10 @@
                         {
                             @:<li class=""><a href="/DangKy/Xem">Đăng ký thành viên</a></li>
                         }
+                        @if (Session["quyen"].ToString() == "user")
+                        {
+                            @:<li class=""><a href="/NapTien/Formnaptien">Nạp Tiền</a></li>
+                        }
                         @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
                         {
                         @:<li><a href="/TrangChuAdmin/Xem"><i class="icon-chevron-right"></i>Quản lý hệ thống</a></li>
@@ -141,7 +145,11 @@
             <div class="row">
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="span3">
-                    <div class="well well-small"><a id="myCart" href="/GioSach/Xem"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ  <!--<span class="badge badge-warning pull-right">$00</span>--></a></div>
+                    <div class="well well-small"><a id="myCart" href="/GioSach/Xem"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ </a></div>
+                    @if (Session["quyen"].ToString() == "user")
+                    {
+                        <div class="well well-small"><img src="~/Content/Template/User/themes/images/money_dollar.png" alt="money">@Session["sotientaikhoan"].ToString() VNĐ trong tài khoản</div>
+                    }
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <li class="subMenu open">
                             <a> Chủ đề </a>

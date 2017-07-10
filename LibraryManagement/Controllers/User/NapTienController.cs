@@ -13,15 +13,35 @@ namespace LibraryManagement.Controllers.User
         // GET: NapTien
         public ActionResult Formnaptien()
         {
+            //Chỉ dành cho thành viên người dùng ngoài nạp tiền.
+            if (Session["quyen"].ToString() != "user")
+            {
+                return Redirect("/Trangchu/Xem");
+            }
             return View("~/Views/User/Naptien/Xemnaptien.cshtml");
         }
 
-        public ActionResult Thuchiennaptien(Object sender, EventArgs e, string manguoidung)
+
+        /*
+        Tham Khao NganLuong
+        -Tai Khoan:
+            email: biashanlocgia@gmail.com
+            pass: kimtien01042012 
+        -Kết nối thanh toán:
+            id kết nối:51419
+            pass: 0528b0a0c411b4a63d4541433cd570fa
+            ten ứng dụng: LibraryOnline
+        */
+
+        public ActionResult Thuchiennaptien()
         {
+            //Mã người dùng ta đã lưu trong session khi thực hiện đăng nhập
+            string manguoidung = Session["manguoidung"].ToString();
+
             RequestInfo info = new RequestInfo();
-            info.Merchant_id = "";
+            info.Merchant_id = "51419";
             info.Merchant_acount = "biashanlocgia@gmail.com";
-            info.Merchant_password = "";
+            info.Merchant_password = "0528b0a0c411b4a63d4541433cd570fa";  
 
             //Nhà mạng
             info.CardType = Request.Form["nhamang"].ToString();
@@ -48,9 +68,9 @@ namespace LibraryManagement.Controllers.User
                     luocsu.maluocsunaptien = Guid.NewGuid().ToString();
                     luocsu.manguoidung = naptien.manguoidung;
                     luocsu.tiennap = Convert.ToInt32(resutl.Card_amount);
-                    luocsu.ngaynap = DateTime.Today;
+                    luocsu.ngaynap = DateTime.Now;
                     db.SaveChanges();
-                    Session["gioitinh"] = naptien.sotientaikhoan;
+                    Session["sotientaikhoan"] = naptien.sotientaikhoan;
                 }
             }
             else

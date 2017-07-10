@@ -390,6 +390,7 @@
     <Content Include="Content\Template\User\themes\images\lightbox\lightbox-btn-prev.gif" />
     <Content Include="Content\Template\User\themes\images\lightbox\lightbox-ico-loading.gif" />
     <Content Include="Content\Template\User\themes\images\logo.png" />
+    <Content Include="Content\Template\User\themes\images\money_dollar.png" />
     <Content Include="Content\Template\User\themes\images\new.png" />
     <Content Include="Content\Template\User\themes\images\payment_methods.png" />
     <Content Include="Content\Template\User\themes\images\products\1.jpg" />
