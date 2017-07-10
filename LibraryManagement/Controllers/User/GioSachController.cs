@@ -11,8 +11,9 @@ namespace LibraryManagement.Controllers.User
     public class GioSachController : Controller
     {
         // GET: GioSach
-        public ActionResult Xem()
+        public ActionResult Xem(string urlnext)
         {
+            ViewBag.urlgiosach = urlnext;
             return View("~/Views/User/Giosach/Xemgiosach.cshtml");
         }
 
@@ -50,8 +51,6 @@ namespace LibraryManagement.Controllers.User
                         ((List<Items>)Session["giohang"]).Add(item);
                     }
                 }
-                //Them vao viewbag đe lam gi?, minh dau co goi view
-                ViewBag.sachgiosach = chitietsach;
                 return Redirect(urlnext);
             }
             else
@@ -61,6 +60,45 @@ namespace LibraryManagement.Controllers.User
                 return View("~/Views/User/Giosach/thongbaoloi.cshtml");
             }
 
+        }
+        public ActionResult Xoasachtronggio(string masach)
+        {
+            List<Items> items = (List<Items>)Session["giohang"];
+            foreach(Items item in items)
+            {
+                if(item.Madausach == masach)
+                {
+                    items.Remove(item);
+                    break;
+                }
+            }
+            return View("~/Views/User/Giosach/Xemgiosach.cshtml");
+        }
+        public ActionResult Formthemsltronggio(string masach)
+        {
+            List<Items> items = (List<Items>)Session["giohang"];
+            foreach(Items item in items)
+            {
+                if(item.Madausach == masach)
+                {
+                    ViewBag.item = item;
+                    break;
+                }
+            }
+            return View("~/Views/User/Giosach/Themslsach.cshtml");
+        }
+        public ActionResult Thuchienthemsltronggio(string masach, int soluong)
+        {
+            List<Items> items = (List<Items>)Session["giohang"];
+            foreach (Items item in items)
+            {
+                if (item.Madausach == masach)
+                {
+                    item.Soluong = soluong;
+                    break;
+                }
+            }
+            return View("~/Views/User/Giosach/Xemgiosach.cshtml");
         }
     }
 }

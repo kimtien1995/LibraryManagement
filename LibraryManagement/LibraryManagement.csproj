@@ -509,6 +509,7 @@
     <Compile Include="Controllers\User\DocOnlineController.cs" />
     <Compile Include="Controllers\User\GioSachController.cs" />
     <Compile Include="Controllers\User\KhoSachController.cs" />
+    <Compile Include="Controllers\User\MuonSachController.cs" />
     <Compile Include="Controllers\User\NapTienController.cs" />
     <Compile Include="Controllers\User\TimKiemController.cs" />
     <Compile Include="Controllers\User\TrangCaNhanController.cs" />
@@ -855,6 +856,8 @@
     <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.ttf%4010873057" />
     <Content Include="Content\Template\Gioithieusach\css\fontello\font\fontello.woff%4010873057" />
     <Content Include="Views\User\Giosach\thongbaoloi.cshtml" />
+    <Content Include="Views\User\Giosach\Themslsach.cshtml" />
+    <Content Include="Views\User\Muonsach\Thanhcong.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -865,6 +868,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Template\User\themes\less\oregional\" />
+    <Folder Include="Views\MuonSach\" />
     <Folder Include="Views\Shared\PartialViews\" />
   </ItemGroup>
   <ItemGroup>

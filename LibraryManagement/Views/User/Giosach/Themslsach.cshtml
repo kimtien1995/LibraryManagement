@@ -1,0 +1,34 @@
+﻿@using LibraryManagement.Models.DTO;
+
+@{
+    ViewBag.TitleUser = "Giỏ sách";
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    Items item = ViewBag.item;
+}
+
+<h2>Thêm số lượng sách trong giỏ</h2>
+<div class="row">
+    <div id="gallery" class="span3">
+        <h3>@item.Tensach </h3>
+        <img src="~/Content/BookImg/@item.Bia" style="width:100%" alt="Fujifilm FinePix S2950 Digital Camera" />
+        <div id="differentview" class="moreOptopm carousel slide">
+        </div>
+    </div>
+    <div class="span6">
+        <h3>Nhập số lượng muốn mượn</h3>
+        <hr class="soft" />
+        <form action="/GioSach/Thuchienthemsltronggio" method="get">
+            <input type="number" min="1" name="soluong" value="@item.Soluong"/>
+            <input type="hidden" name="masach" value="@item.Madausach" />
+            <hr class="soft" />
+            <input id="buttonthem" type="submit" value="Cập Nhật"/>
+        </form>
+        <hr class="soft" />
+        
+
+    </div>
+
+    
+    
+
+</div>
