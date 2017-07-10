@@ -46,7 +46,7 @@
             @if (Session["quyen"].ToString() != "guest")
             {
                 <div id="welcomeLine" class="row">
-                    <div class="span6">Xin chào! <strong>@Session["hovaten"]</strong></div>
+                    <div class="span6">Xin chào! <a href="~/TrangCaNhan/Xem"><strong>@Session["hovaten"]</strong></a></div>
                     <div class="span6">
                         <div class="pull-right">
                             <a href="~/DangNhap/Thuchiendangxuat"><span class="btn btn-mini btn-primary">Đăng xuất </span> </a>
@@ -148,7 +148,7 @@
                     <div class="well well-small"><a id="myCart" href="/GioSach/Xem"><img src="~/Content/Template/User/themes/images/ico-cart.png" alt="cart">@soluongcuonsachtronggiosach cuốn sách trong giỏ </a></div>
                     @if (Session["quyen"].ToString() == "user")
                     {
-                        <div class="well well-small"><img src="~/Content/Template/User/themes/images/money_dollar.png" alt="money">@Session["sotientaikhoan"].ToString() VNĐ trong tài khoản</div>
+                        <div class="well well-small"><b><img src="~/Content/Template/User/themes/images/money_dollar.png" alt="money">@Session["sotientaikhoan"].ToString() vnđ trong tài khoản</b></div>
                     }
                     <ul id="sideManu" class="nav nav-tabs nav-stacked">
                         <li class="subMenu open">

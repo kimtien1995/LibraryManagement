@@ -65,7 +65,7 @@
                                 <tr class="techSpecRow"><td class="techSpecTD1">Email</td><td class="techSpecTD2">@Session["email"]</td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">Ngày sinh</td><td class="techSpecTD2">@Session["ngaysinh"]</td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">Số điện thoại</td><td class="techSpecTD2">@Session["sodienthoai"]</td></tr>
-                                <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@Session["gioitinh"]</td></tr>
+                                <tr class="techSpecRow"><td class="techSpecTD1">Giới tính</td><td class="techSpecTD2">@(@Session["gioitinh"].ToString()=="B"?"Nam":"Nữ")</td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">Mô tả ngắn</td><td class="techSpecTD2">@Session["motangan"]</td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">Số tiền tài khoản</td><td class="techSpecTD2">@Session["sotientaikhoan"]</td></tr>
                                 <tr class="techSpecRow"><td class="techSpecTD1">Loại người dùng</td><td class="techSpecTD2">@Session["loainguoidung"]</td></tr>
@@ -83,9 +83,11 @@
                     <button type="submit" class="btn btn-info btn-fill pull-right">Sửa thông tin cá nhân</button>
                 </form>
                 <br class="clr" />
-                @*<form action="/QuanLyNapTien/Xem?ma=@Session["manguoidung"]">*@
-                        <button type="submit" class="btn btn-info btn-fill pull-right"><a class="a" href="/QuanLyNapTien/Xem?ma=@Session["manguoidung"]">Lược sử nạp tiền</a></button>
-                @*</form>*@
+                <form action="~/TrangCaNhan/Luocsunaptien">
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Lược sử nạp tiền</button>
+                </form>
+
+                
                 <br class="clr" />
                 <hr class="soft" />
             </div>

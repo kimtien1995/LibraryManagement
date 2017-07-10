@@ -104,7 +104,8 @@
             <div class="control-group">
                 <label class="control-label" for="inputFname1">Ảnh đại diện</label>
                 <div class="controls">
-                    <input type="file" name="anhdaidien" value="@Session["anhdaidien"].ToString()">
+                    <img style="width:200px;height:200px;" src="~/Content/UserImg/@Session["anhdaidien"]" />
+                    <input type="file" name="anhdaidien">
                 </div>
             </div>
             <div class="control-group">

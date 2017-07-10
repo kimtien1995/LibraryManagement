@@ -51,15 +51,17 @@ namespace LibraryManagement.Controllers.User
                     Session["sotientaikhoan"] = user.sotientaikhoan;
                     Session["motangan"] = user.motangan;
                     Session["email"] = user.email;
-                    if (user.gioitinh == "G")
-                    {
-                        Session["gioitinh"] = "Nữ";
-                    }
-                    else
-                    {
-                        Session["gioitinh"] = "Nam";
-                    }
-                    
+                    Session["gioitinh"] = user.gioitinh;
+
+                    //if (user.gioitinh == "G")
+                    //{
+                    //    Session["gioitinh"] = "Nữ";
+                    //}
+                    //else
+                    //{
+                    //    Session["gioitinh"] = "Nam";
+                    //}
+
 
                     if (oghinho == true)
                     {
