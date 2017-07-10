@@ -65,25 +65,12 @@
             <div class="control-group">
                 <label class="control-label" for="aditionalInfo">Giới tính: </label>
                 <div class="controls">
-                    @if (Session["gioitinh"].ToString() != null)
-                    {
-                        <input type="radio" id="gioitinh1" name="gioitinh" value="B"
-                               @if (Session["gioitinh"].ToString() == "B")
-                               { 
-                                    @: checked="checked"
-                               } /> @:Nam
-                            <input type="radio" id="gioitinh2" name="gioitinh" value="G"
-                               @if (Session["gioitinh"].ToString() == "G")
-                               { 
-                                    @: checked="checked"
-                               } /> @:Nữ
-                    }
-                    @if (Session["gioitinh"].ToString() == null)
-                    {
-                        @:<input type="radio" id="gioitinh2" name="gioitinh" value="G" />Nữ
-                        @:<input type="radio" id="gioitinh1" name="gioitinh" value="B" />Nam
-                    }
-
+                    <input type="radio" id="gioitinh1" name="gioitinh" value="B"
+                           @if (Session["gioitinh"].ToString() == "B") { @: checked="checked"
+                                                                                       } />Nam
+                        <input type="radio" id="gioitinh2" name="gioitinh" value="G"
+                               @if (Session["gioitinh"].ToString() == "G") { @: checked="checked"
+                                                           } />Nữ
                 </div>
             </div>
             <!--<div class="control-group">

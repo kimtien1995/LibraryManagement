@@ -1,0 +1,86 @@
+﻿@using LibraryManagement.Models;
+
+@{
+    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    List<ChiTietDonMuonSach> chitietdonmuon = ViewBag.chitietdonmuon;
+}
+@section Style
+{
+    <style type="text/css" id="enject">
+        #sachmoi {
+            height: 300px;
+        }
+
+        #side {
+            height: 200px;
+        }
+
+        .captionnb {
+            height: 60px;
+        }
+
+        .captionsm {
+            height: 45px;
+        }
+
+        #bookssort .listsort {
+            width: 100px;
+        }
+
+        #pageindex {
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+        }
+
+            #pageindex a {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+                #pageindex a:hover {
+                    color: Blue;
+                    cursor: pointer;
+                }
+
+        #login {
+            width: 280px;
+        }
+
+        #title {
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
+
+}
+
+<ul class="breadcrumb">
+    <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
+    <li class="active">Đơn mượn sách</li>
+</ul>
+<h3>  Đơn mượn sách @Session["hovaten"]</h3>
+<hr class="soft" />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã chi tiết đơn mượn</th>
+            <th>Bìa</th>
+            <th>Tên sách</th>
+            <th>Số lượng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < chitietdonmuon.Count; i++)
+            {
+            <tr>
+                <td><a href="/ChiTietSach/Xem?masach=@chitietdonmuon[i].madausach">@(i + 1)</a></td>
+                <td><a href="/ChiTietSach/Xem?masach=@chitietdonmuon[i].madausach">
+                    <img src="~/Content/BookImg/@chitietdonmuon[i].DauSach.bia" />
+                    </a></td>
+                <td><a href="/ChiTietSach/Xem?masach=@chitietdonmuon[i].madausach">@chitietdonmuon[i].DauSach.tensach</a></td>
+                <td>@chitietdonmuon[i].soluong</td>
+            </tr>
+        }
+    </tbody>
+</table>

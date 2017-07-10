@@ -12,10 +12,29 @@ namespace LibraryManagement.Controllers.User
     {
         // GET: MuonSach
 
-        public ActionResult Xem()
+        public ActionResult Xemdonmuon(string manguoidung)
         {
-            return View("~/Views/User/Giosach/Xemgiosach.cshtml");
+            List<DonMuonSach> donmuon = new List<DonMuonSach>();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                donmuon = db.DonMuonSaches.Include("TrangThai").Where(s => s.manguoidung == manguoidung).ToList();
+            }
+            ViewBag.donmuon = donmuon;
+            return View("~/Views/User/Muonsach/Donmuonsach.cshtml");
         }
+
+        public ActionResult Xemchitietdonmuon(string madon)
+        {
+            List<ChiTietDonMuonSach> chitietdonmuon = new List<ChiTietDonMuonSach>();
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                chitietdonmuon = db.ChiTietDonMuonSaches.Include("DauSach")
+                    .Where(s => s.madonmuonsach == madon).ToList();
+            }
+            ViewBag.chitietdonmuon = chitietdonmuon;
+            return View("~/Views/User/Muonsach/Chitietdonmuonsach.cshtml");
+        }
+
         public ActionResult Thuchienmuonsach(string manguoidung)
         {
             int soluongtoida = 0;

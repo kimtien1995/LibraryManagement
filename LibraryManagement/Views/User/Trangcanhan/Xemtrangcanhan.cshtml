@@ -87,6 +87,11 @@
                         <button type="submit" class="btn btn-info btn-fill pull-right"><a class="a" href="/QuanLyNapTien/Xem?ma=@Session["manguoidung"]">Lược sử nạp tiền</a></button>
                 @*</form>*@
                 <br class="clr" />
+                <form action="~/MuonSach/Xemdonmuon" method="get">
+                    <input type="hidden" name="manguoidung" value="@Session["manguoidung"]" />
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Đơn mượn sách</button>
+                </form>
+                <br class="clr" />
                 <hr class="soft" />
             </div>
 
