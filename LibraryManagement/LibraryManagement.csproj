@@ -858,8 +858,9 @@
     <Content Include="Views\User\Giosach\thongbaoloi.cshtml" />
     <Content Include="Views\User\Giosach\Themslsach.cshtml" />
     <Content Include="Views\User\Muonsach\Thanhcong.cshtml" />
-    <Content Include="Views\User\Xemchitiet\Downloadkhongthanhcong.cshtml" />
-    <Content Include="Views\User\Trangcanhan\Luocsumuasach.cshtml" />
+    <Content Include="Views\User\Muonsach\Donmuonsach.cshtml" />
+    <Content Include="Views\User\Muonsach\Chitietdonmuonsach.cshtml" />
+    <None Include="Properties\PublishProfiles\Tien.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -870,7 +871,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Template\User\themes\less\oregional\" />
-    <Folder Include="Views\MuonSach\" />
     <Folder Include="Views\Shared\PartialViews\" />
   </ItemGroup>
   <ItemGroup>

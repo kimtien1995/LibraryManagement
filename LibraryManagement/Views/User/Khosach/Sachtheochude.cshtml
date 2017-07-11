@@ -89,7 +89,7 @@
                             <a class="btn" href="/ChiTietSach/Xem?masach=@sachchude[i].madausach"> 
                                 <i class="icon-zoom-in"></i>
                             </a> 
-                            @if (Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "user")
+                            @if (Session["quyen"].ToString() == "member")
                             {
                                 <a class="btn" href="~/GioSach/Themsachvaogio?masach=@sachchude[i].madausach&urlnext=@Request.RawUrl">
                                     Thêm vào

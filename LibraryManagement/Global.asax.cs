@@ -66,11 +66,11 @@ namespace LibraryManagement
                     Session["email"] = user.email;
                     Session["gioitinh"] = user.gioitinh;
                 }
-                //if (Session["quyen"].ToString() != "admin" || Session["quyen"].ToString() != "manager")
-                //{
-                //    List<Items> giohang = new List<Items>();
-                //    Session["giohang"] = giohang;
-                //}
+                if (Session["quyen"].ToString() == "member")
+                {
+                    List<Items> giohang = new List<Items>();
+                    Session["giohang"] = giohang;
+                }
             }
         }
         protected void Session_Ends()

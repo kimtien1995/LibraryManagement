@@ -45,6 +45,7 @@ namespace LibraryManagement.Controllers.User
                     Session["loainguoidung"] = user.LoaiNguoiDung.tenloainguoidung;
                     Session["anhdaidien"] = user.anhdaidien;
                     Session["ngaysinh"] = user.ngaysinh;
+                    Session["gioitinh"] = user.gioitinh;
                     Session["diachi"] = user.diachi;
                     Session["hovaten"] = user.hovaten;
                     Session["sodienthoai"] = user.sodienthoai;

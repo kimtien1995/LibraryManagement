@@ -16,8 +16,8 @@ namespace LibraryManagement
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                //defaults: new { controller = "TrangChu", action = "Xem", id = UrlParameter.Optional }
                 defaults: new { controller = "TrangChu", action = "Xem", id = UrlParameter.Optional }
+                //defaults: new { controller = "TrangChu", action = "Xem", id = UrlParameter.Optional }
             );
         }
     }
