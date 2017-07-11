@@ -1,4 +1,9 @@
-﻿Mấy chức năng khác em đều làm rồi, chỉ còn lại 1 vài vấn đề như rày thoi em chưa giải quyết đc. Thầy giúp e nha.
+﻿Hina Spin & Tran Thi Kim Tien
+11/7/2017
+Hello World. Cuối cùng cũng xong.
+Một kỷ niệm một niềm vui, ngày mới tốt lành.
+
+Mấy chức năng khác em đều làm rồi, chỉ còn lại 1 vài vấn đề như rày thoi em chưa giải quyết đc. Thầy giúp e nha.
 
 + Trang kho sách, trang san phẩm thứ 7 bị lỗi.
 (Đã làm xong, Vì đây là trang cuối vì thế chỉ có 8 cuốn sách, không đủ 15 cuốn để in ra,
@@ -21,12 +26,14 @@ dùng thì ta không trừ tiền nưa, nhưng để làm nhanh ta có thể th�
 nội bộ xem online, còn thành viên đăng ký thi chỉ được download, không xem online.)
 
 
-- Chức năng giỏ hàng bị lỗi: Cái này em cũng k bik tại sao, thầy xem nha.
++ Chức năng giỏ hàng bị lỗi: Cái này em cũng k bik tại sao, thầy xem nha.
 (Đã sữa, đợi làm đăng ký mượn sách)
+(đạ xong)
 
-- Chức năng thêm & sửa sách: bị dính khóa ngoại của bảng khác nên bị lỗi, không thêm được.
-
-- Khóa người dùng em chưa hiểu lắm nên chưa làm
++ Chức năng thêm & sửa sách: bị dính khóa ngoại của bảng khác nên bị lỗi, không thêm được.
+(Đã xong)
++ Khóa người dùng em chưa hiểu lắm nên chưa làm
+(Đã xong)
 
 +Chức năng tìm kiếm,
 (Đa xong)
