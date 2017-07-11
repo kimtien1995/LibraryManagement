@@ -1,0 +1,92 @@
+﻿@using LibraryManagement.Models
+@using LibraryManagement.Models.DTO
+@{
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    ViewBag.TitleAdmin = "Cap nhật đơn mượn sách";
+    DonMuonSach dm = ViewBag.dm;
+    List<TrangThai> tts = (List<TrangThai>)ViewBag.tts;
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Cập nhật xử lý đơn mượn sách của người dùng @dm.NguoiDung.hovaten (@dm.NguoiDung.tendangnhap)</h4>
+                    </div>
+                    <div class="content">
+                        @if(ViewBag.thongbaoloi!=null)
+                        {
+                            <p style="color:red">@ViewBag.thongbaoloi</p>
+                        }
+                        <form action="/QuanLyMuonSach/ThucHienCapNhat?madon=@dm.madonmuonsach" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Mã đơn mượn sách</label>
+                                        <input type="text" name="madontam" class="form-control" disabled="disabled" value="@dm.madonmuonsach">
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Người mượn</label>
+                                            <input type="text" name="nguoimuon" class="form-control" disabled="disabled" value="@dm.NguoiDung.hovaten">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Ngày đặt</label>
+                                                <input type="text" name="ngaydat" class="form-control" disabled="disabled" value="@dm.ngaydat">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label>Ngày mượn</label>
+                                                    <input type="text" name="ngaymuon" class="form-control" placeholder="mm/dd/yyyy hh:mm:ss" value="@dm.ngaymuon">
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Ngày trả</label>
+                                                        <input type="text" name="ngaytra" class="form-control" placeholder="mm/dd/yyyy hh:mm:ss" value="@dm.ngaytra">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label>Trạng thái</label>
+                                                            <select name="trangthai">
+                                                                @foreach (TrangThai tt in tts)
+                                                                {
+                                                                    <option @(tt.matrangthai == dm.matrangthai ? "selected" : "") value="@tt.matrangthai">@tt.tentrangthai</option>
+                                                                }
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                            
+
+                           
+
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Cập nhật</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>

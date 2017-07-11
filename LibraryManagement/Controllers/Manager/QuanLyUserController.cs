@@ -16,6 +16,10 @@ namespace LibraryManagement.Controllers.Manager
             {
                 return Redirect("/TrangChu/Xem");
             }
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             List<NguoiDung> nguoidungs = new List<NguoiDung>();
             int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
@@ -30,6 +34,10 @@ namespace LibraryManagement.Controllers.Manager
         public ActionResult Xemchitietuser(string manguoidung)
         {
 
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             NguoiDung chitietnd = new NguoiDung();
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
@@ -41,25 +49,42 @@ namespace LibraryManagement.Controllers.Manager
 
         public ActionResult Formthemnguoidung()
         {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             return View("~/Views/Manager/Quanlyuser/Formthemuser.cshtml");
         }
 
         public ActionResult Thuchienthemnguoidung()
         {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             return View("~/Views/Manager/Quanlyuser/Xemqluser.cshtml");
         }
 
         public ActionResult Xacnhanxoanguoidung(string maxoauser)
         {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             ViewBag.maxoauser = maxoauser;
             return View("~/Views/Manager/Quanlyuser/Xacnhanxoauser.cshtml");
         }
 
         public ActionResult Thuchienxoanguoidung(string maxoauser)
         {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
                 var user = db.NguoiDungs.First(s => s.manguoidung == maxoauser);
+
                 db.NguoiDungs.Remove(user);
                 db.SaveChanges();
             }
@@ -68,16 +93,28 @@ namespace LibraryManagement.Controllers.Manager
 
         public ActionResult Formsuaquyen(string manguoidung)
         {
-            ViewBag.masuaquyen = manguoidung;
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+            
+            NguoiDung nguoidung = db.NguoiDungs.First(s => s.manguoidung == manguoidung);
+            ViewBag.nguoidung = nguoidung;
             return View("~/Views/Manager/Quanlyuser/Suaquyen.cshtml");
         }
 
-        public ActionResult Thuchiensuaquyen(string manguoidung)
+        public ActionResult Thuchiensuaquyen(string manguoidung, string maloainguoidung, string khoanguoidung)
         {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
                 var nguoidung = db.NguoiDungs.First(s => s.manguoidung == manguoidung);
-                nguoidung.maloainguoidung = Request.Form["loainguoidung"].ToString();
+                nguoidung.maloainguoidung = maloainguoidung;
+                nguoidung.khoanguoidung = khoanguoidung;
                 db.SaveChanges();
             }
             return Redirect("~/QuanLyUser/Xem");

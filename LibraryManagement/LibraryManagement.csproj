@@ -499,6 +499,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Manager\QuanLyManagerController.cs" />
+    <Compile Include="Controllers\Manager\QuanLyMuonSachController.cs" />
     <Compile Include="Controllers\Manager\QuanLyNapTienController.cs" />
     <Compile Include="Controllers\Manager\QuanLySachController.cs" />
     <Compile Include="Controllers\Manager\QuanLyUserController.cs" />
@@ -867,6 +868,9 @@
     <None Include="Properties\PublishProfiles\Tien.pubxml" />
     <Content Include="Views\Manager\Quanlynapthe\Luocsunaptien.cshtml" />
     <Content Include="Views\User\LienHe\Lienhe.cshtml" />
+    <Content Include="Views\Manager\QuanLyMuonSach\Donmuonsach.cshtml" />
+    <Content Include="Views\Manager\QuanLyMuonSach\Chitietdonmuonsach.cshtml" />
+    <Content Include="Views\Manager\QuanLyMuonSach\Capnhat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

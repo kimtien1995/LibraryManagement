@@ -1,7 +1,7 @@
 ﻿@using LibraryManagement.Models;
 
 @{
-    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     List<DonMuonSach> donmuon = ViewBag.donmuon;
 }
 
@@ -60,30 +60,32 @@
 <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
 <li class="active">Đơn mượn sách</li>
     </ul>
-<h3>  Đơn mượn sách @Session["hovaten"]</h3>
+<h3>Danh sách các đơn mượn sách</h3>
 <hr class="soft" />
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>STT</th>
+            <th>Mã đơn mượn</th>
+            <th>Người mượn</th>
             <th>Ngày đặt</th>
             <th>Ngày mượn</th>
             <th>Ngày trả</th>
             <th>Trạng thái</th>
-            <th></th>
+            <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
         @for (int i = 0; i < donmuon.Count; i++)
             {
             <tr>
-                <td>@(i + 1)</td>
+                <td>@donmuon[i].madonmuonsach</td>
+                <td>@donmuon[i].NguoiDung.hovaten (@donmuon[i].NguoiDung.tendangnhap)</td>
                 <td>@donmuon[i].ngaydat</td>
                 <td>@donmuon[i].ngaymuon</td>
                 <td>@donmuon[i].ngaytra</td>
                 <td>@donmuon[i].TrangThai.tentrangthai</td>
                 <td>
-                    <a href="/MuonSach/Xemchitietdonmuon?madon=@donmuon[i].madonmuonsach">Chi tiết</a>
+                    <a href="/QuanLyMuonSach/Xemchitietdonmuon?madon=@donmuon[i].madonmuonsach">Xem</a><b>/</b><a href="/QuanLyMuonSach/Xoa?madon=@donmuon[i].madonmuonsach">Xóa</a><b>/</b><a href="/QuanLyMuonSach/CapNhat?madon=@donmuon[i].madonmuonsach">Sửa</a>
                 </td>
             </tr>
         }

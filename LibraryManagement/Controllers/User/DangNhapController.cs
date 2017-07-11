@@ -37,7 +37,15 @@ namespace LibraryManagement.Controllers.User
                 var ketqua = db.sp_timkiemnguoidungdangnhap(tendangnhap, matkhau).Count();
                 if (ketqua != 0)
                 {
+
                     user = db.NguoiDungs.Include("Loainguoidung").SingleOrDefault(s => s.tendangnhap == tendangnhap && s.matkhau == matkhau);
+
+                    if(user.khoanguoidung=="L")
+                    {
+                        ViewBag.ThongBao = "Người dùng bị khóa, vui lòng đăng nhập tài khoản khác!";
+                        return View("~/Views/User/Dangnhap/Xemdangnhap.cshtml");
+                    }
+
                     Session["manguoidung"] = user.manguoidung;
                     Session["tendangnhap"] = user.tendangnhap;
                     Session["matkhau"] = user.matkhau;

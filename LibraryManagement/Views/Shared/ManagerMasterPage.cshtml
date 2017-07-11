@@ -74,6 +74,8 @@
             font-weight: bold;
         }
     </style>
+    @RenderSection("Style", false)
+    @RenderSection("JavaScript", false)
 </head>
 <body>
 
@@ -101,6 +103,12 @@
                         <a href="~/QuanLyUser/Xem">
                             <i class="pe-7s-users"></i>
                             <p>Quản lý người dùng</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/QuanLyMuonSach/Xem">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Quản lý mượn sách</p>
                         </a>
                     </li>
                     <li>
