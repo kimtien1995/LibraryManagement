@@ -80,13 +80,11 @@ namespace LibraryManagement.Controllers.User
                     else
                     {
                         //Không dược download vi khong du tien
-                        
+                        ViewBag.sachs = sachs;
                         return View("~/Views/User/Xemchitiet/Downloadkhongthanhcong.cshtml.cshtml");
                     }
                 }
             }
-
-            return View("~/Views/User/Doconline/Dockhongthanhcong.cshtml");
         }
     }
 }
