@@ -37,7 +37,7 @@
                                         <td>@sachs[i].TacGia.tentacgia</td>
                                         <td>@sachs[i].ngaydang</td>
                                         <td>@sachs[i].ChuDe.tenchude</td>
-                                        <td><a href="~/QuanLySach/Xacnhanxoasach?masachxoa=@sachs[i].madausach">Xóa</a><b>/</b><a href="#">Sửa</a></td>
+                                        <td><a href="~/QuanLySach/Xacnhanxoasach?masachxoa=@sachs[i].madausach">Xóa</a><b>/</b><a href="/QuanLySach/Formsuasach?masach=@sachs[i].madausach">Sửa</a></td>
                                     </tr>
                                 }
                                 
@@ -46,14 +46,14 @@
 
                     </div>
                 </div>
-                <div id="pageindex">
+                @*<div id="pageindex">
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
                     <a href="#">4 ...</a>
                     <a href="#">8</a>
-                </div>
-                <div><a href="~/QuanLySach/Formthemsach"><button type="submit" class="btn btn-info btn-fill pull-right">Thêm sách</button></a></div>
+                </div>*@
+                <div><a href="/QuanLySach/Formthemsach"><button type="submit" class="btn btn-info btn-fill pull-right">Thêm sách</button></a></div>
             </div>
 
         </div>

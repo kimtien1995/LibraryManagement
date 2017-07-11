@@ -34,15 +34,15 @@
                                         <td>@managers[i].manguoidung</td>
                                         <td>@managers[i].hovaten</td>
                                         <td><img id="imgtbl" src="~/Content/UserImg/@managers[i].anhdaidien"></td>
-                                        <td>@managers[i].tendangnhap</td>
+                                        <td>@managers[i].tendangnhap <span style="color:red">@(@managers[i].khoanguoidung=="L"?"(Bị khóa)":"")</span></td>
                                         <td>@managers[i].email</td>
                                         <td>@managers[i].LoaiNguoiDung.tenloainguoidung</td>
                                         <th>
                                             <a href="~/QuanLyUser/Xemchitietuser?manguoidung=@managers[i].manguoidung">Xem</a>
                                             <b>/</b>
-                                        <a href="~/QuanLyUser/Xacnhanxoanguoidung?maxoauser=@managers[i].manguoidung">Xóa</a>
+                                        <a href="~/QuanLyManager/Xacnhanxoanguoidung?maxoauser=@managers[i].manguoidung">Xóa</a>
                                         <b>/</b>
-                                        <a href="~/QuanLyUser/Formsuaquyen?manguoidung=@managers[i].manguoidung">Sửa</a></th>
+                                        <a href="~/QuanLyManager/Formsuaquyen?manguoidung=@managers[i].manguoidung">Sửa</a></th>
                                     </tr>
                                 }
                                 

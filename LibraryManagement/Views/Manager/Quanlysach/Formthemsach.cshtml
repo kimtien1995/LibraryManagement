@@ -1,6 +1,10 @@
-﻿@{
+﻿@using LibraryManagement.Models
+@{
     Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     ViewBag.TitleAdmin = "Thêm sách";
+    List<TacGia> tgs = ViewBag.tgs;
+    List<NhaXuatBan> nxbs = ViewBag.nxbs;
+    List<ChuDe> cds = ViewBag.cds;
 }
 
 <div class="content">
@@ -12,69 +16,91 @@
                         <h4 class="title">Thêm sách</h4>
                     </div>
                     <div class="content">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        @if(ViewBag.thongbaoloi!=null)
+                        {
+                            <p style="color:red">@ViewBag.thongbaoloi</p>
+                        }
+                        <form action="/QuanLySach/Thuchienthemsach" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Tên sách</label>
-                                        <input type="text" name="tensach" class="form-control" placeholder="Tên sách" value="">
+                                        <input type="text" name="tensach" class="form-control" placeholder="Tên sách" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Tác giả</label>
-                                        <input type="text" name="tacgia" class="form-control" placeholder="Tác giả" value="">
+                                        <select name="matacgia">
+                                            @for(int i=0;i<tgs.Count;i++)
+                                            {
+                                                <option @(i==0?"selected":"")   value="@tgs[i].matacgia">@tgs[i].tentacgia</option>
+                                            }
+                                        </select>
+                                        @*<input type="text" name="tacgia" class="form-control" placeholder="Tác giả" value="">*@
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                @*<div class="col-md-4">
                                     <div class="form-group">
                                         <label>Chủ đề</label>
                                         <input type="text" class="form-control" placeholder="Chủ đề" value="">
                                     </div>
-                                </div>
+                                </div>*@
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nhà xuất bản</label>
-                                        <input type="text" class="form-control" placeholder="Nhà xuất bản" value="Mike">
+                                        <select name="manhaxuatban">
+                                            @for (int i = 0; i < nxbs.Count; i++)
+                                            {
+                                                <option @(i==0?"selected":"") value="@nxbs[i].manhaxuatban">@nxbs[i].tennhaxuatban</option>
+                                            }
+                                        </select>
+                                        @*<input name="manhaxuatban" type="text" class="form-control" placeholder="Nhà xuất bản" value="Mike">*@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Số lượng</label>
-                                        <input type="text" class="form-control" placeholder="Số lượng" value="Andrew">
+                                        <input name="soluong" type="text" class="form-control" placeholder="Số lượng" value="0" required>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Ngày đăng</label>
-                                        <input type="datetime" class="form-control" placeholder="Ngày đăng" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                        <input type="datetime" class="form-control" placeholder="mm/dd/yyyy" value="">
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Giá bán</label>
-                                        <input type="text" class="form-control" placeholder="Giá bán" value="">
+                                        <input name="giaban" type="text" class="form-control" placeholder="Giá bán" value="0" required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Chủ đề</label>
-                                        <input type="text" class="form-control" placeholder="Chủ đề" value="">
+                                        <select name="machude">
+                                            @for (int i = 0; i < cds.Count; i++)
+                                            {
+                                                <option @(i==0?"selected":"") value="@cds[i].machude">@cds[i].tenchude</option>
+                                            }
+                                        </select>
+                                        @*<input name="machude" type="text" class="form-control" placeholder="Chủ đề" value="">*@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Mô tả ngắn</label>
-                                        <textarea rows="5" class="form-control" placeholder="Nhập mô tả (Tóm tắt)" value="Mike"></textarea>
+                                        <textarea name="tomtat" rows="5" class="form-control" placeholder="Nhập mô tả (Tóm tắt)" value="" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -82,13 +108,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Ảnh bìa</label>
-                                        <input type="file" class="form-control">
+                                        <input name="bia" type="file" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>File sách</label>
-                                        <input type="file" class="form-control">
+                                        <input name="filesach" type="file" class="form-control">
                                     </div>
                                 </div>
                             </div>

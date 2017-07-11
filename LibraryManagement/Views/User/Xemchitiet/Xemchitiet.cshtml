@@ -45,18 +45,21 @@
             <table width="460" border="0">
                 <tbody>
                    <tr>
-                        @if (Session["quyen"].ToString() == "member")
+                        @if (Session["quyen"].ToString() == "member"&& chitiet.filesach != null && chitiet.filesach != "")
                         {
                        <td><a href="/DocOnline/Doconline?masach=@chitiet.madausach"><label class="control-label">
                             <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Đọc Online </button></label>
                             </a>
                        </td>
                         }
+                        @if (chitiet.filesach!=null&&chitiet.filesach!="")
+                        {
                         <td>
                             <a href="/ChiTietSach/Download?masach=@chitiet.madausach"><label class="control-label">
                             <button id="btdoc" type="submit" class="btn btn-large btn-primary pull-right"> Download </button></label>
                             </a>
                        </td>
+                        }
                         @if (Session["quyen"].ToString() == "member")
                         {
 
