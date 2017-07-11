@@ -35,19 +35,7 @@ namespace LibraryManagement.Models
         public virtual DbSet<LoaiNguoiDung> LoaiNguoiDungs { get; set; }
         public virtual DbSet<LuocSuMuaSach> LuocSuMuaSaches { get; set; }
         public virtual DbSet<LuocSuNapTien> LuocSuNapTiens { get; set; }
-
-        internal void DeleteObject(DauSach nguoidung)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
-
-        internal void DeleteObject(IQueryable<NguoiDung> user)
-        {
-            throw new NotImplementedException();
-        }
-
         public virtual DbSet<NhanXet> NhanXets { get; set; }
         public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
         public virtual DbSet<PhanHoi> PhanHois { get; set; }
@@ -85,6 +73,27 @@ namespace LibraryManagement.Models
                 new ObjectParameter("luachonxapxep", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_phantrangkhosach_Result>("sp_phantrangkhosach", sosachtrongmottrangParameter, tranghientaiParameter, luachonxapxepParameter);
+        }
+    
+        public virtual ObjectResult<sp_timkiem_Result> sp_timkiem(string key, Nullable<int> sosachtrongmottrang, Nullable<int> tranghientai, string luachonxapxep)
+        {
+            var keyParameter = key != null ?
+                new ObjectParameter("key", key) :
+                new ObjectParameter("key", typeof(string));
+    
+            var sosachtrongmottrangParameter = sosachtrongmottrang.HasValue ?
+                new ObjectParameter("sosachtrongmottrang", sosachtrongmottrang) :
+                new ObjectParameter("sosachtrongmottrang", typeof(int));
+    
+            var tranghientaiParameter = tranghientai.HasValue ?
+                new ObjectParameter("tranghientai", tranghientai) :
+                new ObjectParameter("tranghientai", typeof(int));
+    
+            var luachonxapxepParameter = luachonxapxep != null ?
+                new ObjectParameter("luachonxapxep", luachonxapxep) :
+                new ObjectParameter("luachonxapxep", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_timkiem_Result>("sp_timkiem", keyParameter, sosachtrongmottrangParameter, tranghientaiParameter, luachonxapxepParameter);
         }
     }
 }

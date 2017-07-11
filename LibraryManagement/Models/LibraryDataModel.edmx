@@ -378,6 +378,12 @@
           <Parameter Name="tranghientai" Type="int" Mode="In" />
           <Parameter Name="luachonxapxep" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_timkiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="key" Type="nvarchar" Mode="In" />
+          <Parameter Name="sosachtrongmottrang" Type="int" Mode="In" />
+          <Parameter Name="tranghientai" Type="int" Mode="In" />
+          <Parameter Name="luachonxapxep" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_timkiemnguoidungdangnhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tendangnhap" Type="nvarchar" Mode="In" />
           <Parameter Name="matkhau" Type="nvarchar" Mode="In" />
@@ -960,6 +966,12 @@
             <Parameter Name="tranghientai" Mode="In" Type="Int32" />
             <Parameter Name="luachonxapxep" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_timkiem" ReturnType="Collection(LibraryModel.sp_timkiem_Result)">
+            <Parameter Name="key" Mode="In" Type="String" />
+            <Parameter Name="sosachtrongmottrang" Mode="In" Type="Int32" />
+            <Parameter Name="tranghientai" Mode="In" Type="Int32" />
+            <Parameter Name="luachonxapxep" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_timkiemnguoidungdangnhap_Result">
           <Property Type="String" Name="manguoidung" Nullable="false" MaxLength="50" />
@@ -979,6 +991,14 @@
           <Property Type="Int32" Name="sotientaikhoan" Nullable="true" />
         </ComplexType>
         <ComplexType Name="sp_phantrangkhosach_Result">
+          <Property Type="String" Name="tensach" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="tentacgia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="bia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="luotxem" Nullable="false" />
+          <Property Type="String" Name="madausach" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="matacgia" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_timkiem_Result">
           <Property Type="String" Name="tensach" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="tentacgia" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="bia" Nullable="true" MaxLength="100" />
@@ -1209,6 +1229,18 @@
           <FunctionImportMapping FunctionImportName="sp_phantrangkhosach" FunctionName="LibraryModel.Store.sp_phantrangkhosach">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LibraryModel.sp_phantrangkhosach_Result">
+                <ScalarProperty Name="tensach" ColumnName="tensach" />
+                <ScalarProperty Name="tentacgia" ColumnName="tentacgia" />
+                <ScalarProperty Name="bia" ColumnName="bia" />
+                <ScalarProperty Name="luotxem" ColumnName="luotxem" />
+                <ScalarProperty Name="madausach" ColumnName="madausach" />
+                <ScalarProperty Name="matacgia" ColumnName="matacgia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_timkiem" FunctionName="LibraryModel.Store.sp_timkiem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibraryModel.sp_timkiem_Result">
                 <ScalarProperty Name="tensach" ColumnName="tensach" />
                 <ScalarProperty Name="tentacgia" ColumnName="tentacgia" />
                 <ScalarProperty Name="bia" ColumnName="bia" />

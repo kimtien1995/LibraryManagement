@@ -11,7 +11,7 @@ namespace LibraryManagement.Controllers.Manager
         // GET: TrangChuAdmin
         public ActionResult Xem()
         {
-            if (Session["quyen"].ToString() != "Admin" && Session["quyen"].ToString() != "manager")
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
             {
                 return Redirect("/TrangChu/Xem");
             }

@@ -70,8 +70,8 @@
                     </div>
 
                     <a class="brand" href="index.html"><!--<img src="themes/images/logo.png" alt="Bootsshop"/>--></a>
-                    <form class="form-inline navbar-search" method="post" action="products.html">
-                        <input id="srchFld" class="srchTxt" type="text" />
+                    <form class="form-inline navbar-search" method="get" action="/TimKiem/Timkiemcoban">
+                        <input id="srchFld" name="key" class="srchTxt" style="padding-left: 28px;" type="text" value="@(ViewBag.key!=null?ViewBag.key:"")" />
                         <!--<select class="srchTxt">
                             <option>All</option>
                             <option>CLOTHES </option>
@@ -84,16 +84,18 @@
                     </form>
                     <ul id="topMenu" class="nav pull-right">
                         <li class=""><a href="/TrangChu/Xem">Trang chủ</a></li>
-                        <li class=""><a href="/KhoSach/Xem">Duyệt Kho sách</a></li>
+                        <li class=""><a href="/KhoSach/Xem">Kho sách</a></li>
+                        
                         @*<li class=""><a href="/TimKiem/Xemtimkiemnangcao">Tìm kiếm nâng cao</a></li>*@
                         @if (Session["quyen"].ToString() == "guest")
                         {
-                            @:<li class=""><a href="/DangKy/Xem">Đăng ký thành viên</a></li>
+                            @:<li class=""><a href="/DangKy/Xem">Đăng ký</a></li>
                         }
                         @if (Session["quyen"].ToString() == "user")
                         {
                             @:<li class=""><a href="/NapTien/Formnaptien">Nạp Tiền</a></li>
                         }
+                        <li class=""><a href="/LienHe/Xem">Liên hệ</a></li>
                         @if (Session["quyen"].ToString() == "manager" || Session["quyen"].ToString() == "admin")
                         {
                         @:<li><a href="/TrangChuAdmin/Xem"><i class="icon-chevron-right"></i>Quản lý hệ thống</a></li>

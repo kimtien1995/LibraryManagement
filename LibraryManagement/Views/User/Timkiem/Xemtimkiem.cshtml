@@ -1,44 +1,202 @@
-﻿@{
+﻿@using LibraryManagement.Models;
+
+@{
+    ViewBag.TitleUser = "Tìm Kiếm";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
-    ViewBag.TitleUser = "Trang tìm kiếm";
+    int soluongsach = ViewBag.soluongsach;
+    int sotrang = ViewBag.sotrang;
+    List<sp_timkiem_Result> dausachs = ViewBag.dausachs;
+    int tranghientai = ViewBag.tranghientai;
+    string cotxapxep = ViewBag.cotxapxep;
+}
+
+@section JavaScript
+{
+    <script>
+     function DuyetTheoThuTu()
+     {
+         var thelistsort = document.getElementById("listsort");
+         var giatriduocchon = thelistsort.value;
+         var url = "/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=" + giatriduocchon;
+         window.location = url;
+     }
+    </script>
 }
 
 
-<div class="span9">
+@section Style
+{
+    <style type="text/css" id="enject">
+        #sachmoi {
+            height: 300px;
+        }
+
+        #side {
+            height: 200px;
+        }
+
+        .captionnb {
+            height: 60px;
+        }
+
+        .captionsm {
+            height: 45px;
+        }
+
+        #bookssort .listsort {
+            width: 100px;
+        }
+
+        #pageindex {
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+        }
+
+            #pageindex a {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+                #pageindex a:hover {
+                    color: Blue;
+                    cursor: pointer;
+                }
+
+        #login {
+            width: 280px;
+        }
+
+        #title {
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
+}
+
+<div>
     <ul class="breadcrumb">
         <li><a href="~/TrangChu/Xem">Trang chủ</a> <span class="divider">/</span></li>
-        <li class="active">Tìm kiếm nâng cao</li>
+        <li class="active">Kho sách</li>
     </ul>
-    <h3>Tìm kiếm</h3>
-    <div class="well">
-        <form class="form-horizontal" action="" method="">
-            <h4>Nhập từ khóa</h4>
-            <div class="control-group">
-                <label class="control-label">Tìm theo</label>
-                <div class="controls">
-                    <select name="days">
-                        <option value="">-</option>
-                        <option value="1">Chủ đề</option>
-                        <option value="2">Tác giả</option>
-                        <option value="3">Tên sách</option>
-                    </select>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inputFname1">Từ khóa: </label>
-                <div class="controls">
-                    <input type="text" id="inputFname1" placeholder="Nhập từ khóa">
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <input type="hidden" name="email_create" value="1">
-                    <input type="hidden" name="is_new_customer" value="1">
-                    <input class="btn btn-large btn-success" type="submit" value="Tìm kiếm" />
-                </div>
-            </div>
+    <!-- SÁCH MỚI -->
+    <div>
+        <div id="bookscount"> <h4>Số Lượng Sách:@soluongsach</h4></div>
+        <div id="booksort">
+            <b>Xắp Xếp Theo:</b>
+            <select id="listsort" name="sorttype" onchange="DuyetTheoThuTu()">
+                <option value="tensach" @if (cotxapxep == "tensach") { @: selected
+                                                            }>
+                    Tên Sách
+                </option>
+                <option value="matacgia" @if (cotxapxep == "matacgia") { @: selected
+                                                            }>
+                    Tác Giả
+                </option>
+                <option value="manhaxuatban" @if (cotxapxep == "manhaxuatban") { @: selected
+                                                            }>
+                    Nhà Xuất Bản
+                </option>
+                <option value="ngaydang" @if (cotxapxep == "ngaydang") { @: selected
+                                                            }>
+                    Ngày Đăng
+                </option>
+            </select>
+        </div>
+        <br id="nhom6" />
     </div>
+    <ul class="thumbnails">
+        @for (int i = 0; i < dausachs.Count; i++)
+        {
+            <li class="span3">
+                <div class="thumbnail">
+                    <a href="/ChiTietSach/Xem?masach=@dausachs[i].madausach"><img id="sachmoi" width="300px" height="550px" src="~/Content/BookImg/@dausachs[i].bia" alt="" /></a>
+                    <div class="caption">
+                        <a href="/ChiTietSach/Xem?masach=@dausachs[i].madausach">
+                            <h5 class="captionsm">@dausachs[i].tensach</h5>
+                        </a>
+                        <p>
+                            @dausachs[i].tentacgia
+                        </p>
 
+                        <h4 style="text-align:center">
+                            <a class="btn" href="/ChiTietSach/Xem?masach=@dausachs[i].madausach">
+                                <i class="icon-zoom-in"></i>
+                            </a>
+                            @if (Session["quyen"].ToString() == "member")
+                            {
+                                <a class="btn" href="~/GioSach/Themsachvaogio?masach=@dausachs[i].madausach&urlnext=@Request.RawUrl">
+                                    Thêm vào
+                                    <i class="icon-shopping-cart"></i>
+                                </a>
+                            }
+                        </h4>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <div id="pageindex">
+        @if (tranghientai > 1)
+            {
+            <a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=1">1</a>
+        }
 
-    </form>
+        @if (tranghientai - 1 > 5)
+        {
+            @:&nbsp;.&nbsp;.&nbsp;.&nbsp;
+            }
+
+        @if (tranghientai - 1 > 4)
+        {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai - 4)">@(tranghientai - 4)</a>
+        }
+
+        @if (tranghientai - 1 > 3)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai - 3)">@(tranghientai - 3)</a>
+        }
+
+        @if (tranghientai - 1 > 2)
+        {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai - 2)">@(tranghientai - 2)</a>
+        }
+
+        @if (tranghientai - 1 > 1)
+        {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai - 1)">@(tranghientai - 1)</a>
+        }
+
+        @tranghientai&nbsp;.&nbsp;.&nbsp;.&nbsp;.
+
+        @if (sotrang - tranghientai > 1)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai + 1)">@(tranghientai + 1)</a>
+        }
+
+        @if (sotrang - tranghientai > 2)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai + 2)">@(tranghientai + 2)</a>
+        }
+
+        @if (sotrang - tranghientai > 3)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai + 3)">@(tranghientai + 3)</a>
+        }
+
+        @if (sotrang - tranghientai > 4)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@(tranghientai + 4)">@(tranghientai + 4)</a>
+        }
+
+        @if (sotrang - tranghientai > 5)
+            {
+            @:.&nbsp;.&nbsp;.&nbsp;.&nbsp;
+            }
+
+        @if (tranghientai < sotrang)
+            {
+            @:<a href="/TimKiem/Timkiemcoban?key=@ViewBag.key&xapxep=@cotxapxep&trang=@sotrang">@sotrang</a>
+        }
+    </div>
 </div>

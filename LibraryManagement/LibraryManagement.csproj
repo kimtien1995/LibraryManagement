@@ -509,6 +509,7 @@
     <Compile Include="Controllers\User\DocOnlineController.cs" />
     <Compile Include="Controllers\User\GioSachController.cs" />
     <Compile Include="Controllers\User\KhoSachController.cs" />
+    <Compile Include="Controllers\User\LienHeController.cs" />
     <Compile Include="Controllers\User\MuonSachController.cs" />
     <Compile Include="Controllers\User\NapTienController.cs" />
     <Compile Include="Controllers\User\TimKiemController.cs" />
@@ -578,6 +579,9 @@
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_timkiemnguoidungdangnhap_Result.cs">
+      <DependentUpon>LibraryDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_timkiem_Result.cs">
       <DependentUpon>LibraryDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -862,6 +866,7 @@
     <Content Include="Views\User\Muonsach\Chitietdonmuonsach.cshtml" />
     <None Include="Properties\PublishProfiles\Tien.pubxml" />
     <Content Include="Views\Manager\Quanlynapthe\Luocsunaptien.cshtml" />
+    <Content Include="Views\User\LienHe\Lienhe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

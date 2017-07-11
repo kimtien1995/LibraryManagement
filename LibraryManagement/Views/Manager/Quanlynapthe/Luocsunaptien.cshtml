@@ -2,21 +2,17 @@
 
 @{
     ViewBag.TitleUser = "Lược sử nạp tiền";
-    Layout = "~/Views/Shared/UserMasterPage.cshtml";
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
     List<LuocSuNapTien> listnaptien = ViewBag.listnaptien;
     int soluong = ViewBag.sllistnaptien;
 }
 
-@section Style
-{
-    
-}
 
 <ul class="breadcrumb">
     <li><a href="index.html">Trang chủ</a> <span class="divider">/</span></li>
     <li class="active">Giỏ hàng</li>
 </ul>
-<h3>  Lược sử nạp tiền của @Session["hovaten"]</h3>
+<h3>Danh sách lược sử nạp tiền</h3>
 <hr class="soft" />
 <table class="table table-bordered">
     <thead>
@@ -25,6 +21,7 @@
             <th>Tên người dùng</th>
             <th>Ngày nạp</th>
             <th>Số tiền đã nạp</th>
+                <th>Thao tác</th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +32,7 @@
                 <td>@listnaptien[i].NguoiDung.hovaten</td>
                 <td>@listnaptien[i].ngaynap</td>
                 <td>@listnaptien[i].tiennap</td>
+                <td><a href="/QuanLyNapTien/Xoa?ma=@listnaptien[i].maluocsunaptien">Xóa</a></td>
             </tr>
         }
     </tbody>

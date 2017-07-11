@@ -12,7 +12,7 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLyNapTien
         public ActionResult Xem(string ma)
         {
-            if (Session["quyen"].ToString() != "Admin" && Session["quyen"].ToString() != "manager")
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
             {
                 return Redirect("/TrangChu/Xem");
             }
@@ -26,6 +26,20 @@ namespace LibraryManagement.Controllers.Manager
             ViewBag.sllistnaptien = soluong;
             ViewBag.listnaptien = naptien;
             return View("~/Views/Manager/Quanlynapthe/Luocsunaptien.cshtml");
+        }
+        public ActionResult Xoa(string ma)
+        {
+            if (Session["quyen"].ToString() != "admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                LuocSuNapTien naptien = db.LuocSuNapTiens.FirstOrDefault(l=>l.maluocsunaptien== ma);
+                db.LuocSuNapTiens.Remove(naptien);
+                db.SaveChanges();
+            }
+            return Redirect("/QuanLyNapTien/Xem");
         }
     }
 }

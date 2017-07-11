@@ -12,7 +12,7 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLyManager
         public ActionResult Xem()
         {
-            if (Session["quyen"].ToString() != "Admin")
+            if (Session["quyen"].ToString() != "admin")
             {
                 return Redirect("/TrangChu/Xem");
             }
