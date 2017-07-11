@@ -12,6 +12,11 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLyManager
         public ActionResult Xem()
         {
+            if (Session["quyen"].ToString() != "Admin")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+
 
             List<NguoiDung> manager = new List<NguoiDung>();
             LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();

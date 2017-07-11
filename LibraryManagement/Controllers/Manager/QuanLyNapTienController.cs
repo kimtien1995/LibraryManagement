@@ -12,16 +12,20 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLyNapTien
         public ActionResult Xem(string ma)
         {
+            if (Session["quyen"].ToString() != "Admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
             List<LuocSuNapTien> naptien = new List<LuocSuNapTien>();
             int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
             {
-                naptien = db.LuocSuNapTiens.Include("NguoiDung").Where(s => s.manguoidung == ma).ToList();
-                soluong = db.LuocSuNapTiens.Count(s => s.manguoidung == ma);
+                naptien = db.LuocSuNapTiens.Include("NguoiDung").ToList();
+                soluong = db.LuocSuNapTiens.Count();
             }
             ViewBag.sllistnaptien = soluong;
             ViewBag.listnaptien = naptien;
-            return View("~/Views/User/Trangcanhan/Luocsunaptien.cshtml");
+            return View("~/Views/Manager/Quanlynapthe/Luocsunaptien.cshtml");
         }
     }
 }

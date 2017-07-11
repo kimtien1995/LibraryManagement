@@ -10,6 +10,11 @@ namespace LibraryManagement.Controllers.Manager
         // GET: QuanLySach
         public ActionResult Xem()
         {
+            if (Session["quyen"].ToString() != "Admin" && Session["quyen"].ToString() != "manager")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+
             List<DauSach> sachs = new List<DauSach>();
             int soluong;
             using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())

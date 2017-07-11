@@ -85,6 +85,7 @@ namespace LibraryManagement.Controllers.User
                     }
                 }
             }
+            return Redirect("/Trangchu/Xem");
         }
     }
 }

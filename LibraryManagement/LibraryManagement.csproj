@@ -861,6 +861,7 @@
     <Content Include="Views\User\Muonsach\Donmuonsach.cshtml" />
     <Content Include="Views\User\Muonsach\Chitietdonmuonsach.cshtml" />
     <None Include="Properties\PublishProfiles\Tien.pubxml" />
+    <Content Include="Views\Manager\Quanlynapthe\Luocsunaptien.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
