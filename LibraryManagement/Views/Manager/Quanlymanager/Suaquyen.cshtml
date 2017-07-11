@@ -1,0 +1,52 @@
+﻿@using LibraryManagement.Models
+@{
+    Layout = "~/Views/Shared/ManagerMasterPage.cshtml";
+    NguoiDung nguoidung = ViewBag.nguoidung;
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Sửa quyền người dùng @nguoidung.hovaten (@nguoidung.tendangnhap)</h4>
+                    </div>
+                    <div class="content">
+                        <form action="~/QuanLyManager/Thuchiensuaquyen?manguoidung=@nguoidung.manguoidung" method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Loại người dùng</label>
+                                        <div>
+                                            <select name="maloainguoidung">
+                                                <option @(nguoidung.maloainguoidung=="1"?"selected":"")  value="1">Người dùng thường</option>
+                                                <option @(nguoidung.maloainguoidung=="2"?"selected":"") value="2">Thành viên</option>
+                                                @if (Session["quyen"].ToString() == "admin")
+                                                {
+                                                    <option @(nguoidung.maloainguoidung=="5"?"selected":"") value="5">Quản lý nội dung</option>
+                                                    <option @(nguoidung.maloainguoidung=="6"?"selected":"") value="6">Quản trị hệ thống</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <label>Khóa người dùng</label>
+                                        <div>
+                                            <select name="khoanguoidung">
+                                                <option @(nguoidung.khoanguoidung=="U"?"selected":"") value="U">Không Khóa</option>
+                                                <option @(nguoidung.khoanguoidung=="L"?"selected":"") value="L">Khóa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Sửa quyền</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

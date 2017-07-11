@@ -871,6 +871,8 @@
     <Content Include="Views\Manager\QuanLyMuonSach\Donmuonsach.cshtml" />
     <Content Include="Views\Manager\QuanLyMuonSach\Chitietdonmuonsach.cshtml" />
     <Content Include="Views\Manager\QuanLyMuonSach\Capnhat.cshtml" />
+    <Content Include="Views\Manager\Quanlymanager\Xacnhanxoauser.cshtml" />
+    <Content Include="Views\Manager\Quanlymanager\Suaquyen.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

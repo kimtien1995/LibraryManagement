@@ -88,7 +88,7 @@ namespace LibraryManagement.Controllers.Manager
                 db.NguoiDungs.Remove(user);
                 db.SaveChanges();
             }
-            return Redirect("~/QuanLyUser/Xem");
+            return Redirect("/QuanLyUser/Xem");
         }
 
         public ActionResult Formsuaquyen(string manguoidung)
@@ -117,7 +117,7 @@ namespace LibraryManagement.Controllers.Manager
                 nguoidung.khoanguoidung = khoanguoidung;
                 db.SaveChanges();
             }
-            return Redirect("~/QuanLyUser/Xem");
+            return Redirect("/QuanLyUser/Xem");
         }
     }
 }

@@ -4,6 +4,8 @@
     ViewBag.TitleUser = "Giỏ sách";
     Layout = "~/Views/Shared/UserMasterPage.cshtml";
     List<Items> items = (List<Items>)Session["giohang"];
+
+    //kakaka, bi loi cho url roi
     string urlnext = ViewBag.urlgiosach;
 }
 
@@ -106,5 +108,5 @@
             }
         </tbody>
     </table>
-    <a href="@urlnext" class="btn btn-large"><i class="icon-arrow-left"></i> Tiếp tục xem sách </a>
+    <a href="/KhoSach/Xem" class="btn btn-large"><i class="icon-arrow-left"></i> Tiếp tục xem sách </a>
     <a href="/MuonSach/Thuchienmuonsach?manguoidung=@Session["manguoidung"]" class="btn btn-large pull-right">Mượn<i class="icon-arrow-right"></i></a>

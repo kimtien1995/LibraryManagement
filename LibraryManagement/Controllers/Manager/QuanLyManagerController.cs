@@ -26,5 +26,60 @@ namespace LibraryManagement.Controllers.Manager
             ViewBag.managers = manager;
             return View("~/Views/Manager/Quanlymanager/Xemqlmanager.cshtml");
         }
+
+        public ActionResult Xacnhanxoanguoidung(string maxoauser)
+        {
+            if (Session["quyen"].ToString() != "admin")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            ViewBag.maxoauser = maxoauser;
+            return View("~/Views/Manager/Quanlymanager/Xacnhanxoauser.cshtml");
+        }
+
+        public ActionResult Thuchienxoanguoidung(string maxoauser)
+        {
+            if (Session["quyen"].ToString() != "admin" )
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                var user = db.NguoiDungs.First(s => s.manguoidung == maxoauser);
+
+                db.NguoiDungs.Remove(user);
+                db.SaveChanges();
+            }
+            return Redirect("/QuanLyManager/Xem");
+        }
+
+        public ActionResult Formsuaquyen(string manguoidung)
+        {
+            if (Session["quyen"].ToString() != "admin" )
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            LIBRARYDATAMODEL db = new LIBRARYDATAMODEL();
+
+            NguoiDung nguoidung = db.NguoiDungs.First(s => s.manguoidung == manguoidung);
+            ViewBag.nguoidung = nguoidung;
+            return View("~/Views/Manager/Quanlymanager/Suaquyen.cshtml");
+        }
+
+        public ActionResult Thuchiensuaquyen(string manguoidung, string maloainguoidung, string khoanguoidung)
+        {
+            if (Session["quyen"].ToString() != "admin")
+            {
+                return Redirect("/TrangChu/Xem");
+            }
+            using (LIBRARYDATAMODEL db = new LIBRARYDATAMODEL())
+            {
+                var nguoidung = db.NguoiDungs.First(s => s.manguoidung == manguoidung);
+                nguoidung.maloainguoidung = maloainguoidung;
+                nguoidung.khoanguoidung = khoanguoidung;
+                db.SaveChanges();
+            }
+            return Redirect("/QuanLyManager/Xem");
+        }
     }
 }
